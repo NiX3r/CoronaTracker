@@ -1,0 +1,2 @@
+# CoronaTracker
+School seminar work
