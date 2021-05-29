@@ -49,6 +49,19 @@ namespace CoronaTracker.Database
 
         }
 
+        public static List<VaccineTypeInstance> GetVaccineTypes()
+        {
+            List<VaccineTypeInstance> output = new List<VaccineTypeInstance>();
+            var command = new MySqlCommand("SELECT * FROM VaccineType;", connection);
+            var reader = command.ExecuteReader();
+            while (reader.Read())
+            {
+                output.Add(new VaccineTypeInstance(reader.GetString(1), reader.GetString(2)));
+            }
+            reader.Close();
+            return output;
+        }
+
         public static bool AddUser(String fullname, String email, int phone, String password)
         {
 
