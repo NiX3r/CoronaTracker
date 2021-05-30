@@ -103,10 +103,12 @@ namespace CoronaTracker
 
         private void button6_Click(object sender, EventArgs e)
         {
-            if(((Button)sender).Text.Equals("Home"))
+            if (((Button)sender).Text.Equals("Home"))
                 OpenChildForm(new HomeSubForm(), (Button)sender);
-            else if(((Button)sender).Text.Equals("Countries"))
+            else if (((Button)sender).Text.Equals("Countries"))
                 OpenChildForm(new CountriesSubForm(), (Button)sender);
+            else if (((Button)sender).Text.Equals("Vaccine"))
+                OpenChildForm(new VaccineTypeSubForm(), (Button)sender);
         }
     }
 }

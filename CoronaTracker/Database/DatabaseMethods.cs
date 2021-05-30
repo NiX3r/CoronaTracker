@@ -64,7 +64,6 @@ namespace CoronaTracker.Database
 
         public static bool AddUser(String fullname, String email, int phone, String password)
         {
-
             var command = new MySqlCommand("SELECT Employee_ID FROM Employee WHERE Employee_Email='" + email + "';", connection);
             var reader = command.ExecuteReader();
 
@@ -76,6 +75,57 @@ namespace CoronaTracker.Database
 
             reader.Close();
             command = new MySqlCommand($"INSERT INTO Employee(Employee_Fullname, Employee_Email, Employee_Phone, Employee_Pose, Employee_Password, Employee_Created) VALUES('{fullname}', '{email}', {phone}, 'user', '{password}', '{DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss")}');", connection);
+            command.ExecuteNonQuery();
+            return true;
+        }
+
+        public static bool AddVaccineType(String name, String description = "")
+        {
+            var command = new MySqlCommand("SELECT VaccineType_ID FROM VaccineType WHERE VaccineType_Name='" + name + "';", connection);
+            var reader = command.ExecuteReader();
+
+            if (reader.Read())
+            {
+                reader.Close();
+                return false;
+            }
+
+            reader.Close();
+            command = new MySqlCommand($"INSERT INTO VaccineType(VaccineType_Name, VaccineType_Description) VALUES('{name}', '{description}');", connection);
+            command.ExecuteNonQuery();
+            return true;
+        }
+
+        public static bool RemoveVaccineType(String name)
+        {
+            var command = new MySqlCommand("SELECT VaccineType_ID FROM VaccineType WHERE VaccineType_Name='" + name + "';", connection);
+            var reader = command.ExecuteReader();
+
+            if (!reader.Read())
+            {
+                reader.Close();
+                return false;
+            }
+
+            reader.Close();
+            command = new MySqlCommand($"DELETE FROM VaccineType WHERE VaccineType_Name='{name}';", connection);
+            command.ExecuteNonQuery();
+            return true;
+        }
+
+        public static bool EditVaccineType(String name, String description = "")
+        {
+            var command = new MySqlCommand("SELECT VaccineType_ID FROM VaccineType WHERE VaccineType_Name='" + name + "';", connection);
+            var reader = command.ExecuteReader();
+
+            if (!reader.Read())
+            {
+                reader.Close();
+                return false;
+            }
+
+            reader.Close();
+            command = new MySqlCommand($"UPDATE VaccineType SET VaccineType_Description='{description}' WHERE VaccineType_Name='{name}';", connection);
             command.ExecuteNonQuery();
             return true;
         }

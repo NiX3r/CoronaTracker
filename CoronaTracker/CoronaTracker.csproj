@@ -73,7 +73,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Database\DatabaseInstances\DatabaseSecret.cs" />
+    <Compile Include="Database\DatabaseInstances\VaccineTypeInstance.cs" />
     <Compile Include="Database\DatabaseMethods.cs" />
+    <Compile Include="Enums\EmployeePoseEnum.cs" />
     <Compile Include="Enums\LoginWindowStatusEnum.cs" />
     <Compile Include="Instances\CovidInfo.cs" />
     <Compile Include="SubForms\CountriesSubForm.cs">
@@ -93,6 +95,12 @@
     </Compile>
     <Compile Include="SubForms\LoginForm.Designer.cs">
       <DependentUpon>LoginForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SubForms\VaccineTypeSubForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SubForms\VaccineTypeSubForm.Designer.cs">
+      <DependentUpon>VaccineTypeSubForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Timers\LogoutTimer.cs" />
     <Compile Include="Timers\RefreshCovidDataTimer.cs" />
@@ -125,6 +133,9 @@
     <EmbeddedResource Include="SubForms\LoginForm.resx">
       <DependentUpon>LoginForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="SubForms\VaccineTypeSubForm.resx">
+      <DependentUpon>VaccineTypeSubForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UI.resx">
       <DependentUpon>UI.cs</DependentUpon>
     </EmbeddedResource>
@@ -151,6 +162,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="coronavirus.ico" />
+    <None Include="Resources\plus.png" />
+    <None Include="Resources\minus.png" />
+    <None Include="Resources\edit.png" />
     <None Include="Resources\danger1.png" />
     <None Include="Resources\rehabilitation1.png" />
     <None Include="Resources\to-do-list1.png" />

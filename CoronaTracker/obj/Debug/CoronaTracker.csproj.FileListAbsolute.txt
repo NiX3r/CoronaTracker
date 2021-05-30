@@ -53,3 +53,4 @@ C:\Users\nixii\Dropbox\CoronaTracker\CoronaTracker\CoronaTracker\obj\Debug\Coron
 C:\Users\nixii\Dropbox\CoronaTracker\CoronaTracker\CoronaTracker\obj\Debug\CoronaTracker.SubForms.LoginForm.resources
 C:\Users\nixii\Dropbox\CoronaTracker\CoronaTracker\CoronaTracker\obj\Debug\CoronaTracker.csproj.CopyComplete
 C:\Users\Secret\Dropbox\CoronaTracker\CoronaTracker\CoronaTracker\obj\Debug\CoronaTracker.SubForms.CountriesSubForm.resources
+C:\Users\Secret\Dropbox\CoronaTracker\CoronaTracker\CoronaTracker\obj\Debug\CoronaTracker.SubForms.VaccineTypeSubForm.resources
