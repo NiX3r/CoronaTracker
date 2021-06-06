@@ -109,6 +109,8 @@ namespace CoronaTracker
                 OpenChildForm(new CountriesSubForm(), (Button)sender);
             else if (((Button)sender).Text.Equals("Vaccine"))
                 OpenChildForm(new VaccineTypeSubForm(), (Button)sender);
+            else if (((Button)sender).Text.Equals("Patient"))
+                OpenChildForm(new PatientSubForm(), (Button)sender);
         }
     }
 }

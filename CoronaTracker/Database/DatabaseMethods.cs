@@ -62,6 +62,32 @@ namespace CoronaTracker.Database
             return output;
         }
 
+        public static List<PatientInstance> GetPatients()
+        {
+            List<PatientInstance> output = new List<PatientInstance>();
+            var command = new MySqlCommand("SELECT * FROM Patient;", connection);
+            var reader = command.ExecuteReader();
+            while (reader.Read())
+            {
+                output.Add(new PatientInstance(reader.GetString(1), reader.GetString(2), reader.GetString(3), reader.GetString(4), reader.GetInt32(5), reader.GetInt32(6), reader.GetString(7)));
+            }
+            reader.Close();
+            return output;
+        }
+
+        public static List<FindsInstance> GetFinds(String firstCode, String secondCode)
+        {
+            List<FindsInstance> output = new List<FindsInstance>();
+            var command = new MySqlCommand($"SELECT Infection.Infection_ID, Infection.Infection_Found, Employee.Employee_Fullname, Patient.Patient_PersonalNumberFirst, Patient.Patient_PersonalNumberSecond FROM ((Infection INNER JOIN Employee ON Infection.Employee_Employee_ID = Employee.Employee_ID) INNER JOIN Patient ON Infection.Patient_Patient_ID = Patient.Patient_ID) WHERE Patient.Patient_PersonalNumberFirst='{firstCode}' AND Patient.Patient_PersonalNumberSecond='{secondCode}';", connection);
+            var reader = command.ExecuteReader();
+            while (reader.Read())
+            {
+                output.Add(new FindsInstance(reader.GetInt32(0), reader.GetDateTime(1), reader.GetString(2)));
+            }
+            reader.Close();
+            return output;
+        }
+
         public static bool AddUser(String fullname, String email, int phone, String password)
         {
             var command = new MySqlCommand("SELECT Employee_ID FROM Employee WHERE Employee_Email='" + email + "';", connection);
@@ -75,6 +101,42 @@ namespace CoronaTracker.Database
 
             reader.Close();
             command = new MySqlCommand($"INSERT INTO Employee(Employee_Fullname, Employee_Email, Employee_Phone, Employee_Pose, Employee_Password, Employee_Created) VALUES('{fullname}', '{email}', {phone}, 'user', '{password}', '{DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss")}');", connection);
+            command.ExecuteNonQuery();
+            return true;
+        }
+
+        public static bool AddFinds(String firstCode, String secondCode)
+        {
+            int id;
+            var command = new MySqlCommand("SELECT Patient_ID FROM Patient WHERE Patient_PersonalNumberFirst='" + firstCode + "' AND Patient_PersonalNumberSecond='" + secondCode + "';", connection);
+            var reader = command.ExecuteReader();
+
+            if (!reader.Read())
+            {
+                reader.Close();
+                return false;
+            }
+
+            id = reader.GetInt32(0);
+            reader.Close();
+            command = new MySqlCommand($"INSERT INTO Infection(Infection_Found, Patient_Patient_ID, Employee_Employee_ID) VALUES('{DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss")}', {id}, {ProgramVariables.ID});", connection);
+            command.ExecuteNonQuery();
+            return true;
+        }
+
+        public static bool AddPatient(String personNumberFirst, String personNumberSecond, String fullname, String email, int phone, int insurance, String description = "")
+        {
+            var command = new MySqlCommand("SELECT Patient_ID FROM Patient WHERE Patient_PersonalNumberFirst='" + personNumberFirst + "' AND Patient_PersonalNumberSecond='" + personNumberSecond + "';", connection);
+            var reader = command.ExecuteReader();
+
+            if (reader.Read())
+            {
+                reader.Close();
+                return false;
+            }
+
+            reader.Close();
+            command = new MySqlCommand($"INSERT INTO Patient(Patient_PersonalNumberFirst, Patient_PersonalNumberSecond, Patient_Fullname, Patient_Email, Patient_Phone, Patient_InsuranceCode, Patient_Description, Patient_Created) VALUES('{personNumberFirst}', '{personNumberSecond}', '{fullname}', '{email}', {phone}, {insurance}, '{description}', '{DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss")}');", connection);
             command.ExecuteNonQuery();
             return true;
         }
@@ -113,6 +175,40 @@ namespace CoronaTracker.Database
             return true;
         }
 
+        public static bool RemoveFinds(int ID)
+        {
+            var command = new MySqlCommand("SELECT Infection_ID FROM Infection WHERE Infection_ID=" + ID + ";", connection);
+            var reader = command.ExecuteReader();
+
+            if (!reader.Read())
+            {
+                reader.Close();
+                return false;
+            }
+
+            reader.Close();
+            command = new MySqlCommand($"DELETE FROM Infection WHERE Infection_ID={ID};", connection);
+            command.ExecuteNonQuery();
+            return true;
+        }
+
+        public static bool RemovePatient(String personNumberFirst, String personNumberSecond)
+        {
+            var command = new MySqlCommand($"SELECT Patient_ID FROM Patient WHERE Patient_PersonalNumberFirst='{personNumberFirst}' AND Patient_PersonalNumberSecond='{personNumberSecond}';", connection);
+            var reader = command.ExecuteReader();
+
+            if (!reader.Read())
+            {
+                reader.Close();
+                return false;
+            }
+
+            reader.Close();
+            command = new MySqlCommand($"DELETE FROM Patient WHERE Patient_PersonalNumberFirst='{personNumberFirst}' AND Patient_PersonalNumberSecond='{personNumberSecond}';", connection);
+            command.ExecuteNonQuery();
+            return true;
+        }
+
         public static bool EditVaccineType(String name, String description = "")
         {
             var command = new MySqlCommand("SELECT VaccineType_ID FROM VaccineType WHERE VaccineType_Name='" + name + "';", connection);
@@ -126,6 +222,23 @@ namespace CoronaTracker.Database
 
             reader.Close();
             command = new MySqlCommand($"UPDATE VaccineType SET VaccineType_Description='{description}' WHERE VaccineType_Name='{name}';", connection);
+            command.ExecuteNonQuery();
+            return true;
+        }
+
+        public static bool EditPatient(String personalNumberFirst, String personalNumberSecond, String fullname, String email, int phone, int insurance, String description = "")
+        {
+            var command = new MySqlCommand("SELECT Patient_ID FROM Patient WHERE Patient_PersonalNumberFirst='" + personalNumberFirst + "' AND Patient_PersonalNumberSecond='" + personalNumberSecond + "';", connection);
+            var reader = command.ExecuteReader();
+
+            if (!reader.Read())
+            {
+                reader.Close();
+                return false;
+            }
+
+            reader.Close();
+            command = new MySqlCommand($"UPDATE Patient SET Patient_Fullname='{fullname}', Patient_Email='{email}', Patient_Phone={phone}, Patient_InsuranceCode={insurance}, Patient_Description='{description}' WHERE Patient_PersonalNumberFirst='{personalNumberFirst}' AND Patient_PersonalNumberSecond='{personalNumberSecond}';", connection);
             command.ExecuteNonQuery();
             return true;
         }

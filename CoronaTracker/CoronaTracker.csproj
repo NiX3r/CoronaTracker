@@ -73,6 +73,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Database\DatabaseInstances\DatabaseSecret.cs" />
+    <Compile Include="Database\DatabaseInstances\FindsInstance.cs" />
+    <Compile Include="Database\DatabaseInstances\PatientInstance.cs" />
     <Compile Include="Database\DatabaseInstances\VaccineTypeInstance.cs" />
     <Compile Include="Database\DatabaseMethods.cs" />
     <Compile Include="Enums\EmployeePoseEnum.cs" />
@@ -95,6 +97,24 @@
     </Compile>
     <Compile Include="SubForms\LoginForm.Designer.cs">
       <DependentUpon>LoginForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SubForms\PatientSubForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SubForms\PatientSubForm.Designer.cs">
+      <DependentUpon>PatientSubForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SubForms\PatientSubSubForms\FindsSubSubForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SubForms\PatientSubSubForms\FindsSubSubForm.Designer.cs">
+      <DependentUpon>FindsSubSubForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SubForms\PatientSubSubForms\ListSubSubForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SubForms\PatientSubSubForms\ListSubSubForm.Designer.cs">
+      <DependentUpon>ListSubSubForm.cs</DependentUpon>
     </Compile>
     <Compile Include="SubForms\VaccineTypeSubForm.cs">
       <SubType>Form</SubType>
@@ -133,6 +153,15 @@
     <EmbeddedResource Include="SubForms\LoginForm.resx">
       <DependentUpon>LoginForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="SubForms\PatientSubForm.resx">
+      <DependentUpon>PatientSubForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SubForms\PatientSubSubForms\FindsSubSubForm.resx">
+      <DependentUpon>FindsSubSubForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SubForms\PatientSubSubForms\ListSubSubForm.resx">
+      <DependentUpon>ListSubSubForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="SubForms\VaccineTypeSubForm.resx">
       <DependentUpon>VaccineTypeSubForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -162,6 +191,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="coronavirus.ico" />
+    <None Include="Resources\printer.png" />
     <None Include="Resources\plus.png" />
     <None Include="Resources\minus.png" />
     <None Include="Resources\edit.png" />
