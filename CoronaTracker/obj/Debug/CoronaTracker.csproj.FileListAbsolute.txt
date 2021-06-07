@@ -57,3 +57,8 @@ C:\Users\Secret\Dropbox\CoronaTracker\CoronaTracker\CoronaTracker\obj\Debug\Coro
 C:\Users\Secret\Dropbox\CoronaTracker\CoronaTracker\CoronaTracker\obj\Debug\CoronaTracker.SubForms.PatientSubForm.resources
 C:\Users\Secret\Dropbox\CoronaTracker\CoronaTracker\CoronaTracker\obj\Debug\CoronaTracker.SubForms.PatientSubSubForms.ListSubSubForm.resources
 C:\Users\Secret\Dropbox\CoronaTracker\CoronaTracker\CoronaTracker\obj\Debug\CoronaTracker.SubForms.PatientSubSubForms.FindsSubSubForm.resources
+C:\Users\nixii\Dropbox\CoronaTracker\CoronaTracker\CoronaTracker\obj\Debug\CoronaTracker.SubForms.CountriesSubForm.resources
+C:\Users\nixii\Dropbox\CoronaTracker\CoronaTracker\CoronaTracker\obj\Debug\CoronaTracker.SubForms.PatientSubForm.resources
+C:\Users\nixii\Dropbox\CoronaTracker\CoronaTracker\CoronaTracker\obj\Debug\CoronaTracker.SubForms.PatientSubSubForms.FindsSubSubForm.resources
+C:\Users\nixii\Dropbox\CoronaTracker\CoronaTracker\CoronaTracker\obj\Debug\CoronaTracker.SubForms.PatientSubSubForms.ListSubSubForm.resources
+C:\Users\nixii\Dropbox\CoronaTracker\CoronaTracker\CoronaTracker\obj\Debug\CoronaTracker.SubForms.VaccineTypeSubForm.resources

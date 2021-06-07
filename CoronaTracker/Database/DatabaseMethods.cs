@@ -275,37 +275,54 @@ namespace CoronaTracker.Database
             if (reader.Read())
             {
                 // SELECT COUNT(LoginAttempts_ID) FROM LoginAttempts WHERE LoginAttempts_DateTime>DATE_SUB(NOW(), INTERVAL 1 HOUR) AND LoginAttempts_IsSuccess=false;
+                int first, second;
+                first = second = -1;
                 int ID = reader.GetInt32(0);
                 reader.Close();
-                command = new MySqlCommand($"SELECT COUNT(LoginAttempts_ID) FROM LoginAttempts WHERE LoginAttempts_DateTime>DATE_SUB(NOW(), INTERVAL 1 HOUR) AND LoginAttempts_IsSuccess=FALSE AND Employee_Employee_ID={ID};", connection);
+                command = new MySqlCommand($"SELECT LoginAttempts_ID FROM LoginAttempts WHERE LoginAttempts_DateTime>DATE_SUB(NOW(), INTERVAL 1 HOUR) AND LoginAttempts_IsSuccess=FALSE AND Employee_Employee_ID={ID};", connection);
                 reader = command.ExecuteReader();
-                reader.Read();
-                if (reader.GetInt32(0) < 3)
-
+                while (reader.Read())
                 {
-                    reader.Close();
-                    command = new MySqlCommand("SELECT Employee_ID,Employee_Fullname,Employee_ProfileURL FROM Employee WHERE Employee_Email='" + email + "' AND Employee_Password='" + password + "';", connection);
-                    reader = command.ExecuteReader();
-                    if (reader.Read())
+                    if(first == -1)
                     {
-                        ProgramVariables.ID = reader.GetInt32(0);
-                        ProgramVariables.Fullname = reader.GetString(1);
-                        ProgramVariables.ProfileURL = reader.GetString(2);
-                        reader.Close();
-                        LogLogIn(ID, true);
-                        return 1;
+                        first = reader.GetInt32(0);
+                    }
+                    else if(second == -1)
+                    {
+                        second = reader.GetInt32(0);
                     }
                     else
                     {
-                        reader.Close();
-                        LogLogIn(ID, false);
-                        return -1;
+                        int third = reader.GetInt32(0);
+                        if(((first + 2) == third) && ((second + 1) == third))
+                        {
+                            reader.Close();
+                            return -2;
+                        }
+                        else
+                        {
+                            first = second;
+                            second = -1;
+                        }
                     }
+                }
+                reader.Close();
+                command = new MySqlCommand("SELECT Employee_ID,Employee_Fullname,Employee_ProfileURL FROM Employee WHERE Employee_Email='" + email + "' AND Employee_Password='" + password + "';", connection);
+                reader = command.ExecuteReader();
+                if (reader.Read())
+                {
+                    ProgramVariables.ID = reader.GetInt32(0);
+                    ProgramVariables.Fullname = reader.GetString(1);
+                    ProgramVariables.ProfileURL = reader.GetString(2);
+                    reader.Close();
+                    LogLogIn(ID, true);
+                    return 1;
                 }
                 else
                 {
                     reader.Close();
-                    return -2;
+                    LogLogIn(ID, false);
+                    return -1;
                 }
             }
             else
