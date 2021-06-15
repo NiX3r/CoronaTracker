@@ -49,6 +49,50 @@ namespace CoronaTracker.Database
 
         }
 
+        public static int GetPatientsCount()
+        {
+            int output = 0;
+            var command = new MySqlCommand("SELECT COUNT(Patient.Patient_ID) FROM Patient;", connection);
+            var reader = command.ExecuteReader();
+            reader.Read();
+            output = reader.GetInt32(0);
+            reader.Close();
+            return output;
+        }
+
+        public static int GetVacinnatePatientsCount()
+        {
+            int output = 0;
+            var command = new MySqlCommand("SELECT COUNT(VaccineAction.VaccineAction_ID) FROM VaccineAction;", connection);
+            var reader = command.ExecuteReader();
+            reader.Read();
+            output = reader.GetInt32(0);
+            reader.Close();
+            return output;
+        }
+
+        public static int GetInfectionCount()
+        {
+            int output = 0;
+            var command = new MySqlCommand("SELECT COUNT(Infection.Infection_ID) FROM Infection;", connection);
+            var reader = command.ExecuteReader();
+            reader.Read();
+            output = reader.GetInt32(0);
+            reader.Close();
+            return output;
+        }
+
+        public static int GetConfirmedPatientsCount()
+        {
+            int output = 0;
+            var command = new MySqlCommand($"SELECT COUNT(Infection.Infection_ID) FROM Infection WHERE Infection.Infection_Found > '{DateTime.Now.AddDays(-14).ToString("yyyy-MM-dd HH:mm:ss")}' AND Infection.Infection_Found < '{DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss")}';", connection);
+            var reader = command.ExecuteReader();
+            reader.Read();
+            output = reader.GetInt32(0);
+            reader.Close();
+            return output;
+        }
+
         public static List<VaccineTypeInstance> GetVaccineTypes()
         {
             List<VaccineTypeInstance> output = new List<VaccineTypeInstance>();
@@ -85,6 +129,31 @@ namespace CoronaTracker.Database
                 output.Add(new FindsInstance(reader.GetInt32(0), reader.GetDateTime(1), reader.GetString(2)));
             }
             reader.Close();
+            return output;
+        }
+
+        public static List<int> GetInfections()
+        {
+            List<int> output = new List<int>();
+
+            DateTime dt = DateTime.Now.AddMonths(-5);
+            DateTime now = DateTime.Now;
+
+            while (true)
+            {
+                var command = new MySqlCommand($"SELECT COUNT(Infection.Infection_Found) FROM Infection WHERE Infection.Infection_Found > '{dt.ToString("yyyy-MM-dd HH:mm:ss")}' AND Infection.Infection_Found < '{dt.AddMonths(1).ToString("yyyy-MM-dd HH:mm:ss")}';", connection);
+                var reader = command.ExecuteReader();
+                reader.Read();
+                output.Add(reader.GetInt32(0));
+                reader.Close();
+
+                dt = dt.AddMonths(1);
+                if (DateTime.Compare(dt, now) > 0)
+                {
+                    break;
+                }
+            }
+
             return output;
         }
 

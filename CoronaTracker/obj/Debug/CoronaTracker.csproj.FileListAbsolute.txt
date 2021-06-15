@@ -62,3 +62,12 @@ C:\Users\nixii\Dropbox\CoronaTracker\CoronaTracker\CoronaTracker\obj\Debug\Coron
 C:\Users\nixii\Dropbox\CoronaTracker\CoronaTracker\CoronaTracker\obj\Debug\CoronaTracker.SubForms.PatientSubSubForms.FindsSubSubForm.resources
 C:\Users\nixii\Dropbox\CoronaTracker\CoronaTracker\CoronaTracker\obj\Debug\CoronaTracker.SubForms.PatientSubSubForms.ListSubSubForm.resources
 C:\Users\nixii\Dropbox\CoronaTracker\CoronaTracker\CoronaTracker\obj\Debug\CoronaTracker.SubForms.VaccineTypeSubForm.resources
+C:\Users\nixii\Dropbox\CoronaTracker\CoronaTracker\CoronaTracker\obj\Debug\CoronaTracker.SubForms.DashboardSubForm.resources
+C:\Users\Secret\Dropbox\CoronaTracker\CoronaTracker\CoronaTracker\bin\Debug\LiveCharts.dll
+C:\Users\Secret\Dropbox\CoronaTracker\CoronaTracker\CoronaTracker\bin\Debug\LiveCharts.WinForms.dll
+C:\Users\Secret\Dropbox\CoronaTracker\CoronaTracker\CoronaTracker\bin\Debug\LiveCharts.Wpf.dll
+C:\Users\Secret\Dropbox\CoronaTracker\CoronaTracker\CoronaTracker\bin\Debug\LiveCharts.WinForms.pdb
+C:\Users\Secret\Dropbox\CoronaTracker\CoronaTracker\CoronaTracker\bin\Debug\LiveCharts.WinForms.xml
+C:\Users\Secret\Dropbox\CoronaTracker\CoronaTracker\CoronaTracker\bin\Debug\LiveCharts.Wpf.pdb
+C:\Users\Secret\Dropbox\CoronaTracker\CoronaTracker\CoronaTracker\bin\Debug\LiveCharts.Wpf.xml
+C:\Users\Secret\Dropbox\CoronaTracker\CoronaTracker\CoronaTracker\obj\Debug\CoronaTracker.SubForms.DashboardSubForm.resources

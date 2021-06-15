@@ -11,11 +11,14 @@ namespace CoronaTracker
 {
     static class Program
     {
+
+        private const bool isDev = false;
+
         [STAThread]
         static void Main()
         {
 
-            RestAPI.GetCovidDataAsync();
+            var task = RestAPI.GetCovidDataAsync();
             DatabaseMethods.SetupDatabase();
             ProgramVariables.Version = "1.0.0";
             if (!DatabaseMethods.CheckVersion().Equals(""))
@@ -32,7 +35,10 @@ namespace CoronaTracker
                 ProgramVariables.ProgramUI.Hide();
 
                 Application.EnableVisualStyles();
-                Application.Run(ProgramVariables.LoginUI);
+                if(isDev)
+                    Application.Run(ProgramVariables.ProgramUI);
+                else
+                    Application.Run(ProgramVariables.LoginUI);
             }
         }
     }

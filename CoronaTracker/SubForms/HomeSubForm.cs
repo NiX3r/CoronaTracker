@@ -57,5 +57,10 @@ namespace CoronaTracker.SubForms
         {
             System.Diagnostics.Process.Start("https://www.w3schools.com");
         }
+
+        private void label11_Click(object sender, EventArgs e)
+        {
+            System.Diagnostics.Process.Start("https://www.mockaroo.com");
+        }
     }
 }
