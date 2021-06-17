@@ -49,6 +49,22 @@ namespace CoronaTracker.Database
 
         }
 
+        public static bool IsPatientExist(int PatientID, int PatientFirstPersonalNumber, int PatientSecondPersonalNumber)
+        {
+            var command = new MySqlCommand($"SELECT Patient.Patient_ID FROM Patient WHERE Patient.Patient_ID={PatientID} AND Patient.Patient_PersonalNumberFirst={PatientFirstPersonalNumber} AND Patient.Patient_PersonalNumberSecond={PatientSecondPersonalNumber};", connection);
+            var reader = command.ExecuteReader();
+            if (reader.Read())
+            {
+                reader.Close();
+                return true;
+            }
+            else
+            {
+                reader.Close();
+                return false;
+            }
+        }
+
         public static int GetPatientsCount()
         {
             int output = 0;
@@ -91,6 +107,42 @@ namespace CoronaTracker.Database
             output = reader.GetInt32(0);
             reader.Close();
             return output;
+        }
+
+        public static PatientInstance GetPatient(int id)
+        {
+            PatientInstance output;
+            var command = new MySqlCommand($"SELECT * FROM Patient WHERE Patient.Patient_ID={id};", connection);
+            var reader = command.ExecuteReader();
+            if (reader.Read())
+            {
+                output = new PatientInstance(reader.GetString(1), reader.GetString(2), reader.GetString(3), reader.GetString(4), reader.GetInt32(5), reader.GetInt32(6), reader.GetString(7));
+                reader.Close();
+                return output;
+            }
+            else
+            {
+                reader.Close();
+                return null;
+            }
+        }
+
+        public static VaccinateInstance GetVaccinate(int patientId)
+        {
+            VaccinateInstance output;
+            var command = new MySqlCommand($"SELECT * FROM VaccineAction WHERE Patient_Patient_ID={patientId};", connection);
+            var reader = command.ExecuteReader();
+            if (reader.Read())
+            {
+                output = new VaccinateInstance(reader.GetDateTime(1), reader.GetDateTime(2), reader.GetString(3));
+                reader.Close();
+                return output;
+            }
+            else
+            {
+                reader.Close();
+                return null;
+            }
         }
 
         public static List<VaccineTypeInstance> GetVaccineTypes()

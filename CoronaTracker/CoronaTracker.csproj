@@ -36,6 +36,15 @@
     <ApplicationIcon>coronavirus.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="AForge, Version=2.2.5.0, Culture=neutral, PublicKeyToken=c1db6ff4eaa06aeb, processorArchitecture=MSIL">
+      <HintPath>..\packages\AForge.2.2.5\lib\AForge.dll</HintPath>
+    </Reference>
+    <Reference Include="AForge.Video, Version=2.2.5.0, Culture=neutral, PublicKeyToken=cbfb6e07d173c401, processorArchitecture=MSIL">
+      <HintPath>..\packages\AForge.Video.2.2.5\lib\AForge.Video.dll</HintPath>
+    </Reference>
+    <Reference Include="AForge.Video.DirectShow, Version=2.2.5.0, Culture=neutral, PublicKeyToken=61ea4348d43881b7, processorArchitecture=MSIL">
+      <HintPath>..\packages\AForge.Video.DirectShow.2.2.5\lib\AForge.Video.DirectShow.dll</HintPath>
+    </Reference>
     <Reference Include="LiveCharts, Version=0.9.7.0, Culture=neutral, PublicKeyToken=0bc1f845d1ebb8df, processorArchitecture=MSIL">
       <HintPath>..\packages\LiveCharts.NetCore.0.9.7\lib\net452\LiveCharts.dll</HintPath>
     </Reference>
@@ -85,11 +94,18 @@
     <Reference Include="System.Xml" />
     <Reference Include="WindowsBase" />
     <Reference Include="WindowsFormsIntegration" />
+    <Reference Include="zxing, Version=0.16.6.0, Culture=neutral, PublicKeyToken=4e88037ac681fe60, processorArchitecture=MSIL">
+      <HintPath>..\packages\ZXing.Net.0.16.6\lib\net48\zxing.dll</HintPath>
+    </Reference>
+    <Reference Include="zxing.presentation, Version=0.16.6.0, Culture=neutral, PublicKeyToken=4e88037ac681fe60, processorArchitecture=MSIL">
+      <HintPath>..\packages\ZXing.Net.0.16.6\lib\net48\zxing.presentation.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Database\DatabaseInstances\DatabaseSecret.cs" />
     <Compile Include="Database\DatabaseInstances\FindsInstance.cs" />
     <Compile Include="Database\DatabaseInstances\PatientInstance.cs" />
+    <Compile Include="Database\DatabaseInstances\VaccinateInstance.cs" />
     <Compile Include="Database\DatabaseInstances\VaccineTypeInstance.cs" />
     <Compile Include="Database\DatabaseMethods.cs" />
     <Compile Include="Enums\EmployeePoseEnum.cs" />
@@ -136,6 +152,12 @@
     </Compile>
     <Compile Include="SubForms\PatientSubSubForms\ListSubSubForm.Designer.cs">
       <DependentUpon>ListSubSubForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SubForms\PatientSubSubForms\VaccinationsSubSubForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SubForms\PatientSubSubForms\VaccinationsSubSubForm.Designer.cs">
+      <DependentUpon>VaccinationsSubSubForm.cs</DependentUpon>
     </Compile>
     <Compile Include="SubForms\VaccineTypeSubForm.cs">
       <SubType>Form</SubType>
@@ -185,6 +207,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="SubForms\PatientSubSubForms\ListSubSubForm.resx">
       <DependentUpon>ListSubSubForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SubForms\PatientSubSubForms\VaccinationsSubSubForm.resx">
+      <DependentUpon>VaccinationsSubSubForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="SubForms\VaccineTypeSubForm.resx">
       <DependentUpon>VaccineTypeSubForm.cs</DependentUpon>

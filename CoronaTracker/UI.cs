@@ -114,5 +114,11 @@ namespace CoronaTracker
             else if (((Button)sender).Text.Equals("Dashboard"))
                 OpenChildForm(new DashboardSubForm(), (Button)sender);
         }
+
+        public Form GetCurrentForm()
+        {
+            return currentChildForm;
+        }
+
     }
 }

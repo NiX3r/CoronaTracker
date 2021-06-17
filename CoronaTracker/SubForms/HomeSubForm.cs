@@ -23,6 +23,10 @@ namespace CoronaTracker.SubForms
         {
             if (ProgramVariables.Fullname != null)
             {
+
+                if (ProgramVariables.CovidData == null)
+                    ProgramVariables.CovidData = new List<CovidInfo>();
+
                 foreach (CovidInfo info in ProgramVariables.CovidData)
                 {
                     if (info.country_code.Equals("cz"))
