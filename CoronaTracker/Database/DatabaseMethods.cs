@@ -9,6 +9,7 @@ using System.Net;
 using System.Net.NetworkInformation;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 
 namespace CoronaTracker.Database
 {
@@ -52,6 +53,22 @@ namespace CoronaTracker.Database
         public static bool IsPatientExist(int PatientID, int PatientFirstPersonalNumber, int PatientSecondPersonalNumber)
         {
             var command = new MySqlCommand($"SELECT Patient.Patient_ID FROM Patient WHERE Patient.Patient_ID={PatientID} AND Patient.Patient_PersonalNumberFirst={PatientFirstPersonalNumber} AND Patient.Patient_PersonalNumberSecond={PatientSecondPersonalNumber};", connection);
+            var reader = command.ExecuteReader();
+            if (reader.Read())
+            {
+                reader.Close();
+                return true;
+            }
+            else
+            {
+                reader.Close();
+                return false;
+            }
+        }
+
+        public static bool IsPatientVaccinate(int PatientID)
+        {
+            var command = new MySqlCommand($"SELECT VaccineAction.VaccineAction_ID FROM VaccineAction WHERE VaccineAction.Patient_Patient_ID={PatientID};", connection);
             var reader = command.ExecuteReader();
             if (reader.Read())
             {
@@ -109,6 +126,59 @@ namespace CoronaTracker.Database
             return output;
         }
 
+        public static int GetPatientIDByPersonalNumber(string first, string second)
+        {
+            int output = 0;
+            var command = new MySqlCommand($"SELECT Patient.Patient_ID FROM Patient WHERE Patient.Patient_PersonalNumberFirst='{first}' AND Patient.Patient_PersonalNumberSecond='{second}';", connection);
+            var reader = command.ExecuteReader();
+            reader.Read();
+            output = reader.GetInt32(0);
+            reader.Close();
+            return output;
+        }
+
+        public static string GetVaccineTypeString(int id)
+        {
+            string output = null;
+            var command = new MySqlCommand($"SELECT VaccineType.VaccineType_Name FROM VaccineType WHERE VaccineType.VaccineType_ID={id};", connection);
+            var reader = command.ExecuteReader();
+            reader.Read();
+            output = reader.GetString(0);
+            reader.Close();
+            return output;
+        }
+
+        public static string GetEmployeeString(int id)
+        {
+            string output = "";
+            var command = new MySqlCommand($"SELECT Employee.Employee_Fullname FROM Employee WHERE Employee.Employee_ID={id};", connection);
+            var reader = command.ExecuteReader();
+            if (reader.Read())
+                output = reader.GetString(0);
+            reader.Close();
+            return output;
+        }
+
+        public static PatientVaccineAction GetPatientVaccine(int patientID)
+        {
+            PatientVaccineAction output;
+            var command = new MySqlCommand($"SELECT * FROM VaccineAction WHERE VaccineAction.Patient_Patient_ID={patientID};", connection);
+            var reader = command.ExecuteReader();
+            if (reader.Read())
+            {
+                output = new PatientVaccineAction(reader.GetDateTime(1), reader.GetDateTime(2), reader.GetInt32(3), "", reader.GetInt32(5), "");
+                reader.Close();
+                output.VaccineTypeString = GetVaccineTypeString(output.VaccineType);
+                output.EmployeeString = GetEmployeeString(output.Employee);
+                return output;
+            }
+            else
+            {
+                reader.Close();
+                return null;
+            }
+        }
+
         public static PatientInstance GetPatient(int id)
         {
             PatientInstance output;
@@ -145,6 +215,24 @@ namespace CoronaTracker.Database
             }
         }
 
+        public static VaccineTypeInstance GetVaccineType(string name)
+        {
+            VaccineTypeInstance output;
+            var command = new MySqlCommand($"SELECT * FROM VaccineType WHERE VaccineType.VaccineType_Name='{name}';", connection);
+            var reader = command.ExecuteReader();
+            if (reader.Read())
+            {
+                output = new VaccineTypeInstance(reader.GetInt32(0), reader.GetString(1), reader.GetString(2));
+                reader.Close();
+                return output;
+            }
+            else
+            {
+                reader.Close();
+                return null;
+            }
+        }
+
         public static List<VaccineTypeInstance> GetVaccineTypes()
         {
             List<VaccineTypeInstance> output = new List<VaccineTypeInstance>();
@@ -152,7 +240,7 @@ namespace CoronaTracker.Database
             var reader = command.ExecuteReader();
             while (reader.Read())
             {
-                output.Add(new VaccineTypeInstance(reader.GetString(1), reader.GetString(2)));
+                output.Add(new VaccineTypeInstance(reader.GetInt32(0), reader.GetString(1), reader.GetString(2)));
             }
             reader.Close();
             return output;
@@ -207,6 +295,14 @@ namespace CoronaTracker.Database
             }
 
             return output;
+        }
+
+        public static bool AddPatientVaccine(DateTime first, DateTime second, int type, int patient, int employee)
+        {
+            string query = $"INSERT INTO VaccineAction(VaccineAction_FirstDate, VaccineAction_SecondDate, VaccineType_VaccineType_ID, Patient_Patient_ID, Employee_Employee_ID) VALUES('{first.ToString("yyyy-MM-dd HH:mm:ss")}', '{second.ToString("yyyy-MM-dd HH:mm:ss")}', {type}, {patient}, {employee});";
+            var command = new MySqlCommand(query, connection);
+            command.ExecuteNonQuery();
+            return true;
         }
 
         public static bool AddUser(String fullname, String email, int phone, String password)

@@ -105,6 +105,7 @@
     <Compile Include="Database\DatabaseInstances\DatabaseSecret.cs" />
     <Compile Include="Database\DatabaseInstances\FindsInstance.cs" />
     <Compile Include="Database\DatabaseInstances\PatientInstance.cs" />
+    <Compile Include="Database\DatabaseInstances\PatientVaccineAction.cs" />
     <Compile Include="Database\DatabaseInstances\VaccinateInstance.cs" />
     <Compile Include="Database\DatabaseInstances\VaccineTypeInstance.cs" />
     <Compile Include="Database\DatabaseMethods.cs" />
