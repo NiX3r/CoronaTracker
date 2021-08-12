@@ -8,13 +8,15 @@ namespace CoronaTracker.Instances
 {
     class CovidInfo
     {
-        public String location { get; set; }
-        public String country_code { get; set; }
+        public String country { get; set; }
+        public String code { get; set; }
         public float latitude { get; set; }
         public float longitude { get; set; }
         public int confirmed { get; set; }
-        public int dead { get; set; }
+        public int deaths { get; set; }
+        public int critical { get; set; }
         public int recovered { get; set; }
-        public DateTime updated { get; set; }
+        public DateTime lastChange { get; set; }
+        public DateTime lastUpdate { get; set; }
     }
 }

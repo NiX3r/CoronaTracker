@@ -19,8 +19,7 @@ namespace CoronaTracker
         [STAThread]
         static void Main()
         {
-
-            var task = RestAPI.GetCovidDataAsync();
+            
             DatabaseMethods.SetupDatabase();
             ProgramVariables.Version = "1.0.0";
             if (!DatabaseMethods.CheckVersion().Equals(""))
@@ -39,7 +38,7 @@ namespace CoronaTracker
                 Application.EnableVisualStyles();
                 if (isDev)
                 {
-                    ProgramVariables.ID = 2;
+                    ProgramVariables.ID = 38;
                     ProgramVariables.Fullname = "Daniel Iliev";
                     ProgramVariables.ProfileURL = "https://i1.wp.com/bnel242.com/wp-content/uploads/2019/12/purple-space.jpg?ssl=1";
                     Application.Run(ProgramVariables.ProgramUI);

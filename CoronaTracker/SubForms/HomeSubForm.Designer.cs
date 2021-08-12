@@ -92,11 +92,11 @@
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Nirmala UI", 9.75F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.label5.Location = new System.Drawing.Point(514, 412);
+            this.label5.Location = new System.Drawing.Point(532, 412);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(81, 17);
+            this.label5.Size = new System.Drawing.Size(63, 17);
             this.label5.TabIndex = 7;
-            this.label5.Text = "TrackCorona";
+            this.label5.Text = "Covid API";
             this.label5.TextAlign = System.Drawing.ContentAlignment.TopRight;
             this.label5.Click += new System.EventHandler(this.label5_Click);
             // 

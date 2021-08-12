@@ -88,7 +88,6 @@ namespace CoronaTracker
             {
                 label4.Text = ProgramVariables.Fullname;
                 pictureBox2.ImageLocation = ProgramVariables.ProfileURL;
-                RefreshCovidDataTimer.SetupTimer();
             }
         }
 

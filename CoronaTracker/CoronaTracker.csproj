@@ -167,7 +167,6 @@
       <DependentUpon>VaccineTypeSubForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Timers\LogoutTimer.cs" />
-    <Compile Include="Timers\RefreshCovidDataTimer.cs" />
     <Compile Include="UI.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -241,6 +240,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="coronavirus.ico" />
+    <None Include="Resources\caution-sign.png" />
     <None Include="Resources\vaccine.png" />
     <None Include="Resources\customer.png" />
     <None Include="Resources\printer.png" />

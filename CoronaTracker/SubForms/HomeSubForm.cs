@@ -24,22 +24,23 @@ namespace CoronaTracker.SubForms
             if (ProgramVariables.Fullname != null)
             {
 
-                if (ProgramVariables.CovidData == null)
-                    ProgramVariables.CovidData = new List<CovidInfo>();
+                CovidInfo czech = null;
+                czech = RestAPI.GetCovidDataAsync("czechia").Result;
 
-                foreach (CovidInfo info in ProgramVariables.CovidData)
+                if(czech != null)
                 {
-                    if (info.country_code.Equals("cz"))
-                    {
-                        label4.Text = $"Recovered: {info.recovered}\nConfirmed: {info.confirmed}\nDead: {info.dead}";
-                    }
+                    label4.Text = "Recovered: " + czech.recovered.ToString() +
+                              "\nConfirmed: " + czech.confirmed.ToString() +
+                              "\nCritical: " + czech.critical.ToString() +
+                              "\nDeaths: " + czech.deaths.ToString();
                 }
+
             }
         }
 
         private void label5_Click(object sender, EventArgs e)
         {
-            System.Diagnostics.Process.Start("https://www.trackcorona.live");
+            System.Diagnostics.Process.Start("https://rapidapi.com/Gramzivi/api/covid-19-data/");
         }
 
         private void label6_Click(object sender, EventArgs e)

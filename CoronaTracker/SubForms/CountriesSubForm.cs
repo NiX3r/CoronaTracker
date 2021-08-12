@@ -15,62 +15,40 @@ namespace CoronaTracker.SubForms
     public partial class CountriesSubForm : Form
     {
 
-        private List<Button> buttons;
-        private int index;
+        private CovidInfo lastestCountry;
 
         public CountriesSubForm()
         {
             InitializeComponent();
 
-            buttonPattern.Hide();
-            buttons = new List<Button>();
-            index = 0;
+            lastestCountry = null;
 
-            foreach(CovidInfo covid in ProgramVariables.CovidData)
+        }
+
+        private void SetCountryData()
+        {
+
+            lastestCountry = RestAPI.GetCovidDataAsync(textBox1.Text).Result;
+
+            if (lastestCountry != null)
             {
-                addButton(covid);
+                label1.Text = lastestCountry.recovered.ToString();
+                label6.Text = lastestCountry.confirmed.ToString();
+                label11.Text = lastestCountry.critical.ToString();
+                label4.Text = lastestCountry.deaths.ToString();
+
+                pictureBox4.ImageLocation = "https://www.countryflags.io/" + lastestCountry.code + "/flat/64.png";
+
+                label8.Text = "Last update: " + lastestCountry.lastUpdate.ToString();
+                label9.Text = "Last change: " + lastestCountry.lastChange.ToString();
+
+                label7.Text = lastestCountry.country;
+            }
+            else
+            {
+                MessageBox.Show("Unfortunately country with name '" + textBox1.Text + "' does not exists!");
             }
 
-        }
-
-        private void addButton(CovidInfo covid)
-        {
-            Button bt = setDefaults();
-            bt.Name = bt.Text = covid.location;
-            this.panel1.Controls.Add(bt);
-            ((Button)this.panel1.Controls[covid.location]).Location = new Point(0, index * 41);
-            //bt.BringToFront();
-            buttons.Add(((Button)this.panel1.Controls[covid.location]));
-            ((Button)this.panel1.Controls[covid.location]).Show();
-            index++;
-        }
-
-        private Button setDefaults()
-        {
-            Button output = new Button();
-            output.Size = buttonPattern.Size;
-            output.BackColor = Color.FromArgb(44, 44, 44);
-            output.FlatStyle = FlatStyle.Flat;
-            output.FlatAppearance.BorderSize = 0;
-            output.Font = new Font("MS Reference Sans Serif", 11.0f, FontStyle.Bold);
-            output.ForeColor = Color.FromArgb(240, 240, 240);
-            output.Click += button_click;
-            return output;
-        }
-
-        private void button_click(object sender, EventArgs e)
-        {
-            foreach(CovidInfo covid in ProgramVariables.CovidData)
-            {
-                if (covid.location.Equals((((Button)sender).Text)))
-                {
-                    pictureBox4.ImageLocation = "https://www.countryflags.io/" + covid.country_code + "/flat/64.png";
-                    label7.Text = covid.location;
-                    label1.Text = covid.recovered.ToString();
-                    label6.Text = covid.confirmed.ToString();
-                    label4.Text = covid.dead.ToString();
-                }
-            }
         }
 
         private void textBox1_Enter(object sender, EventArgs e)
@@ -81,20 +59,11 @@ namespace CoronaTracker.SubForms
             }
         }
 
-        private void textBox1_TextChanged(object sender, EventArgs e)
+        private void button1_Click(object sender, EventArgs e)
         {
-            panel1.Controls.Clear();
-            buttons.Clear();
-            index = 0;
-            foreach (CovidInfo covid in ProgramVariables.CovidData)
-            {
-                if (textBox1.Text.Equals("") && panel1.Controls[covid.location] != null)
-                    addButton(covid);
-                if (covid.location.Contains(textBox1.Text))
-                {
-                    addButton(covid);
-                }
-            }
+
+            SetCountryData();
+            
         }
     }
 }
