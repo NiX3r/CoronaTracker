@@ -14,7 +14,7 @@ namespace CoronaTracker
     static class Program
     {
 
-        private const bool isDev = true;
+        private const bool isDev = false;
 
         [STAThread]
         static void Main()
@@ -35,12 +35,13 @@ namespace CoronaTracker
 
                 ProgramVariables.ProgramUI.Hide();
 
-                Application.EnableVisualStyles();
-                if (isDev)
+                int id = DatabaseMethods.HasAutoLogin();
+                if (id != 0)
                 {
-                    ProgramVariables.ID = 38;
-                    ProgramVariables.Fullname = "Daniel Iliev";
-                    ProgramVariables.ProfileURL = "https://i1.wp.com/bnel242.com/wp-content/uploads/2019/12/purple-space.jpg?ssl=1";
+                    ProgramVariables.ID = id;
+                    EmployeeInstance user = DatabaseMethods.GetEmployeeByID(id);
+                    ProgramVariables.Fullname = user.Fullname;
+                    ProgramVariables.ProfileURL = user.ProfilePictureURL;
                     Application.Run(ProgramVariables.ProgramUI);
                 }
                 else

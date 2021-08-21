@@ -103,6 +103,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Database\DatabaseInstances\DatabaseSecret.cs" />
+    <Compile Include="Database\DatabaseInstances\EmployeeInstance.cs" />
     <Compile Include="Database\DatabaseInstances\FindsInstance.cs" />
     <Compile Include="Database\DatabaseInstances\PatientInstance.cs" />
     <Compile Include="Database\DatabaseInstances\PatientVaccineAction.cs" />
@@ -160,6 +161,12 @@
     <Compile Include="SubForms\PatientSubSubForms\VaccinationsSubSubForm.Designer.cs">
       <DependentUpon>VaccinationsSubSubForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="SubForms\SettingsSubForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SubForms\SettingsSubForm.Designer.cs">
+      <DependentUpon>SettingsSubForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="SubForms\VaccineTypeSubForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -210,6 +217,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="SubForms\PatientSubSubForms\VaccinationsSubSubForm.resx">
       <DependentUpon>VaccinationsSubSubForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SubForms\SettingsSubForm.resx">
+      <DependentUpon>SettingsSubForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="SubForms\VaccineTypeSubForm.resx">
       <DependentUpon>VaccineTypeSubForm.cs</DependentUpon>

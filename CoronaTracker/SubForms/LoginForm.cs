@@ -1,10 +1,12 @@
 ﻿using CoronaTracker.Database;
+using CoronaTracker.Database.DatabaseInstances;
 using CoronaTracker.Enums;
 using CoronaTracker.Utils;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Runtime.InteropServices;
@@ -113,7 +115,7 @@ namespace CoronaTracker.SubForms
                             MessageBox.Show("Email or password is uncorrect!");
                             textBox1.Text = textBox2.Text = textBox3.Text = textBox4.Text = textBox5.Text = "";
                             break;
-                        case 0: // email & password uncorrect
+                        case 0: // email uncorrect
                             MessageBox.Show("Email or password is uncorrect!");
                             textBox1.Text = textBox2.Text = textBox3.Text = textBox4.Text = textBox5.Text = "";
                             break;

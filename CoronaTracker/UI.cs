@@ -42,6 +42,11 @@ namespace CoronaTracker
             SendMessage(this.Handle, 0x112, 0xf012, 0);
         }
 
+        public void UpdateProfilePicture()
+        {
+            pictureBox2.ImageLocation = ProgramVariables.ProfileURL;
+        }
+
         public void OpenChildForm(Form childForm, Button button)
         {
 
@@ -112,6 +117,8 @@ namespace CoronaTracker
                 OpenChildForm(new PatientSubForm(), (Button)sender);
             else if (((Button)sender).Text.Equals("Dashboard"))
                 OpenChildForm(new DashboardSubForm(), (Button)sender);
+            else if (((Button)sender).Text.Equals("Settings"))
+                OpenChildForm(new SettingsSubForm(), (Button)sender);
         }
 
         public Form GetCurrentForm()

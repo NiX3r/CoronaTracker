@@ -100,3 +100,4 @@ C:\Users\nixii\Dropbox\CoronaTracker\CoronaTracker\CoronaTracker\bin\Debug\LiveC
 C:\Users\nixii\Dropbox\CoronaTracker\CoronaTracker\CoronaTracker\bin\Debug\zxing.xml
 C:\Users\nixii\Dropbox\CoronaTracker\CoronaTracker\CoronaTracker\bin\Debug\zxing.presentation.xml
 C:\Users\nixii\Dropbox\CoronaTracker\CoronaTracker\CoronaTracker\obj\Debug\CoronaTracker.SubForms.PatientSubSubForms.VaccinationsSubSubForm.resources
+C:\Users\Secret\Dropbox\CoronaTracker\CoronaTracker\CoronaTracker\obj\Debug\CoronaTracker.SubForms.SettingsSubForm.resources
