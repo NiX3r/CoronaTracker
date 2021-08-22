@@ -1,6 +1,8 @@
 # CoronaTracker <img src="http://covid.ncodes.eu/coronavirus.png" width="50" height="50">
 Seminar school project
 
+## Introduce CoronaTracker
+This program was created for seminar school project as recession to Corona virus. Program is develop for non-exists hospital. It saved patients and their data about covid data. In databa I store Employees data such as fullname, email, phone, pose, etc. Then Vaccinate, Finds, Vaccine types. And lastable program data such as version and download link to lastest release.
 
 ## Some features that are worth to stab:
 - NuGet
@@ -50,3 +52,4 @@ Seminar school project
 - [To see some documentaries - Github](https://github.com)
 - [To copy some codes - StackOverflow](https://stackoverflow.com)
 - [To learn about web - W3Schools](https://www.w3schools.com)
+- [Generate data - Mockaroo](https://www.mockaroo.com)
