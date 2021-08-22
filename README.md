@@ -1,4 +1,4 @@
-# CoronaTracker ![CoronaTracker logo](http://covid.ncodes.eu/coronavirus.ico)
+# CoronaTracker <img src="http://covid.ncodes.eu/coronavirus.png" width="250" height="250">
 Seminar school project
 
 
@@ -23,21 +23,21 @@ Seminar school project
 - App Installer
 
 ## To-Do list (12/15)
-- [x] Create main UI form
-- [x] Create login UI form
-- [x] Create Home sub form
-- [x] Create Dashboard sub form
-- [x] Create Countries sub form
-- [x] Create Patient sub form
-- [x] Create Vaccine sub form
-- [x] Create Settings sub form
-- [x] Create MySQL connection
-- [x] Connect sub forms with MySQL
-- [x] Create RestAPI methods
-- [x] Add QR load patient
-- [ ] Comment whole source code
-- [ ] Add print files (finds doc / vaccinate doc)
-- [ ] First release with installer
+- [:heavy_check_mark:] Create main UI form
+- [:heavy_check_mark:] Create login UI form
+- [:heavy_check_mark:] Create Home sub form
+- [:heavy_check_mark:] Create Dashboard sub form
+- [:heavy_check_mark:] Create Countries sub form
+- [:heavy_check_mark:] Create Patient sub form
+- [:heavy_check_mark:] Create Vaccine sub form
+- [:heavy_check_mark:] Create Settings sub form
+- [:heavy_check_mark:] Create MySQL connection
+- [:heavy_check_mark:] Connect sub forms with MySQL
+- [:heavy_check_mark:] Create RestAPI methods
+- [:heavy_check_mark:] Add QR load patient
+- [:x:] Comment whole source code
+- [:x:] Add print files (finds doc / vaccinate doc)
+- [:x:] First release with installer
 
 ## Some little idea to do
 - Reset password through email
