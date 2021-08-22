@@ -1,8 +1,8 @@
 # CoronaTracker
-## Seminar school project
-![CoronaTracker logo](http://covid.ncodes.eu/coronavirus.png)
+Seminar school project
+![CoronaTracker logo](http://covid.ncodes.eu/coronavirus.ico)
 
-####Some features that are worth to stab:
+##Some features that are worth to stab:
 - NuGet
 	- MySQL connector for easier connection
 	- HTML to PDF converter
@@ -22,7 +22,7 @@
 - Structure
 - App Installer
 
-####To-Do list (12/15)
+##To-Do list (12/15)
 - [x] Create main UI form
 - [x] Create login UI form
 - [x] Create Home sub form
@@ -39,11 +39,11 @@
 - [ ] Add print files (finds doc / vaccinate doc)
 - [ ] First release with installer
 
-####Some little idea to do
+##Some little idea to do
 - Reset password through email
 - Send print files through email
 
-####Used technologies
+##Used technologies
 - [Old RestAPI - TrackCorona](https://www.trackcorona.live)
 - [New RestAPI - Gramzivi Covid API](https://rapidapi.com/Gramzivi/api/covid-19-data/)
 - [Used icons - Flaticon](https://www.flaticon.com/free-icon/)
