@@ -20,12 +20,20 @@ namespace CoronaTracker.SubForms.PatientSubSubForms
     public partial class VaccinationsSubSubForm : Form
     {
 
+        // Instance for capture video from camera
         private FilterInfoCollection CaptureDevice;
+        // Instance for lastest camera frame
         private VideoCaptureDevice FinalFrame;
+        // Instance for selected patient
         private PatientInstance patient;
+        // Instance for patient vaccinate
         private PatientVaccineAction vaccine;
+        // Instance for vaccine types
         private Dictionary<string, int> vaccineTypes;
 
+        /// <summary>
+        /// Load data from patient
+        /// </summary>
         public delegate void setDataDelegate();
         public setDataDelegate setData;
         void setDataMethod()
@@ -43,6 +51,9 @@ namespace CoronaTracker.SubForms.PatientSubSubForms
             }
         }
 
+        /// <summary>
+        /// Create instance for round corners
+        /// </summary>
         [DllImport("Gdi32.dll", EntryPoint = "CreateRoundRectRgn")]
         private static extern IntPtr CreateRoundRectRgn
         (
@@ -54,6 +65,9 @@ namespace CoronaTracker.SubForms.PatientSubSubForms
             int nHeightEllipse // width of ellipse
         );
 
+        /// <summary>
+        /// Constructor for vaccinations sub sub form
+        /// </summary>
         public VaccinationsSubSubForm()
         {
             InitializeComponent();
@@ -79,6 +93,11 @@ namespace CoronaTracker.SubForms.PatientSubSubForms
 
         }
 
+        /// <summary>
+        /// Function to start loading QR code
+        /// </summary>
+        /// <param name="sender"> variable for sender </param>
+        /// <param name="e"> variable for event arguments </param>
         private void button1_Click(object sender, EventArgs e)
         {
             if (FinalFrame != null)
@@ -91,6 +110,11 @@ namespace CoronaTracker.SubForms.PatientSubSubForms
                 MessageBox.Show("I'm sorry, but you didn't have any input camera");
         }
 
+        /// <summary>
+        /// Function to load and save lastest QR code
+        /// </summary>
+        /// <param name="sender"> variable for sender </param>
+        /// <param name="eventArgs"> variable for event arguments </param>
         private void FinalFrame_NewFrame(object sender, NewFrameEventArgs eventArgs)
         {
             pictureBox2.Image = (Bitmap)eventArgs.Frame.Clone();
@@ -124,6 +148,11 @@ namespace CoronaTracker.SubForms.PatientSubSubForms
             }
         }
 
+        /// <summary>
+        /// Function to stop recording camera on form closing
+        /// </summary>
+        /// <param name="sender"> variable for sender </param>
+        /// <param name="e"> variable for event arguments </param>
         private void VaccinationsSubSubForm_FormClosing(object sender, FormClosingEventArgs e)
         {
             if (FinalFrame != null)
@@ -132,6 +161,9 @@ namespace CoronaTracker.SubForms.PatientSubSubForms
             }
         }
 
+        /// <summary>
+        /// Function to stop recording camera
+        /// </summary>
         private void exitcamera()
         {
             FinalFrame.SignalToStop();
@@ -140,6 +172,11 @@ namespace CoronaTracker.SubForms.PatientSubSubForms
             FinalFrame = null;
         }
 
+        /// <summary>
+        /// Function to load patient by ID
+        /// </summary>
+        /// <param name="sender"> variable for sender </param>
+        /// <param name="e"> variable for event arguments </param>
         private void button2_Click_1(object sender, EventArgs e)
         {
             if(numericUpDown1.Value > 0)
@@ -154,6 +191,11 @@ namespace CoronaTracker.SubForms.PatientSubSubForms
             }
         }
 
+        /// <summary>
+        /// Function to add vaccinate
+        /// </summary>
+        /// <param name="sender"> variable for sender </param>
+        /// <param name="e"> variable for event arguments </param>
         private void pictureBox6_Click(object sender, EventArgs e)
         {
             if (listBox1.SelectedItem != null)
@@ -174,16 +216,16 @@ namespace CoronaTracker.SubForms.PatientSubSubForms
             }
         }
 
-        private void pictureBox5_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void pictureBox1_Click(object sender, EventArgs e)
         {
 
         }
 
+        /// <summary>
+        /// Function to automatically add days to second date
+        /// </summary>
+        /// <param name="sender"> variable for sender </param>
+        /// <param name="e"> variable for event arguments </param>
         private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
         {
             dateTimePicker2.Value = dateTimePicker1.Value.AddDays(40);

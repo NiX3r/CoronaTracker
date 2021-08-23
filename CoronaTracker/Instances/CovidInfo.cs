@@ -6,6 +6,11 @@ using System.Threading.Tasks;
 
 namespace CoronaTracker.Instances
 {
+
+    /// <summary>
+    /// Instance for map rest api data
+    /// </summary>
+
     class CovidInfo
     {
         public String country { get; set; }

@@ -38,6 +38,22 @@ namespace CoronaTracker.Database
             }
         }
 
+        public static void RefreshDatabaseConnection()
+        {
+            connection.Clone();
+            connection = DatabaseSecret.GetConnection();
+            try
+            {
+                connection.Open();
+                Debug.WriteLine("MySQL connection opened successfully");
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine("MySQL connection opened unsuccessfully\nError: " + ex.Message);
+
+            }
+        }
+
         /// <summary>
         /// Function to log attempt to log in
         /// </summary>

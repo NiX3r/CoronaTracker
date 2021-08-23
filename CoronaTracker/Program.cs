@@ -1,6 +1,7 @@
 ﻿using CoronaTracker.Database;
 using CoronaTracker.Database.DatabaseInstances;
 using CoronaTracker.SubForms;
+using CoronaTracker.Timers;
 using CoronaTracker.Utils;
 using System;
 using System.Collections.Generic;
@@ -30,9 +31,11 @@ namespace CoronaTracker
             }
             else
             {
+                ProgramVariables.RefreshConnection = new RefreshConnectionTimer();
                 ProgramVariables.ProgramUI = new UI();
                 ProgramVariables.LoginUI = new LoginForm();
 
+                ProgramVariables.RefreshConnection.ChangeStatus(true);
                 ProgramVariables.ProgramUI.Hide();
 
                 int id = DatabaseMethods.HasAutoLogin();

@@ -14,9 +14,15 @@ namespace CoronaTracker.Utils
     class RestAPI
     {
 
+        /// <summary>
+        /// Function for load Covid data from trackcorona
+        /// Does not work yet!
+        /// </summary>
+        /// <returns>
+        /// return nothing
+        /// </returns>
         public static async Task GetCovidDataAsync()
         {
-
             using (var httpClient = new HttpClient())
             {
                 using (var request = new HttpRequestMessage(new HttpMethod("GET"), "https://www.trackcorona.live/api/countries"))
@@ -25,9 +31,15 @@ namespace CoronaTracker.Utils
                     ProgramVariables.CovidData = JsonConvert.DeserializeObject<List<CovidInfo>>(response.Content.ReadAsStringAsync().Result.Replace("{\"code\": 200, \"data\": ", "").Replace("}]}", "}]"));
                 }
             }
-
         }
 
+        /// <summary>
+        /// Function for load Covid data from rapidapi
+        /// </summary>
+        /// <param name="country"> variable for country name </param>
+        /// <returns>
+        /// return covid info variable
+        /// </returns>
         public static async Task<CovidInfo> GetCovidDataAsync(String country)
         {
             var client = new HttpClient();

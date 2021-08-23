@@ -20,14 +20,23 @@ namespace CoronaTracker.SubForms.PatientSubSubForms
     public partial class ListSubSubForm : Form
     {
 
+        // Instance for capture video from camera
         private FilterInfoCollection CaptureDevice;
+        // Instance for lastest camera frame
         private VideoCaptureDevice FinalFrame;
+        // Instance for selected patient
         private PatientInstance patient;
-        
+
+        /// <summary>
+        /// Load info about patient
+        /// </summary>
         public delegate void setDataDelegate();
         public setDataDelegate setData;
         void setDataMethod() { label11.Text = "Catch QR"; textBox2.Text = patient.PersonalNumberFirst; textBox3.Text = patient.PersonalNumberSecond; textBox4.Text = patient.Fullname; textBox5.Text = patient.Email; textBox6.Text = patient.Phone.ToString(); textBox7.Text = patient.InsuranceCode.ToString(); richTextBox1.Text = patient.Description; }
 
+        /// <summary>
+        /// Constructor for list sub sub form
+        /// </summary>
         public ListSubSubForm()
         {
             InitializeComponent();
@@ -45,6 +54,9 @@ namespace CoronaTracker.SubForms.PatientSubSubForms
 
         }
 
+        /// <summary>
+        /// Create instance for round corners
+        /// </summary>
         [DllImport("Gdi32.dll", EntryPoint = "CreateRoundRectRgn")]
         private static extern IntPtr CreateRoundRectRgn
         (
@@ -56,6 +68,11 @@ namespace CoronaTracker.SubForms.PatientSubSubForms
             int nHeightEllipse // width of ellipse
         );
 
+        /// <summary>
+        /// Function to add patient
+        /// </summary>
+        /// <param name="sender"> variable for sender </param>
+        /// <param name="e"> variable for event arguments </param>
         private void pictureBox2_Click(object sender, EventArgs e)
         {
             if (!textBox2.Text.Equals("") && !textBox3.Text.Equals("") && !textBox4.Text.Equals("")
@@ -80,6 +97,11 @@ namespace CoronaTracker.SubForms.PatientSubSubForms
             }
         }
 
+        /// <summary>
+        /// Function to edit patient
+        /// </summary>
+        /// <param name="sender"> variable for sender </param>
+        /// <param name="e"> variable for event arguments </param>
         private void pictureBox1_Click(object sender, EventArgs e)
         {
             if (!textBox2.Text.Equals("") && !textBox3.Text.Equals("") && !textBox4.Text.Equals("")
@@ -103,11 +125,16 @@ namespace CoronaTracker.SubForms.PatientSubSubForms
             }
         }
 
+        /// <summary>
+        /// Function to remove patient
+        /// </summary>
+        /// <param name="sender"> variable for sender </param>
+        /// <param name="e"> variable for event arguments </param>
         private void pictureBox3_Click(object sender, EventArgs e)
         {
             if (!textBox2.Text.Equals(""))
             {
-                if (MessageBox.Show("Are you sure to remove vaccine type?", "Database Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                if (MessageBox.Show("Are you sure to remove patient?", "Database Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
                     if (DatabaseMethods.RemovePatient(textBox2.Text, textBox3.Text))
                     {
@@ -125,6 +152,11 @@ namespace CoronaTracker.SubForms.PatientSubSubForms
             }
         }
 
+        /// <summary>
+        /// Function to allow only number
+        /// </summary>
+        /// <param name="sender"> variable for sender </param>
+        /// <param name="e"> variable for event arguments </param>
         private void textBox6_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
@@ -133,6 +165,11 @@ namespace CoronaTracker.SubForms.PatientSubSubForms
             }
         }
 
+        /// <summary>
+        /// Function to load patient by ID
+        /// </summary>
+        /// <param name="sender"> variable for sender </param>
+        /// <param name="e"> variable for event arguments </param>
         private void button2_Click(object sender, EventArgs e)
         {
             if (numericUpDown1.Value > 0)
@@ -153,6 +190,11 @@ namespace CoronaTracker.SubForms.PatientSubSubForms
             }
         }
 
+        /// <summary>
+        /// Function to start loading QR code
+        /// </summary>
+        /// <param name="sender"> variable for sender </param>
+        /// <param name="e"> variable for event arguments </param>
         private void button1_Click(object sender, EventArgs e)
         {
             if (FinalFrame != null)
@@ -166,6 +208,11 @@ namespace CoronaTracker.SubForms.PatientSubSubForms
                 MessageBox.Show("I'm sorry, but you didn't have any input camera");
         }
 
+        /// <summary>
+        /// Function to load and save lastest QR code
+        /// </summary>
+        /// <param name="sender"> variable for sender </param>
+        /// <param name="eventArgs"> variable for event arguments </param>
         private void FinalFrame_NewFrame(object sender, NewFrameEventArgs eventArgs)
         {
             pictureBox5.Image = (Bitmap)eventArgs.Frame.Clone();
@@ -199,6 +246,9 @@ namespace CoronaTracker.SubForms.PatientSubSubForms
             }
         }
 
+        /// <summary>
+        /// Function to stop recording camera
+        /// </summary>
         private void exitcamera()
         {
             FinalFrame.SignalToStop();
@@ -207,6 +257,11 @@ namespace CoronaTracker.SubForms.PatientSubSubForms
             FinalFrame = null;
         }
 
+        /// <summary>
+        /// Function to stop recording camera on form closing
+        /// </summary>
+        /// <param name="sender"> variable for sender </param>
+        /// <param name="e"> variable for event arguments </param>
         private void ListSubSubForm_FormClosing(object sender, FormClosingEventArgs e)
         {
             if (FinalFrame != null)

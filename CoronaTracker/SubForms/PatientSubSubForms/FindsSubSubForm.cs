@@ -21,22 +21,38 @@ namespace CoronaTracker.SubForms.PatientSubSubForms
     public partial class FindsSubSubForm : Form
     {
 
+        // Instance for capture video from camera
         private FilterInfoCollection CaptureDevice;
+        // Instance for lastest camera frame
         private VideoCaptureDevice FinalFrame;
+        // Instance for selected patient
         private PatientInstance patient;
+        // Instance for selected find
         private FindsInstance actualFind;
+        // Instance for list of finds
         private List<FindsInstance> finds;
+        // Instance for selected find button
         private Button actualFindButton;
+        // Instance for help create finds buttons
         private int index2;
 
+        /// <summary>
+        /// Create finds buttons
+        /// </summary>
         public delegate void addButtonDelegate();
         public addButtonDelegate addButton;
         void addButtonMethod() { index2 = 0; panel2.Controls.Clear(); finds.ForEach(x => addButton2(x)); }
 
+        /// <summary>
+        /// Load data into finds buttons
+        /// </summary>
         public delegate void setDataDelegate();
         public setDataDelegate setData;
         void setDataMethod() { label2.Text = patient.Fullname; label3.Text = patient.PersonalNumberFirst; label6.Text = patient.PersonalNumberSecond; }
 
+        /// <summary>
+        /// Create instance for round corners
+        /// </summary>
         [DllImport("Gdi32.dll", EntryPoint = "CreateRoundRectRgn")]
         private static extern IntPtr CreateRoundRectRgn
         (
@@ -48,6 +64,9 @@ namespace CoronaTracker.SubForms.PatientSubSubForms
             int nHeightEllipse // width of ellipse
         );
 
+        /// <summary>
+        /// Constuctor for finds sub sub form
+        /// </summary>
         public FindsSubSubForm()
         {
             InitializeComponent();
@@ -70,6 +89,10 @@ namespace CoronaTracker.SubForms.PatientSubSubForms
 
         }
 
+        /// <summary>
+        /// Function to add finds buttons 
+        /// </summary>
+        /// <param name="find"> variable for find info </param>
         private void addButton2(FindsInstance find)
         {
             String key = find.ID.ToString();
@@ -83,6 +106,12 @@ namespace CoronaTracker.SubForms.PatientSubSubForms
             index2++;
         }
 
+        /// <summary>
+        /// Fucntion to set default style of button
+        /// </summary>
+        /// <returns>
+        /// Return visual style of default finds button
+        /// </returns>
         private Button setDefaults2()
         {
             Button output = new Button();
@@ -96,6 +125,11 @@ namespace CoronaTracker.SubForms.PatientSubSubForms
             return output;
         }
 
+        /// <summary>
+        /// Function to load find info
+        /// </summary>
+        /// <param name="sender"> variable for sender </param>
+        /// <param name="e"> variable for event arguments </param>
         private void button2_click(object sender, EventArgs e)
         {
             if(actualFindButton!=null) actualFindButton.BackColor = Color.FromArgb(55, 55, 55);
@@ -113,6 +147,11 @@ namespace CoronaTracker.SubForms.PatientSubSubForms
             }
         }
 
+        /// <summary>
+        /// Function to add find to patient
+        /// </summary>
+        /// <param name="sender"> variable for sender </param>
+        /// <param name="e"> variable for event arguments </param>
         private void pictureBox2_Click(object sender, EventArgs e)
         {
             if(patient != null)
@@ -142,12 +181,17 @@ namespace CoronaTracker.SubForms.PatientSubSubForms
             }
         }
 
+        /// <summary>
+        /// Function to remove find from patient
+        /// </summary>
+        /// <param name="sender"> variable for sender </param>
+        /// <param name="e"> variable for event arguments </param>
         private void pictureBox3_Click(object sender, EventArgs e)
         {
 
             if (actualFind != null)
             {
-                if (MessageBox.Show("Are you sure to add finds to " + patient.Fullname + "?", "Action with database", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                if (MessageBox.Show("Are you sure to remove finds from " + patient.Fullname + "?", "Action with database", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
                     if (DatabaseMethods.RemoveFinds(actualFind.ID))
                     {
@@ -173,6 +217,11 @@ namespace CoronaTracker.SubForms.PatientSubSubForms
             }
         }
 
+        /// <summary>
+        /// Function to load patient by ID
+        /// </summary>
+        /// <param name="sender"> variable for sender </param>
+        /// <param name="e"> variable for event arguments </param>
         private void button2_Click_1(object sender, EventArgs e)
         {
             if (numericUpDown1.Value > 0)
@@ -193,6 +242,11 @@ namespace CoronaTracker.SubForms.PatientSubSubForms
             }
         }
 
+        /// <summary>
+        /// Function to start loading QR code
+        /// </summary>
+        /// <param name="sender"> variable for sender </param>
+        /// <param name="e"> variable for event arguments </param>
         private void button1_Click(object sender, EventArgs e)
         {
             if (FinalFrame == null)
@@ -205,6 +259,11 @@ namespace CoronaTracker.SubForms.PatientSubSubForms
                 MessageBox.Show("I'm sorry, but you didn't have any input camera");
         }
 
+        /// <summary>
+        /// Function to load and save lastest QR code
+        /// </summary>
+        /// <param name="sender"> variable for sender </param>
+        /// <param name="eventArgs"> variable for event arguments </param>
         private void FinalFrame_NewFrame(object sender, NewFrameEventArgs eventArgs)
         {
             pictureBox4.Image = (Bitmap)eventArgs.Frame.Clone();
@@ -241,6 +300,9 @@ namespace CoronaTracker.SubForms.PatientSubSubForms
             }
         }
 
+        /// <summary>
+        /// Function to stop recording camera
+        /// </summary>
         private void exitcamera()
         {
             FinalFrame.SignalToStop();
@@ -249,6 +311,11 @@ namespace CoronaTracker.SubForms.PatientSubSubForms
             FinalFrame = null;
         }
 
+        /// <summary>
+        /// Function to stop recording camera on form closing
+        /// </summary>
+        /// <param name="sender"> variable for sender </param>
+        /// <param name="e"> variable for event arguments </param>
         private void FindsSubSubForm_FormClosing(object sender, FormClosingEventArgs e)
         {
             if (FinalFrame != null)
