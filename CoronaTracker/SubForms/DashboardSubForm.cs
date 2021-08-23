@@ -17,6 +17,9 @@ namespace CoronaTracker.SubForms
     public partial class DashboardSubForm : Form
     {
 
+        /// <summary>
+        /// Create instance for round corners
+        /// </summary>
         [DllImport("Gdi32.dll", EntryPoint = "CreateRoundRectRgn")]
         private static extern IntPtr CreateRoundRectRgn
         (
@@ -28,6 +31,9 @@ namespace CoronaTracker.SubForms
             int nHeightEllipse // width of ellipse
         );
 
+        /// <summary>
+        /// Constructor for dashboard sub form
+        /// </summary>
         public DashboardSubForm()
         {
             InitializeComponent();
@@ -48,6 +54,11 @@ namespace CoronaTracker.SubForms
             
         }
 
+        /// <summary>
+        /// Function to set up data
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void DashboardSubForm_Load(object sender, EventArgs e)
         {
             DateTime dt = DateTime.Now.AddMonths(-5);

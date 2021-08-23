@@ -20,8 +20,12 @@ namespace CoronaTracker.SubForms
     public partial class LoginForm : Form
     {
 
+        // Enum for sign in / sign up state
         private LoginWindowStatus state;
 
+        /// <summary>
+        /// Constuctor for login form
+        /// </summary>
         public LoginForm()
         {
 
@@ -37,11 +41,22 @@ namespace CoronaTracker.SubForms
 
         }
 
+        /// <summary>
+        /// Function to end the app
+        /// </summary>
         public void EndApp()
         {
             Application.Exit();
         }
 
+        /// <summary>
+        /// Function to encrypt password
+        /// Use 2 salt & SHA256 encryption
+        /// </summary>
+        /// <param name="password"> variable for password to encrypt </param>
+        /// <returns>
+        /// Return encrypted password
+        /// </returns>
         private String PasswordEncryption(String password)
         {
             string salt1 = "6&eL#YwFJFqD";
@@ -61,6 +76,9 @@ namespace CoronaTracker.SubForms
             return hashString;
         }
 
+        /// <summary>
+        /// Allow move form while click and move on form
+        /// </summary>
         [DllImport("user32.DLL", EntryPoint = "ReleaseCapture")]
         private extern static void ReleaseCapture();
         [DllImport("user32.DLL", EntryPoint = "SendMessage")]
@@ -71,6 +89,11 @@ namespace CoronaTracker.SubForms
             SendMessage(this.Handle, 0x112, 0xf012, 0);
         }
 
+        /// <summary>
+        /// Function to change status sign in / sign up
+        /// </summary>
+        /// <param name="sender"> variable for sender </param>
+        /// <param name="e"> variable for event arguments </param>
         private void label3_Click(object sender, EventArgs e)
         {
             if(state == LoginWindowStatus.SignIn)
@@ -99,6 +122,9 @@ namespace CoronaTracker.SubForms
             }
         }
 
+        /// <summary>
+        /// Function to log in
+        /// </summary>
         private void logIn()
         {
             if (state == LoginWindowStatus.SignIn)
@@ -161,16 +187,32 @@ namespace CoronaTracker.SubForms
             }
         }
 
+        /// <summary>
+        /// Function to log in while click button
+        /// </summary>
+        /// <param name="sender"> variable for sender </param>
+        /// <param name="e"> variable for event arguments </param>
         private void button1_Click(object sender, EventArgs e)
         {
             logIn();   
         }
 
+        /// <summary>
+        /// Function to exit app while click button
+        /// </summary>
+        /// <param name="sender"> variable for sender </param>
+        /// <param name="e"> variable for event arguments </param>
         private void button7_Click(object sender, EventArgs e)
         {
             Application.Exit();
         }
 
+        /// <summary>
+        /// Function to log in while press enter
+        /// Does not work yet
+        /// </summary>
+        /// <param name="sender"> variable for sender </param>
+        /// <param name="e"> variable for event arguments </param>
         private void textBox5_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyData == Keys.Enter)

@@ -15,6 +15,10 @@ namespace CoronaTracker.SubForms
 {
     public partial class SettingsSubForm : Form
     {
+
+        /// <summary>
+        /// Constuctor for finds sub sub form
+        /// </summary>
         public SettingsSubForm()
         {
             InitializeComponent();
@@ -35,6 +39,14 @@ namespace CoronaTracker.SubForms
 
         }
 
+        /// <summary>
+        /// Function to encrypt password
+        /// Use 2 salt & SHA256 encryption
+        /// </summary>
+        /// <param name="password"> variable for password to encrypt </param>
+        /// <returns>
+        /// Return encrypted password
+        /// </returns>
         private String PasswordEncryption(String password)
         {
             string salt1 = "6&eL#YwFJFqD";
@@ -54,6 +66,11 @@ namespace CoronaTracker.SubForms
             return hashString;
         }
 
+        /// <summary>
+        /// Function to edit profile info
+        /// </summary>
+        /// <param name="sender"> variable for sender </param>
+        /// <param name="e"> variable for event arguments </param>
         private void button1_Click(object sender, EventArgs e)
         {
 
@@ -66,6 +83,11 @@ namespace CoronaTracker.SubForms
 
         }
 
+        /// <summary>
+        /// Function to temporary load image
+        /// </summary>
+        /// <param name="sender"> variable for sender </param>
+        /// <param name="e"> variable for event arguments </param>
         private void button2_Click(object sender, EventArgs e)
         {
             try
@@ -78,6 +100,11 @@ namespace CoronaTracker.SubForms
             }
         }
 
+        /// <summary>
+        /// Function to allow only numbers
+        /// </summary>
+        /// <param name="sender"> variable for sender </param>
+        /// <param name="e"> variable for event arguments </param>
         private void textBox2_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
@@ -86,6 +113,11 @@ namespace CoronaTracker.SubForms
             }
         }
 
+        /// <summary>
+        /// Function to change the password
+        /// </summary>
+        /// <param name="sender"> variable for sender </param>
+        /// <param name="e"> variable for event arguments </param>
         private void button3_Click(object sender, EventArgs e)
         {
 
@@ -107,6 +139,11 @@ namespace CoronaTracker.SubForms
             
         }
 
+        /// <summary>
+        /// Function to load role by email
+        /// </summary>
+        /// <param name="sender"> variable for sender </param>
+        /// <param name="e"> variable for event arguments </param>
         private void button4_Click(object sender, EventArgs e)
         {
             if(textBox6.Text != "" && textBox6.Text.Contains("@") && textBox6.Text.Contains("."))
@@ -136,6 +173,11 @@ namespace CoronaTracker.SubForms
             }
         }
 
+        /// <summary>
+        /// Function to change pose
+        /// </summary>
+        /// <param name="sender"> variable for sender </param>
+        /// <param name="e"> variable for event arguments </param>
         private void button5_Click(object sender, EventArgs e)
         {
             if (MessageBox.Show("Are you sure to change pose?", "Action with database", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)

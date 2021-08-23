@@ -15,9 +15,14 @@ namespace CoronaTracker.SubForms
     public partial class PatientSubForm : Form
     {
 
+        // Variable for current child form
         private Form currentChildForm;
+        // Variable for current button
         private Button currentButton;
 
+        /// <summary>
+        /// Constuctor for patient sub form
+        /// </summary>
         public PatientSubForm()
         {
             InitializeComponent();
@@ -26,11 +31,22 @@ namespace CoronaTracker.SubForms
 
         }
 
+        /// <summary>
+        /// Function to get current child form
+        /// </summary>
+        /// <returns>
+        /// Return current child form
+        /// </returns>
         public Form GetCurrentForm()
         {
             return currentChildForm;
         }
 
+        /// <summary>
+        /// Function to open child form
+        /// </summary>
+        /// <param name="childForm"> variable for child form to set </param>
+        /// <param name="button"> variable for button to set </param>
         public void OpenChildForm(Form childForm, Button button)
         {
 
@@ -60,6 +76,11 @@ namespace CoronaTracker.SubForms
             currentButton.TextAlign = ContentAlignment.BottomCenter;
         }
 
+        /// <summary>
+        /// Function to load sub sub form
+        /// </summary>
+        /// <param name="sender"> variable for sender </param>
+        /// <param name="e"> variable for event arguments </param>
         private void button1_Click(object sender, EventArgs e)
         {
             switch (((Button)sender).Text)

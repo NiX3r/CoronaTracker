@@ -15,8 +15,12 @@ namespace CoronaTracker.SubForms
     public partial class CountriesSubForm : Form
     {
 
+        // Instance for lastest selected country
         private CovidInfo lastestCountry;
 
+        /// <summary>
+        /// Constructor for countries sub form
+        /// </summary>
         public CountriesSubForm()
         {
             InitializeComponent();
@@ -25,6 +29,9 @@ namespace CoronaTracker.SubForms
 
         }
 
+        /// <summary>
+        /// Function to update country data
+        /// </summary>
         private void SetCountryData()
         {
 
@@ -51,6 +58,11 @@ namespace CoronaTracker.SubForms
 
         }
 
+        /// <summary>
+        /// Function to empty text box on click
+        /// </summary>
+        /// <param name="sender"> variable for sender </param>
+        /// <param name="e"> variable for event arguments </param>
         private void textBox1_Enter(object sender, EventArgs e)
         {
             if(textBox1.Text.Equals("Type for search..."))
@@ -59,6 +71,11 @@ namespace CoronaTracker.SubForms
             }
         }
 
+        /// <summary>
+        /// Function to catch button event and set data
+        /// </summary>
+        /// <param name="sender"> variable for sender </param>
+        /// <param name="e"> variable for event arguments </param>
         private void button1_Click(object sender, EventArgs e)
         {
 

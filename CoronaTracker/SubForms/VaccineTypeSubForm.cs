@@ -15,10 +15,16 @@ namespace CoronaTracker.SubForms
     public partial class VaccineTypeSubForm : Form
     {
 
+        // Variable for button index 
         private int index;
+        // Variable for vaccine types list
         private List<VaccineTypeInstance> vaccineTypes;
+        // Variable for buttons lsit
         private List<Button> buttons;
 
+        /// <summary>
+        /// Constuctor for vaccine type sub form
+        /// </summary>
         public VaccineTypeSubForm()
         {
             InitializeComponent();
@@ -36,6 +42,10 @@ namespace CoronaTracker.SubForms
 
         }
 
+        /// <summary>
+        /// Function to add vaccine type button
+        /// </summary>
+        /// <param name="type"> variable for vaccine type </param>
         private void addButton(VaccineTypeInstance type)
         {
             Button bt = setDefaults();
@@ -48,6 +58,12 @@ namespace CoronaTracker.SubForms
             index++;
         }
 
+        /// <summary>
+        /// Function to set button defaults
+        /// </summary>
+        /// <returns>
+        /// Return default buttons
+        /// </returns>
         private Button setDefaults()
         {
             Button output = new Button();
@@ -61,6 +77,11 @@ namespace CoronaTracker.SubForms
             return output;
         }
 
+        /// <summary>
+        /// Function to load vaccine type data 
+        /// </summary>
+        /// <param name="sender"> variable for sender </param>
+        /// <param name="e"> variable for event arguments </param>
         private void button_click(object sender, EventArgs e)
         {
             foreach(VaccineTypeInstance type in vaccineTypes)
@@ -73,6 +94,11 @@ namespace CoronaTracker.SubForms
             }
         }
 
+        /// <summary>
+        /// Function to add vaccine type
+        /// </summary>
+        /// <param name="sender"> variable for sender </param>
+        /// <param name="e"> variable for event arguments </param>
         private void pictureBox2_Click(object sender, EventArgs e)
         {
             if (!textBox2.Text.Equals(""))
@@ -98,6 +124,11 @@ namespace CoronaTracker.SubForms
             }
         }
 
+        /// <summary>
+        /// Function to edit vaccine type
+        /// </summary>
+        /// <param name="sender"> variable for sender </param>
+        /// <param name="e"> variable for event arguments </param>
         private void pictureBox1_Click(object sender, EventArgs e)
         {
             if (!textBox2.Text.Equals(""))
@@ -127,6 +158,11 @@ namespace CoronaTracker.SubForms
             }
         }
 
+        /// <summary>
+        /// Function to remove vaccine type
+        /// </summary>
+        /// <param name="sender"> variable for sender </param>
+        /// <param name="e"> variable for event arguments </param>
         private void pictureBox3_Click(object sender, EventArgs e)
         {
             if (!textBox2.Text.Equals(""))
@@ -164,6 +200,11 @@ namespace CoronaTracker.SubForms
             }
         }
 
+        /// <summary>
+        /// Function to clear text box while enter
+        /// </summary>
+        /// <param name="sender"> variable for sender </param>
+        /// <param name="e"> variable for event arguments </param>
         private void textBox1_Enter(object sender, EventArgs e)
         {
             if (textBox1.Text.Equals("Type for search..."))
@@ -172,6 +213,11 @@ namespace CoronaTracker.SubForms
             }
         }
 
+        /// <summary>
+        /// Function to filter vaccine types
+        /// </summary>
+        /// <param name="sender"> variable for sender </param>
+        /// <param name="e"> variable for event arguments </param>
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
             panel1.Controls.Clear();
