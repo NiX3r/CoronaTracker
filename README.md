@@ -37,7 +37,7 @@ This program was created for seminar school project as recession to Corona virus
 - [:heavy_check_mark:] Connect sub forms with MySQL
 - [:heavy_check_mark:] Create RestAPI methods
 - [:heavy_check_mark:] Add QR load patient
-- [:x:] Comment whole source code
+- [:heavy_check_mark:] Comment whole source code
 - [:x:] Add print files (finds doc / vaccinate doc)
 - [:x:] First release with installer
 
