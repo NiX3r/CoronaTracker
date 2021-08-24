@@ -24,7 +24,7 @@ This program was created for seminar school project as recession to Corona virus
 - Structure
 - App Installer
 
-## To-Do list (12/15)
+## To-Do list (13/15)
 - [:heavy_check_mark:] Create main UI form
 - [:heavy_check_mark:] Create login UI form
 - [:heavy_check_mark:] Create Home sub form
