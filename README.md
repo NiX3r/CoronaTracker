@@ -1,4 +1,4 @@
-# CoronaTracker <img src="http://covid.ncodes.eu/coronavirus.png" width="50" height="50">
+# CoronaTracker <img src="http://coronatracker.ncodes.eu/coronavirus.png" width="50" height="50">
 Seminar school project
 
 ## Introduce CoronaTracker
@@ -24,7 +24,7 @@ This program was created for seminar school project as recession to Corona virus
 - Structure
 - App Installer
 
-## To-Do list (12/15)
+## To-Do list (13/15)
 - [:heavy_check_mark:] Create main UI form
 - [:heavy_check_mark:] Create login UI form
 - [:heavy_check_mark:] Create Home sub form
@@ -37,7 +37,7 @@ This program was created for seminar school project as recession to Corona virus
 - [:heavy_check_mark:] Connect sub forms with MySQL
 - [:heavy_check_mark:] Create RestAPI methods
 - [:heavy_check_mark:] Add QR load patient
-- [:x:] Comment whole source code
+- [:heavy_check_mark:] Comment whole source code
 - [:x:] Add print files (finds doc / vaccinate doc)
 - [:x:] First release with installer
 
