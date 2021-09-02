@@ -1,4 +1,4 @@
-# CoronaTracker <img src="http://covid.ncodes.eu/coronavirus.png" width="50" height="50">
+# CoronaTracker <img src="http://coronatracker.ncodes.eu/coronavirus.png" width="50" height="50">
 Seminar school project
 
 ## Introduce CoronaTracker
