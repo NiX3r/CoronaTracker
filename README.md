@@ -53,3 +53,4 @@ This program was created for seminar school project as recession to Corona virus
 - [To copy some codes - StackOverflow](https://stackoverflow.com)
 - [To learn about web - W3Schools](https://www.w3schools.com)
 - [Generate data - Mockaroo](https://www.mockaroo.com)
+- [To create qr codes - QR code API](https://goqr.me/api/)
