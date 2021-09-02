@@ -286,6 +286,7 @@
             this.pictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox4.TabIndex = 39;
             this.pictureBox4.TabStop = false;
+            this.pictureBox4.Click += new System.EventHandler(this.pictureBox4_Click);
             // 
             // pictureBox3
             // 
@@ -442,7 +443,7 @@
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(64, 40);
             this.label14.TabIndex = 78;
-            this.label14.Text = "Generate QR";
+            this.label14.Text = "Send QR\r\nvia email";
             this.label14.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // ListSubSubForm

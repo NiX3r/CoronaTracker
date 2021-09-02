@@ -113,6 +113,7 @@
     <Compile Include="Enums\EmployeePoseEnum.cs" />
     <Compile Include="Enums\LoginWindowStatusEnum.cs" />
     <Compile Include="Instances\CovidInfo.cs" />
+    <Compile Include="Instances\EmailWriterClass.cs" />
     <Compile Include="SubForms\CountriesSubForm.cs">
       <SubType>Form</SubType>
     </Compile>

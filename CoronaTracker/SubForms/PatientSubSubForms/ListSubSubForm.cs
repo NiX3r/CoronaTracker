@@ -2,6 +2,7 @@
 using AForge.Video.DirectShow;
 using CoronaTracker.Database;
 using CoronaTracker.Database.DatabaseInstances;
+using CoronaTracker.Instances;
 using CoronaTracker.Utils;
 using System;
 using System.Collections.Generic;
@@ -267,6 +268,14 @@ namespace CoronaTracker.SubForms.PatientSubSubForms
             if (FinalFrame != null)
                 if (FinalFrame.IsRunning)
                     exitcamera();
+        }
+
+        private void pictureBox4_Click(object sender, EventArgs e)
+        {
+            if(EmailWriterClass.Write(DatabaseMethods.GetPatientIDByPersonalNumber(textBox2.Text, textBox3.Text), Convert.ToInt32(textBox2.Text), Convert.ToInt32(textBox3.Text), textBox5.Text))
+            {
+                MessageBox.Show("Email has been successfully sent!");
+            }
         }
     }
 }
