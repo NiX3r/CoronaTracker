@@ -2,11 +2,13 @@
 using AForge.Video.DirectShow;
 using CoronaTracker.Database;
 using CoronaTracker.Database.DatabaseInstances;
+using CoronaTracker.Instances;
 using CoronaTracker.Utils;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Runtime.InteropServices;
@@ -216,9 +218,16 @@ namespace CoronaTracker.SubForms.PatientSubSubForms
             }
         }
 
+        /// <summary>
+        /// Function to create and open vaccinate PDF file
+        /// </summary>
+        /// <param name="sender"> variable for sender </param>
+        /// <param name="e"> variable for event arguments </param>
         private void pictureBox1_Click(object sender, EventArgs e)
         {
-
+            int id = DatabaseMethods.GetPatientIDByPersonalNumber(patient.PersonalNumberFirst, patient.PersonalNumberSecond);
+            GeneratePdfClass.GenerateVaccinatePdf(vaccine, patient, id);
+            Process.Start("temp.pdf");
         }
 
         /// <summary>

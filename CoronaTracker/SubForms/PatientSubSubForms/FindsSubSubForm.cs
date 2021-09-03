@@ -2,6 +2,7 @@
 using AForge.Video.DirectShow;
 using CoronaTracker.Database;
 using CoronaTracker.Database.DatabaseInstances;
+using CoronaTracker.Instances;
 using CoronaTracker.Utils;
 using System;
 using System.Collections.Generic;
@@ -325,6 +326,20 @@ namespace CoronaTracker.SubForms.PatientSubSubForms
                     exitcamera();
                 }
             }
+        }
+
+        /// <summary>
+        /// Function to create and open underwent PDF file
+        /// </summary>
+        /// <param name="sender"> variable for sender </param>
+        /// <param name="e"> variable for event arguments </param>
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+
+            int id = DatabaseMethods.GetPatientIDByPersonalNumber(patient.PersonalNumberFirst, patient.PersonalNumberSecond);
+            GeneratePdfClass.GenerateUnderwentPdf(finds, patient, id);
+            Process.Start("temp.pdf");
+
         }
     }
 }
