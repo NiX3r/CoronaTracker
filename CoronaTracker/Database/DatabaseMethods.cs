@@ -74,6 +74,26 @@ namespace CoronaTracker.Database
         }
 
         /// <summary>
+        /// Function to get url address of lastest link to download
+        /// </summary>
+        /// <returns>
+        /// return string for lastest url
+        /// </returns>
+        public static string GetLinkToLastestVersion()
+        {
+            var command = new MySqlCommand($"SELECT ProgramData.ProgramData_Value FROM ProgramData WHERE ProgramData.ProgramData_Key='download_link';", connection);
+            var reader = command.ExecuteReader();
+            if (reader.Read())
+            {
+                string s = reader.GetString(0);
+                reader.Close();
+                return s;
+            }
+            reader.Close();
+            return null;
+        }
+
+        /// <summary>
         /// Function to check if patient exists by his id and personal number
         /// </summary>
         /// <param name="PatientID"> variable for user id </param>

@@ -22,10 +22,10 @@ namespace CoronaTracker
         {
             
             DatabaseMethods.SetupDatabase();
-            ProgramVariables.Version = "1.0.0";
+            ProgramVariables.Version = "1.1.0";
             if (!DatabaseMethods.CheckVersion().Equals(""))
             {
-                System.Diagnostics.Process.Start("https://www.trackcorona.live");
+                System.Diagnostics.Process.Start(DatabaseMethods.GetLinkToLastestVersion());
                 MessageBox.Show("You're running on older version! Please download newest version.");
                 Application.Exit();
             }
