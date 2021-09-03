@@ -26,6 +26,7 @@ This program was created for seminar school project as recession to Corona virus
 - Structure
 - App Installer
 - Others
+	- dda
         - Automatically send emails via own domain
         - Generate PDF file from HTML model
         - Automatically refresh database connection (to be safe)
