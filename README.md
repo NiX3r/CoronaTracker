@@ -23,6 +23,12 @@ This program was created for seminar school project as recession to Corona virus
 - Github Connection
 - Structure
 - App Installer
+- Others
+        - Automatically send emails via own domain
+        - Generate PDF file from HTML model
+        - Automatically refresh database connection (to be safe)
+        - Dashboard data science
+        - QR code webcam loader
 
 ## To-Do list (13/15)
 - [:heavy_check_mark:] Create main UI form
@@ -38,8 +44,8 @@ This program was created for seminar school project as recession to Corona virus
 - [:heavy_check_mark:] Create RestAPI methods
 - [:heavy_check_mark:] Add QR load patient
 - [:heavy_check_mark:] Comment whole source code
-- [:x:] Add print files (finds doc / vaccinate doc)
-- [:x:] First release with installer
+- [:heavy_check_mark:] Add print files (finds doc / vaccinate doc)
+- [:heavy_check_mark:] First release with installer
 
 ## Some little idea to do
 - Reset password through email
