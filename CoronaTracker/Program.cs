@@ -22,7 +22,7 @@ namespace CoronaTracker
         {
             
             DatabaseMethods.SetupDatabase();
-            ProgramVariables.Version = "1.1.0";
+            ProgramVariables.Version = "1.2.0";
             if (!DatabaseMethods.CheckVersion().Equals(""))
             {
                 System.Diagnostics.Process.Start(DatabaseMethods.GetLinkToLastestVersion());

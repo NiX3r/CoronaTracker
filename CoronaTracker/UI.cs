@@ -25,6 +25,8 @@ namespace CoronaTracker
         {
             InitializeComponent();
 
+            label2.Text = "version: " + ProgramVariables.Version;
+
             System.Drawing.Drawing2D.GraphicsPath path = new System.Drawing.Drawing2D.GraphicsPath();
             path.AddEllipse(0, 0, pictureBox2.Width, pictureBox2.Height);
             pictureBox2.Region = new Region(path);

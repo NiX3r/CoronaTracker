@@ -50,3 +50,4 @@ C:\Users\Secret\Dropbox\CoronaTracker\CoronaTracker\CoronaTracker\obj\Release\Co
 C:\Users\Secret\Dropbox\CoronaTracker\CoronaTracker\CoronaTracker\obj\Release\CoronaTracker.pdb
 C:\Users\Secret\Dropbox\CoronaTracker\CoronaTracker\CoronaTracker\bin\Release\OpenHtmlToPdf.dll
 C:\Users\Secret\Dropbox\CoronaTracker\CoronaTracker\CoronaTracker\obj\Release\CoronaTracker.SubForms.SettingsSubForm.resources
+C:\Users\Secret\Dropbox\CoronaTracker\CoronaTracker\CoronaTracker\obj\Release\CoronaTracker.csprojAssemblyReference.cache

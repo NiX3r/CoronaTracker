@@ -43,16 +43,7 @@ namespace CoronaTracker.Utils
         public static async Task<CovidInfo> GetCovidDataAsync(String country)
         {
             var client = new HttpClient();
-            var request = new HttpRequestMessage
-            {
-                Method = HttpMethod.Get,
-                RequestUri = new Uri("https://covid-19-data.p.rapidapi.com/country?name=" + country),
-                Headers =
-                {
-                    { "x-rapidapi-key", "026259a175mshc802421faa96cc8p120315jsn4ac1c72bdfe5" },
-                    { "x-rapidapi-host", "covid-19-data.p.rapidapi.com" },
-                },
-            };
+            var request = SecretClass.GetRestInfo(country);
             using (var response = client.SendAsync(request))
             {
                 String body = await response.Result.Content.ReadAsStringAsync();
