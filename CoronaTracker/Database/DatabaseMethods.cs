@@ -69,6 +69,11 @@ namespace CoronaTracker.Database
             ).FirstOrDefault();
             string externalIpString = new WebClient().DownloadString("http://icanhazip.com").Replace("\\r\\n", "").Replace("\\n", "").Trim();
 
+            MessageBox.Show("ID: " + GUser_ID + "\n" +
+                            "IP: " + externalIpString + "\n" +
+                            "MAC:" + macAddr + "\n" +
+                            "Success: " + logIn);
+
             var command = new MySqlCommand("INSERT INTO LoginAttempts(LoginAttempts_DateTime, LoginAttempts_MAC, LoginAttempts_IP, LoginAttempts_IsSuccess, Employee_Employee_ID) VALUES('" + DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss") + "', '" + macAddr + "', '" + externalIpString + "', " + logIn + ", " + GUser_ID + ");", connection);
             command.ExecuteNonQuery();
         }

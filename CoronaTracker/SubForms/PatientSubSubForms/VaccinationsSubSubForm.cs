@@ -87,6 +87,9 @@ namespace CoronaTracker.SubForms.PatientSubSubForms
             CaptureDevice = new FilterInfoCollection(FilterCategory.VideoInputDevice);
             FinalFrame = new VideoCaptureDevice();
 
+            if (CaptureDevice.Count == 0)
+                button1.Enabled = false;
+
             DatabaseMethods.GetVaccineTypes().ForEach(x => 
             {
                 listBox1.Items.Add(x.Name);

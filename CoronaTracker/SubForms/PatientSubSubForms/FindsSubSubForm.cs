@@ -83,6 +83,8 @@ namespace CoronaTracker.SubForms.PatientSubSubForms
 
             CaptureDevice = new FilterInfoCollection(FilterCategory.VideoInputDevice);
             FinalFrame = null;
+            if (CaptureDevice.Count == 0)
+                button1.Enabled = false;
             finds = new List<FindsInstance>();
             buttonPattern2.Hide();
             index2 = 0;

@@ -115,6 +115,7 @@
             this.textBox3.Font = new System.Drawing.Font("Nirmala UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBox3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
             this.textBox3.Location = new System.Drawing.Point(29, 133);
+            this.textBox3.MaxLength = 9;
             this.textBox3.Name = "textBox3";
             this.textBox3.Size = new System.Drawing.Size(204, 18);
             this.textBox3.TabIndex = 3;
