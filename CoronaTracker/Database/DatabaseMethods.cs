@@ -925,6 +925,13 @@ namespace CoronaTracker.Database
             }
             else
             {
+
+                if(Convert.ToInt32(ProgramVariables.Version.Replace(".", "")) > Convert.ToInt32(reader.GetString(0).Replace(".", "")))
+                {
+                    reader.Close();
+                    return "-1";
+                }
+
                 String output;
                 reader.Close();
                 command = new MySqlCommand("SELECT ProgramData_Value FROM ProgramData WHERE ProgramData_Key='download_link';", connection);

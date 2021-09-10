@@ -22,34 +22,36 @@ namespace CoronaTracker
         {
             
             DatabaseMethods.SetupDatabase();
-            ProgramVariables.Version = "1.2.1";
-            if (!DatabaseMethods.CheckVersion().Equals(""))
+            ProgramVariables.Version = "1.3.1";
+            String versionCheck = DatabaseMethods.CheckVersion();
+            if (versionCheck.Equals("-1"))
             {
-                System.Diagnostics.Process.Start(DatabaseMethods.GetLinkToLastestVersion());
+                ProgramVariables.Version = ProgramVariables.Version + " - beta";
+            }
+            else if (!versionCheck.Equals(""))
+            {
+                System.Diagnostics.Process.Start(versionCheck);
                 MessageBox.Show("You're running on older version! Please download newest version.");
                 Application.Exit();
             }
-            else
+            ProgramVariables.RefreshConnection = new RefreshConnectionTimer();
+            ProgramVariables.ProgramUI = new UI();
+            ProgramVariables.LoginUI = new LoginForm();
+
+            ProgramVariables.RefreshConnection.ChangeStatus(true);
+            ProgramVariables.ProgramUI.Hide();
+
+            int id = DatabaseMethods.HasAutoLogin();
+            if (id != 0)
             {
-                ProgramVariables.RefreshConnection = new RefreshConnectionTimer();
-                ProgramVariables.ProgramUI = new UI();
-                ProgramVariables.LoginUI = new LoginForm();
-
-                ProgramVariables.RefreshConnection.ChangeStatus(true);
-                ProgramVariables.ProgramUI.Hide();
-
-                int id = DatabaseMethods.HasAutoLogin();
-                if (id != 0)
-                {
-                    ProgramVariables.ID = id;
-                    EmployeeInstance user = DatabaseMethods.GetEmployeeByID(id);
-                    ProgramVariables.Fullname = user.Fullname;
-                    ProgramVariables.ProfileURL = user.ProfilePictureURL;
-                    Application.Run(ProgramVariables.ProgramUI);
-                }
-                else
-                    Application.Run(ProgramVariables.LoginUI);
+                ProgramVariables.ID = id;
+                EmployeeInstance user = DatabaseMethods.GetEmployeeByID(id);
+                ProgramVariables.Fullname = user.Fullname;
+                ProgramVariables.ProfileURL = user.ProfilePictureURL;
+                Application.Run(ProgramVariables.ProgramUI);
             }
+            else
+                Application.Run(ProgramVariables.LoginUI);
         }
 
     }

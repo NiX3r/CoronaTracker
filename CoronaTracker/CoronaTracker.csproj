@@ -143,6 +143,24 @@
     <Compile Include="SubForms\LoginForm.Designer.cs">
       <DependentUpon>LoginForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="SubForms\LoginSubSubForms\ForgetSubSubForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SubForms\LoginSubSubForms\ForgetSubSubForm.Designer.cs">
+      <DependentUpon>ForgetSubSubForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SubForms\LoginSubSubForms\LoginSubSubForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SubForms\LoginSubSubForms\LoginSubSubForm.Designer.cs">
+      <DependentUpon>LoginSubSubForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SubForms\LoginSubSubForms\RegisterSubSubForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SubForms\LoginSubSubForms\RegisterSubSubForm.Designer.cs">
+      <DependentUpon>RegisterSubSubForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="SubForms\PatientSubForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -211,6 +229,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="SubForms\LoginForm.resx">
       <DependentUpon>LoginForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SubForms\LoginSubSubForms\ForgetSubSubForm.resx">
+      <DependentUpon>ForgetSubSubForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SubForms\LoginSubSubForms\LoginSubSubForm.resx">
+      <DependentUpon>LoginSubSubForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SubForms\LoginSubSubForms\RegisterSubSubForm.resx">
+      <DependentUpon>RegisterSubSubForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="SubForms\PatientSubForm.resx">
       <DependentUpon>PatientSubForm.cs</DependentUpon>
