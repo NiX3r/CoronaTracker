@@ -17,7 +17,8 @@ namespace CoronaTracker.Enums
         public enum LoginWindowStatus
         {
             SignIn,
-            SignUp
+            SignUp,
+            ForgetPassword
         }
 
     }

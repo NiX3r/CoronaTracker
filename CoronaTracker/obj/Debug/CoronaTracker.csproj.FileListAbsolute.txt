@@ -102,3 +102,6 @@ C:\Users\nixii\Dropbox\CoronaTracker\CoronaTracker\CoronaTracker\obj\Debug\Coron
 C:\Users\Secret\Dropbox\CoronaTracker\CoronaTracker\CoronaTracker\obj\Debug\CoronaTracker.SubForms.SettingsSubForm.resources
 C:\Users\Secret\Dropbox\CoronaTracker\CoronaTracker\CoronaTracker\bin\Debug\OpenHtmlToPdf.dll
 C:\Users\Secret\Dropbox\CoronaTracker\CoronaTracker\CoronaTracker\obj\Debug\CoronaTracker.csprojAssemblyReference.cache
+C:\Users\Secret\Dropbox\CoronaTracker\CoronaTracker\CoronaTracker\obj\Debug\CoronaTracker.SubForms.LoginSubSubForms.ForgetSubSubForm.resources
+C:\Users\Secret\Dropbox\CoronaTracker\CoronaTracker\CoronaTracker\obj\Debug\CoronaTracker.SubForms.LoginSubSubForms.LoginSubSubForm.resources
+C:\Users\Secret\Dropbox\CoronaTracker\CoronaTracker\CoronaTracker\obj\Debug\CoronaTracker.SubForms.LoginSubSubForms.RegisterSubSubForm.resources

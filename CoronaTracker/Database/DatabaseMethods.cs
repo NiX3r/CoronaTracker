@@ -79,6 +79,26 @@ namespace CoronaTracker.Database
         }
 
         /// <summary>
+        /// Function to log attempt to reset password
+        /// </summary>
+        /// <param name="mail"> variable for email </param>
+        /// <param name="code"> variable for code </param>
+        /// <param name="employee_id"> variable for employee id </param>
+        public static void LogResetPassword(string mail, string code, int employee_id)
+        {
+            var macAddr =
+                (
+                from nic in NetworkInterface.GetAllNetworkInterfaces()
+                where nic.OperationalStatus == OperationalStatus.Up
+                select nic.GetPhysicalAddress().ToString()
+            ).FirstOrDefault();
+            string externalIpString = new WebClient().DownloadString("http://icanhazip.com").Replace("\\r\\n", "").Replace("\\n", "").Trim();
+
+            var command = new MySqlCommand("INSERT INTO ResetPasswordSession(ResetPasswordSession_IP, ResetPasswordSession_MAC, ResetPasswordSession_Code, ResetPasswordSession_DateTime, ResetPasswordSession_Status, Employee_Employee_ID) VALUES('" + externalIpString + "', '" + macAddr + "', '" + code + "', '" + DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss") + "', 'PENDING', " + employee_id + ");", connection);
+            command.ExecuteNonQuery();
+        }
+
+        /// <summary>
         /// Function to get url address of lastest link to download
         /// </summary>
         /// <returns>
@@ -146,6 +166,46 @@ namespace CoronaTracker.Database
                 reader.Close();
                 return false;
             }
+        }
+
+        /// <summary>
+        /// Function to check code validity
+        /// </summary>
+        /// <param name="id"> variable for employee id </param>
+        /// <param name="code"> variable for code </param>
+        /// <returns></returns>
+        public static bool IsCodeValid(int id, string code)
+        {
+            var command = new MySqlCommand($"SELECT ResetPasswordSession_ID FROM ResetPasswordSession WHERE ResetPasswordSession_Code='{code}' AND Employee_Employee_ID={id};", connection);
+            var reader = command.ExecuteReader();
+            if (reader.Read())
+            {
+                reader.Close();
+                return true;
+            }
+            else
+            {
+                reader.Close();
+                return false;
+            }
+        }
+
+        /// <summary>
+        /// Function to update reset password status
+        /// </summary>
+        /// <param name="id"> variable for employee id</param>
+        /// <param name="code"> variable for code </param>
+        /// <param name="status"> variable for new status </param>
+        public static void UpdateResetPasswordStatus(int id, string code, string status)
+        {
+            var command = new MySqlCommand($"UPDATE ResetPasswordSession SET ResetPasswordSession_Status='{status}' WHERE Employee_Employee_ID={id} AND ResetPasswordSession_Code='{code}';", connection);
+            command.ExecuteNonQuery();
+        }
+
+        public static void UpdatePassword(int id, string password)
+        {
+            var command = new MySqlCommand($"UPDATE Employee SET Employee_Password='{password}' WHERE Employee_ID={id};", connection);
+            command.ExecuteNonQuery();
         }
 
         /// <summary>
@@ -345,6 +405,17 @@ namespace CoronaTracker.Database
             var reader = command.ExecuteReader();
             if (reader.Read())
                 output = new EmployeeInstance(reader.GetString(0), reader.IsDBNull(1) ? "" : reader.GetString(1), reader.GetInt32(2));
+            reader.Close();
+            return output;
+        }
+
+        public static int GetEmployeeIdByEmail(string email)
+        {
+            int output = -1;
+            var command = new MySqlCommand($"SELECT Employee_ID FROM Employee WHERE Employee.Employee_Email='{email}';", connection);
+            var reader = command.ExecuteReader();
+            if (reader.Read())
+                output = reader.GetInt32(0);
             reader.Close();
             return output;
         }
@@ -941,6 +1012,42 @@ namespace CoronaTracker.Database
                 reader.Close();
                 return output;
             }
+        }
+
+        /// <summary>
+        /// Function to check if employee can reset password
+        /// </summary>
+        /// <param name="id"> variable for employee id </param>
+        /// <returns>
+        /// return true: if cannot reset password
+        /// return false: if can reset password
+        /// </returns>
+        public static bool CheckCodeValidity(int id)
+        {
+
+            var command = new MySqlCommand("SELECT ResetPasswordSession_DateTime,ResetPasswordSession_Status FROM ResetPasswordSession WHERE Employee_Employee_ID=" + id + ";", connection);
+            var reader = command.ExecuteReader();
+            bool output = true;
+
+            while (reader.Read())
+            {
+                TimeSpan difference = DateTime.Now - reader.GetDateTime(0);
+                double hours = difference.TotalHours;
+                if (hours <= 10)
+                {
+                    if (reader.GetString(1).Equals("RESET"))
+                    {
+                        output = true;
+                    }
+                    else
+                    {
+                        output = false;
+                    }
+                }
+            }
+            reader.Close();
+            return output;
+
         }
 
         /// <summary>

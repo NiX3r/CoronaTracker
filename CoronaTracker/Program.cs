@@ -26,7 +26,7 @@ namespace CoronaTracker
             String versionCheck = DatabaseMethods.CheckVersion();
             if (versionCheck.Equals("-1"))
             {
-                ProgramVariables.Version = ProgramVariables.Version + " - beta";
+                ProgramVariables.Version = ProgramVariables.Version + " - alfa";
             }
             else if (!versionCheck.Equals(""))
             {
