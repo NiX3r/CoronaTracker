@@ -15,18 +15,35 @@ namespace CoronaTracker
     static class Program
     {
 
-        private const bool isDev = false;
+        public static bool isDev = false;
 
         [STAThread]
-        static void Main()
+        static void Main(string[] args)
         {
-            
+
+            ProgramVariables.Version = "1.4.0";
+
+            if (args.Length > 0)
+            {
+                foreach(string s in args)
+                {
+                    if (s.Equals("-devmode"))
+                    {
+                        isDev = true;
+                    }
+                    if (s.Contains("-v"))
+                    {
+                        ProgramVariables.Version = s.Substring(2);
+                    }
+                }
+            }
             DatabaseMethods.SetupDatabase();
-            ProgramVariables.Version = "1.3.1";
             String versionCheck = DatabaseMethods.CheckVersion();
+            if(isDev)
+                ProgramVariables.Version += " - DEV MODE";
             if (versionCheck.Equals("-1"))
             {
-                ProgramVariables.Version = ProgramVariables.Version + " - alfa";
+                ProgramVariables.Version += " - alfa";
             }
             else if (!versionCheck.Equals(""))
             {

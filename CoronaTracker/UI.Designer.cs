@@ -50,6 +50,7 @@ namespace CoronaTracker
             this.button2 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.SubFormPanel = new System.Windows.Forms.Panel();
+            this.logLabel = new System.Windows.Forms.Label();
             this.UpperPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.MainPanel.SuspendLayout();
@@ -60,6 +61,7 @@ namespace CoronaTracker
             // UpperPanel
             // 
             this.UpperPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(33)))), ((int)(((byte)(33)))));
+            this.UpperPanel.Controls.Add(this.logLabel);
             this.UpperPanel.Controls.Add(this.pictureBox1);
             this.UpperPanel.Controls.Add(this.button8);
             this.UpperPanel.Controls.Add(this.button7);
@@ -317,6 +319,17 @@ namespace CoronaTracker
             this.SubFormPanel.Size = new System.Drawing.Size(786, 547);
             this.SubFormPanel.TabIndex = 2;
             // 
+            // logLabel
+            // 
+            this.logLabel.AutoSize = true;
+            this.logLabel.Font = new System.Drawing.Font("Nirmala UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.logLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.logLabel.Location = new System.Drawing.Point(256, 10);
+            this.logLabel.Name = "logLabel";
+            this.logLabel.Size = new System.Drawing.Size(62, 13);
+            this.logLabel.TabIndex = 11;
+            this.logLabel.Text = "Lastest log";
+            // 
             // UI
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -364,6 +377,7 @@ namespace CoronaTracker
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.Label logLabel;
     }
 }
 

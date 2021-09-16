@@ -31,7 +31,7 @@ namespace CoronaTracker.SubForms.LoginSubSubForms
             string salt2 = "zyQ@^cVX9H67";
             string saltedPassword = salt1 + password + salt2;
 
-            var sha1 = new System.Security.Cryptography.SHA1Managed();
+            var sha1 = new System.Security.Cryptography.SHA256Managed();
             var plaintextBytes = Encoding.UTF8.GetBytes(saltedPassword);
             var hashBytes = sha1.ComputeHash(plaintextBytes);
 

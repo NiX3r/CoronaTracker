@@ -25,6 +25,7 @@ namespace CoronaTracker
         {
             InitializeComponent();
 
+            logLabel.Hide();
             label2.Text = "version: " + ProgramVariables.Version;
 
             System.Drawing.Drawing2D.GraphicsPath path = new System.Drawing.Drawing2D.GraphicsPath();

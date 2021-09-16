@@ -83,8 +83,15 @@ namespace CoronaTracker.SubForms.PatientSubSubForms
 
             CaptureDevice = new FilterInfoCollection(FilterCategory.VideoInputDevice);
             FinalFrame = null;
+            listBox1.Items.Clear();
+            foreach(FilterInfo fi in CaptureDevice)
+            {
+                listBox1.Items.Add(fi.Name);
+            }
             if (CaptureDevice.Count == 0)
                 button1.Enabled = false;
+            else
+                listBox1.SelectedIndex = 0;
             finds = new List<FindsInstance>();
             buttonPattern2.Hide();
             index2 = 0;
@@ -254,7 +261,8 @@ namespace CoronaTracker.SubForms.PatientSubSubForms
         {
             if (FinalFrame == null)
             {
-                FinalFrame = new VideoCaptureDevice(CaptureDevice[0].MonikerString);
+                label10.Text = "Reading QR";
+                FinalFrame = new VideoCaptureDevice(CaptureDevice[listBox1.SelectedIndex].MonikerString);
                 FinalFrame.NewFrame += new NewFrameEventHandler(FinalFrame_NewFrame);
                 FinalFrame.Start();
             }

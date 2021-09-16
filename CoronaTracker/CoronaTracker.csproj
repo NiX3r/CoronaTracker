@@ -197,6 +197,7 @@
     <Compile Include="SubForms\VaccineTypeSubForm.Designer.cs">
       <DependentUpon>VaccineTypeSubForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Timers\HomeDateTimeTimer.cs" />
     <Compile Include="Timers\RefreshConnectionTimer.cs" />
     <Compile Include="UI.cs">
       <SubType>Form</SubType>

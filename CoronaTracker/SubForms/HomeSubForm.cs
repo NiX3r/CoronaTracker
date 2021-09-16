@@ -1,13 +1,8 @@
 ﻿using CoronaTracker.Instances;
+using CoronaTracker.Timers;
 using CoronaTracker.Utils;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Timers;
 using System.Windows.Forms;
 
 namespace CoronaTracker.SubForms
@@ -15,13 +10,25 @@ namespace CoronaTracker.SubForms
     public partial class HomeSubForm : Form
     {
 
+        HomeDateTimeTimer timer;
+
         /// <summary>
         /// Constuctor for home sub form
         /// </summary>
         public HomeSubForm()
         {
+
             InitializeComponent();
+            timer = new HomeDateTimeTimer();
+            timer.ChangeStatus(true);
+
+            label13.Text = $"{DateTime.Now.ToString("dd/MM/yyyy")}\n{DateTime.Now.ToString("HH:mm:ss")}";
+            timerDel = new timerDelDelegate(timerDelMethod);
         }
+
+        public delegate void timerDelDelegate();
+        public timerDelDelegate timerDel;
+        void timerDelMethod() { label13.Text = $"{DateTime.Now.ToString("dd/MM/yyyy")}\n{DateTime.Now.ToString("HH:mm:ss")}";}
 
         /// <summary>
         /// Function to load data on change visible
@@ -105,6 +112,11 @@ namespace CoronaTracker.SubForms
         private void label11_Click(object sender, EventArgs e)
         {
             System.Diagnostics.Process.Start("https://www.mockaroo.com");
+        }
+
+        private void HomeSubForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            timer.ChangeStatus(false);
         }
     }
 }

@@ -10,7 +10,7 @@ namespace CoronaTracker.Timers
     class RefreshConnectionTimer
     {
 
-        Timer timer;
+        private Timer timer;
 
         /// <summary>
         /// Constructor for refresh mysql database connection
