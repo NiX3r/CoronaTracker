@@ -51,8 +51,9 @@ This program was created for seminar school project as recession to Corona virus
 - [:heavy_check_mark:] First release with installer
 
 ## Some little idea to do
-- Reset password through email
+- Reset password through email [:heavy_check_mark:]
 - Send print files through email
+- Login after push enter
 
 ## Used technologies
 - [Old RestAPI - TrackCorona](https://www.trackcorona.live)
