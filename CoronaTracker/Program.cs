@@ -21,7 +21,7 @@ namespace CoronaTracker
         static void Main(string[] args)
         {
 
-            ProgramVariables.Version = "1.4.0";
+            ProgramVariables.Version = "1.5.0";
 
             if (args.Length > 0)
             {
