@@ -17,8 +17,9 @@ namespace CoronaTracker.Enums
         {
             User,
             Emloyee,
-            Boss,
-            Developer
+            Leader,
+            Developer,
+            Null
         }
     }
 }

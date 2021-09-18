@@ -118,6 +118,7 @@
     <Compile Include="Instances\CovidInfo.cs" />
     <Compile Include="Instances\EmailWriterClass.cs" />
     <Compile Include="Instances\GeneratePdfClass.cs" />
+    <Compile Include="Instances\LogClass.cs" />
     <Compile Include="Instances\SecretClass.cs" />
     <Compile Include="SubForms\CountriesSubForm.cs">
       <SubType>Form</SubType>

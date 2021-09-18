@@ -1,4 +1,5 @@
-﻿using CoronaTracker.Instances;
+﻿using CoronaTracker.Enums;
+using CoronaTracker.Instances;
 using CoronaTracker.SubForms;
 using CoronaTracker.Timers;
 using System;
@@ -6,6 +7,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using static CoronaTracker.Enums.EmployeePoseEnum;
 
 namespace CoronaTracker.Utils
 {
@@ -24,6 +26,8 @@ namespace CoronaTracker.Utils
         public static String Fullname { get; set; }
         // Instance for logged in employee profile picture url
         public static String ProfileURL { get; set; }
+        // Instance for logged in employee pose
+        public static EmployeePose Pose { get; set; }
         // Instance for logged in employee id
         public static int ID { get; set; }
         // Instance for covid data from every country ( does not work yet )

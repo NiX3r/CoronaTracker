@@ -12,6 +12,7 @@ using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static CoronaTracker.Enums.EmployeePoseEnum;
 
 namespace CoronaTracker
 {
@@ -118,14 +119,22 @@ namespace CoronaTracker
                 OpenChildForm(new HomeSubForm(), (Button)sender);
             else if (((Button)sender).Text.Equals("Countries"))
                 OpenChildForm(new CountriesSubForm(), (Button)sender);
-            else if (((Button)sender).Text.Equals("Vaccine"))
+            else if (((Button)sender).Text.Equals("Vaccine") && HasAccess())
                 OpenChildForm(new VaccineTypeSubForm(), (Button)sender);
-            else if (((Button)sender).Text.Equals("Patient"))
+            else if (((Button)sender).Text.Equals("Patient") && HasAccess())
                 OpenChildForm(new PatientSubForm(), (Button)sender);
             else if (((Button)sender).Text.Equals("Dashboard"))
                 OpenChildForm(new DashboardSubForm(), (Button)sender);
-            else if (((Button)sender).Text.Equals("Settings"))
+            else if (((Button)sender).Text.Equals("Settings") && HasAccess())
                 OpenChildForm(new SettingsSubForm(), (Button)sender);
+        }
+
+        private bool HasAccess()
+        {
+            if (ProgramVariables.Pose == EmployeePose.User)
+                return false;
+            else
+                return true;
         }
 
         public Form GetCurrentForm()

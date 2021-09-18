@@ -1,4 +1,5 @@
 ﻿using CoronaTracker.Database.DatabaseInstances;
+using CoronaTracker.Instances;
 using CoronaTracker.Utils;
 using MySqlConnector;
 using System;
@@ -10,6 +11,7 @@ using System.Net.NetworkInformation;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using static CoronaTracker.Enums.EmployeePoseEnum;
 
 namespace CoronaTracker.Database
 {
@@ -40,17 +42,19 @@ namespace CoronaTracker.Database
 
         public static void RefreshDatabaseConnection()
         {
+            LogClass.Log("Trying to refresh connection");
             connection.Clone();
             connection = DatabaseSecret.GetConnection();
             try
             {
-                connection.Open();
+                connection.Open(); 
+                LogClass.Log("Connection refreshed successfully");
                 Debug.WriteLine("MySQL connection opened successfully");
             }
             catch (Exception ex)
             {
+                LogClass.Log("Connection unsuccessfully refreshed. Error: " + ex.Message);
                 Debug.WriteLine("MySQL connection opened unsuccessfully\nError: " + ex.Message);
-
             }
         }
 
@@ -61,6 +65,7 @@ namespace CoronaTracker.Database
         /// <param name="logIn"> variable for log in statement </param>
         private static void LogLogIn(int GUser_ID, bool logIn)
         {
+            LogClass.Log("Starting log login");
             var macAddr =
                 (
                 from nic in NetworkInterface.GetAllNetworkInterfaces()
@@ -76,6 +81,7 @@ namespace CoronaTracker.Database
 
             var command = new MySqlCommand("INSERT INTO LoginAttempts(LoginAttempts_DateTime, LoginAttempts_MAC, LoginAttempts_IP, LoginAttempts_IsSuccess, Employee_Employee_ID) VALUES('" + DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss") + "', '" + macAddr + "', '" + externalIpString + "', " + logIn + ", " + GUser_ID + ");", connection);
             command.ExecuteNonQuery();
+            LogClass.Log("Login logged");
         }
 
         /// <summary>
@@ -86,6 +92,7 @@ namespace CoronaTracker.Database
         /// <param name="employee_id"> variable for employee id </param>
         public static void LogResetPassword(string mail, string code, int employee_id)
         {
+            LogClass.Log("Starting log reset password");
             var macAddr =
                 (
                 from nic in NetworkInterface.GetAllNetworkInterfaces()
@@ -96,6 +103,7 @@ namespace CoronaTracker.Database
 
             var command = new MySqlCommand("INSERT INTO ResetPasswordSession(ResetPasswordSession_IP, ResetPasswordSession_MAC, ResetPasswordSession_Code, ResetPasswordSession_DateTime, ResetPasswordSession_Status, Employee_Employee_ID) VALUES('" + externalIpString + "', '" + macAddr + "', '" + code + "', '" + DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss") + "', 'PENDING', " + employee_id + ");", connection);
             command.ExecuteNonQuery();
+            LogClass.Log("Reset password logged");
         }
 
         /// <summary>
@@ -106,6 +114,7 @@ namespace CoronaTracker.Database
         /// </returns>
         public static string GetLinkToLastestVersion()
         {
+            LogClass.Log("Starting get link to lastest version");
             var command = new MySqlCommand($"SELECT ProgramData.ProgramData_Value FROM ProgramData WHERE ProgramData.ProgramData_Key='download_link';", connection);
             var reader = command.ExecuteReader();
             if (reader.Read())
@@ -115,6 +124,7 @@ namespace CoronaTracker.Database
                 return s;
             }
             reader.Close();
+            LogClass.Log("Got link to lastest version");
             return null;
         }
 
@@ -130,16 +140,19 @@ namespace CoronaTracker.Database
         /// </returns>
         public static bool IsPatientExist(int PatientID, int PatientFirstPersonalNumber, int PatientSecondPersonalNumber)
         {
+            LogClass.Log($"Check if {PatientID} patient exists");
             var command = new MySqlCommand($"SELECT Patient.Patient_ID FROM Patient WHERE Patient.Patient_ID={PatientID} AND Patient.Patient_PersonalNumberFirst={PatientFirstPersonalNumber} AND Patient.Patient_PersonalNumberSecond={PatientSecondPersonalNumber};", connection);
             var reader = command.ExecuteReader();
             if (reader.Read())
             {
                 reader.Close();
+                LogClass.Log($"Patient {PatientID} exists");
                 return true;
             }
             else
             {
                 reader.Close();
+                LogClass.Log($"Patient {PatientID} does not exists");
                 return false;
             }
         }
@@ -154,16 +167,19 @@ namespace CoronaTracker.Database
         /// </returns>
         public static bool IsPatientVaccinate(int PatientID)
         {
+            LogClass.Log($"Check if patient {PatientID} vaccinated");
             var command = new MySqlCommand($"SELECT VaccineAction.VaccineAction_ID FROM VaccineAction WHERE VaccineAction.Patient_Patient_ID={PatientID};", connection);
             var reader = command.ExecuteReader();
             if (reader.Read())
             {
                 reader.Close();
+                LogClass.Log($"Patient {PatientID} is vaccinated");
                 return true;
             }
             else
             {
                 reader.Close();
+                LogClass.Log($"Patient {PatientID} is not vaccinated");
                 return false;
             }
         }
@@ -176,16 +192,19 @@ namespace CoronaTracker.Database
         /// <returns></returns>
         public static bool IsCodeValid(int id, string code)
         {
+            LogClass.Log($"Check if code {code} is valid for {id}");
             var command = new MySqlCommand($"SELECT ResetPasswordSession_ID FROM ResetPasswordSession WHERE ResetPasswordSession_Code='{code}' AND Employee_Employee_ID={id};", connection);
             var reader = command.ExecuteReader();
             if (reader.Read())
             {
                 reader.Close();
+                LogClass.Log($"Code {code} for {id} is valid");
                 return true;
             }
             else
             {
                 reader.Close();
+                LogClass.Log($"Code {code} for {id} is not valid");
                 return false;
             }
         }
@@ -198,14 +217,18 @@ namespace CoronaTracker.Database
         /// <param name="status"> variable for new status </param>
         public static void UpdateResetPasswordStatus(int id, string code, string status)
         {
+            LogClass.Log($"Updating password reset status for {id} to {status}");
             var command = new MySqlCommand($"UPDATE ResetPasswordSession SET ResetPasswordSession_Status='{status}' WHERE Employee_Employee_ID={id} AND ResetPasswordSession_Code='{code}';", connection);
             command.ExecuteNonQuery();
+            LogClass.Log($"Password reset status changed for {id} to {status}");
         }
 
         public static void UpdatePassword(int id, string password)
         {
+            LogClass.Log($"Updating password for {id} to {password}");
             var command = new MySqlCommand($"UPDATE Employee SET Employee_Password='{password}' WHERE Employee_ID={id};", connection);
             command.ExecuteNonQuery();
+            LogClass.Log($"Password updated for {id} to {password}");
         }
 
         /// <summary>
@@ -216,12 +239,14 @@ namespace CoronaTracker.Database
         /// </returns>
         public static int GetPatientsCount()
         {
+            LogClass.Log($"Getting patients count");
             int output = 0;
             var command = new MySqlCommand("SELECT COUNT(Patient.Patient_ID) FROM Patient;", connection);
             var reader = command.ExecuteReader();
             reader.Read();
             output = reader.GetInt32(0);
             reader.Close();
+            LogClass.Log($"Got patients count. Output: {output}");
             return output;
         }
 
@@ -233,12 +258,14 @@ namespace CoronaTracker.Database
         /// </returns>
         public static int GetVacinnatePatientsCount()
         {
+            LogClass.Log($"Getting vaccinate patients count");
             int output = 0;
             var command = new MySqlCommand("SELECT COUNT(VaccineAction.VaccineAction_ID) FROM VaccineAction;", connection);
             var reader = command.ExecuteReader();
             reader.Read();
             output = reader.GetInt32(0);
             reader.Close();
+            LogClass.Log($"Got vaccinate patients count. Output: {output}");
             return output;
         }
 
@@ -345,6 +372,41 @@ namespace CoronaTracker.Database
             var reader = command.ExecuteReader();
             if (reader.Read())
                 output = reader.GetString(0);
+            reader.Close();
+            return output;
+        }
+
+        /// <summary>
+        /// Function to load pose by ID
+        /// </summary>
+        /// <param name="id"> variable for id of employee </param>
+        /// <returns>
+        /// return role / pose of employee
+        /// </returns>
+        public static EmployeePose GetPoseByID(int id)
+        {
+            EmployeePose output = EmployeePose.Null;
+            var command = new MySqlCommand($"SELECT Employee.Employee_Pose FROM Employee WHERE Employee.Employee_ID={id};", connection);
+            var reader = command.ExecuteReader();
+            if (reader.Read())
+            {
+                string s = reader.GetString(0);
+                switch (s)
+                {
+                    case "guest":
+                        output = EmployeePose.User;
+                        break;
+                    case "employee":
+                        output = EmployeePose.Emloyee;
+                        break;
+                    case "leader":
+                        output = EmployeePose.Leader;
+                        break;
+                    case "developer":
+                        output = EmployeePose.Developer;
+                        break;
+                }
+            }
             reader.Close();
             return output;
         }
@@ -1164,6 +1226,7 @@ namespace CoronaTracker.Database
                     ProgramVariables.ID = reader.GetInt32(0);
                     ProgramVariables.Fullname = reader.GetString(1);
                     ProgramVariables.ProfileURL = reader.IsDBNull(2) ? "" : reader.GetString(2);
+                    ProgramVariables.Pose = GetPoseByID(ProgramVariables.ID);
                     reader.Close();
                     LogLogIn(ID, true);
                     return 1;

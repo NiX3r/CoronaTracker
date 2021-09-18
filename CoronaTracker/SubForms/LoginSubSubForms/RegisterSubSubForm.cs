@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CoronaTracker.Database;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -46,7 +47,28 @@ namespace CoronaTracker.SubForms.LoginSubSubForms
 
         private void button1_Click(object sender, EventArgs e)
         {
+            // Checks basic informations
+            if (!textBox1.Text.Equals("") && !textBox2.Text.Equals("") && !textBox3.Text.Equals("") && !textBox4.Text.Equals("") && !textBox5.Text.Equals("") &&
+                textBox3.Text.Length == 9 && textBox2.Text.Equals(textBox5.Text) && textBox1.Text.Contains(".") && textBox1.Text.Contains("@"))
+            {
+                if (DatabaseMethods.AddUser(textBox4.Text, textBox1.Text, Convert.ToInt32(textBox3.Text), PasswordEncryption(textBox2.Text)))
+                {
+                    button1.Text = "Account created! Please log in";
+                    button1.BackColor = Color.Lime;
+                    button1.Enabled = false;
+                }
+                else
+                    MessageBox.Show("Account cannot be create!");
+            }
+        }
 
+        private void textBox3_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!Char.IsNumber(e.KeyChar) && !Char.IsControl(e.KeyChar))
+            {
+                e.Handled = true;
+                return;
+            }
         }
     }
 }
