@@ -277,12 +277,14 @@ namespace CoronaTracker.Database
         /// </returns>
         public static int GetInfectionCount()
         {
+            LogClass.Log($"Getting infection count");
             int output = 0;
             var command = new MySqlCommand("SELECT COUNT(Infection.Infection_ID) FROM Infection;", connection);
             var reader = command.ExecuteReader();
             reader.Read();
             output = reader.GetInt32(0);
             reader.Close();
+            LogClass.Log($"Got infection count. Output: {output}");
             return output;
         }
 
@@ -294,12 +296,14 @@ namespace CoronaTracker.Database
         /// </returns>
         public static int GetConfirmedPatientsCount()
         {
+            LogClass.Log($"Getting confirmed patients count");
             int output = 0;
             var command = new MySqlCommand($"SELECT COUNT(Infection.Infection_ID) FROM Infection WHERE Infection.Infection_Found > '{DateTime.Now.AddDays(-14).ToString("yyyy-MM-dd HH:mm:ss")}' AND Infection.Infection_Found < '{DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss")}';", connection);
             var reader = command.ExecuteReader();
             reader.Read();
             output = reader.GetInt32(0);
             reader.Close();
+            LogClass.Log($"Got confirmed patients count. Output: {output}");
             return output;
         }
 
@@ -313,12 +317,14 @@ namespace CoronaTracker.Database
         /// </returns>
         public static int GetPatientIDByPersonalNumber(string first, string second)
         {
+            LogClass.Log($"Gettings patient ID by personal number {first} / {second}");
             int output = 0;
             var command = new MySqlCommand($"SELECT Patient.Patient_ID FROM Patient WHERE Patient.Patient_PersonalNumberFirst='{first}' AND Patient.Patient_PersonalNumberSecond='{second}';", connection);
             var reader = command.ExecuteReader();
             reader.Read();
             output = reader.GetInt32(0);
             reader.Close();
+            LogClass.Log($"Got patient ID. Output: {output}");
             return output;
         }
 
@@ -331,12 +337,14 @@ namespace CoronaTracker.Database
         /// </returns>
         public static string GetVaccineTypeString(int id)
         {
+            LogClass.Log($"Getting vaccine type string by ID {id}");
             string output = null;
             var command = new MySqlCommand($"SELECT VaccineType.VaccineType_Name FROM VaccineType WHERE VaccineType.VaccineType_ID={id};", connection);
             var reader = command.ExecuteReader();
             reader.Read();
             output = reader.GetString(0);
             reader.Close();
+            LogClass.Log($"Got vaccine type. Output: {output}");
             return output;
         }
 
@@ -349,12 +357,14 @@ namespace CoronaTracker.Database
         /// </returns>
         public static string GetEmployeeString(int id)
         {
+            LogClass.Log($"Getting employee fullname by ID {id}");
             string output = "";
             var command = new MySqlCommand($"SELECT Employee.Employee_Fullname FROM Employee WHERE Employee.Employee_ID={id};", connection);
             var reader = command.ExecuteReader();
             if (reader.Read())
                 output = reader.GetString(0);
             reader.Close();
+            LogClass.Log($"Got employee fullname. Output: {output}");
             return output;
         }
 
@@ -367,12 +377,14 @@ namespace CoronaTracker.Database
         /// </returns>
         public static string GetEmployeeRoleByEmail(string email)
         {
+            LogClass.Log($"Getting employee role by email {email}");
             string output = "";
             var command = new MySqlCommand($"SELECT Employee.Employee_Pose FROM Employee WHERE Employee.Employee_Email='{email}';", connection);
             var reader = command.ExecuteReader();
             if (reader.Read())
                 output = reader.GetString(0);
             reader.Close();
+            LogClass.Log($"Got employee email. Output: {output}");
             return output;
         }
 
@@ -385,6 +397,7 @@ namespace CoronaTracker.Database
         /// </returns>
         public static EmployeePose GetPoseByID(int id)
         {
+            LogClass.Log($"Getting employee pose by ID {id}");
             EmployeePose output = EmployeePose.Null;
             var command = new MySqlCommand($"SELECT Employee.Employee_Pose FROM Employee WHERE Employee.Employee_ID={id};", connection);
             var reader = command.ExecuteReader();
@@ -408,6 +421,7 @@ namespace CoronaTracker.Database
                 }
             }
             reader.Close();
+            LogClass.Log($"Got employee pose. Output: {output.ToString()}");
             return output;
         }
 
@@ -421,6 +435,7 @@ namespace CoronaTracker.Database
         /// </returns>
         public static bool HasEmployeePermitChangePose()
         {
+            LogClass.Log($"Check if logged in employee has permit to change pose");
             bool output = false;
             var command = new MySqlCommand($"SELECT Employee.Employee_Pose FROM Employee WHERE Employee.Employee_ID={ProgramVariables.ID};", connection);
             var reader = command.ExecuteReader();
@@ -428,6 +443,7 @@ namespace CoronaTracker.Database
                 if (reader.GetString(0).Equals("developer") || reader.GetString(0).Equals("leader"))
                     output = true;
             reader.Close();
+            LogClass.Log($"Employe permit to change pose: {output.ToString()}");
             return output;
         }
 
@@ -440,6 +456,7 @@ namespace CoronaTracker.Database
         /// </returns>
         public static int HasAutoLogin()
         {
+            LogClass.Log($"Check if current computer has auto login");
             string mac = GetMACAddress();
             string ip = GetIPAddress();
 
@@ -449,6 +466,7 @@ namespace CoronaTracker.Database
             if (reader.Read())
                 output = reader.GetInt16(0);
             reader.Close();
+            LogClass.Log($"Current computer auto login output: {output}");
             return output;
         }
 
@@ -462,23 +480,27 @@ namespace CoronaTracker.Database
         /// </returns>
         public static EmployeeInstance GetEmployeeByID(int ID)
         {
+            LogClass.Log($"Getting employee by id {ID}");
             EmployeeInstance output = null;
             var command = new MySqlCommand($"SELECT Employee_Fullname,Employee_ProfileURL,Employee_Phone FROM Employee WHERE Employee.Employee_ID={ID};", connection);
             var reader = command.ExecuteReader();
             if (reader.Read())
                 output = new EmployeeInstance(reader.GetString(0), reader.IsDBNull(1) ? "" : reader.GetString(1), reader.GetInt32(2));
             reader.Close();
+            LogClass.Log($"Got employee. Output: {output.ToString()}");
             return output;
         }
 
         public static int GetEmployeeIdByEmail(string email)
         {
+            LogClass.Log($"Getting employee ID by email {email}");
             int output = -1;
             var command = new MySqlCommand($"SELECT Employee_ID FROM Employee WHERE Employee.Employee_Email='{email}';", connection);
             var reader = command.ExecuteReader();
             if (reader.Read())
                 output = reader.GetInt32(0);
             reader.Close();
+            LogClass.Log($"Got employee ID. Output: {output}");
             return output;
         }
 
@@ -492,6 +514,7 @@ namespace CoronaTracker.Database
         /// </returns>
         public static PatientVaccineAction GetPatientVaccine(int patientID)
         {
+            LogClass.Log($"Getting patient vaccine by ID {patientID}");
             PatientVaccineAction output;
             var command = new MySqlCommand($"SELECT * FROM VaccineAction WHERE VaccineAction.Patient_Patient_ID={patientID};", connection);
             var reader = command.ExecuteReader();
@@ -501,10 +524,12 @@ namespace CoronaTracker.Database
                 reader.Close();
                 output.VaccineTypeString = GetVaccineTypeString(output.VaccineType);
                 output.EmployeeString = GetEmployeeString(output.Employee);
+                LogClass.Log($"Got patient vaccine. Output: {output.ToString()}");
                 return output;
             }
             else
             {
+                LogClass.Log($"Patient with ID {patientID} has not any vaccine");
                 reader.Close();
                 return null;
             }
@@ -520,6 +545,7 @@ namespace CoronaTracker.Database
         /// </returns>
         public static PatientInstance GetPatient(int id)
         {
+            LogClass.Log($"Getting patient by ID {id}");
             PatientInstance output;
             var command = new MySqlCommand($"SELECT * FROM Patient WHERE Patient.Patient_ID={id};", connection);
             var reader = command.ExecuteReader();
@@ -527,11 +553,13 @@ namespace CoronaTracker.Database
             {
                 output = new PatientInstance(reader.GetString(1), reader.GetString(2), reader.GetString(3), reader.GetString(4), reader.GetInt32(5), reader.GetInt32(6), reader.GetString(7));
                 reader.Close();
+                LogClass.Log($"Got patient by ID. Output: {output.ToString()}");
                 return output;
             }
             else
             {
                 reader.Close();
+                LogClass.Log($"Patient with ID {id} does not exists");
                 return null;
             }
         }
@@ -546,6 +574,7 @@ namespace CoronaTracker.Database
         /// </returns>
         public static VaccinateInstance GetVaccinate(int patientId)
         {
+            LogClass.Log($"Getting vaccinate by ID {patientId}");
             VaccinateInstance output;
             var command = new MySqlCommand($"SELECT * FROM VaccineAction WHERE Patient_Patient_ID={patientId};", connection);
             var reader = command.ExecuteReader();
@@ -553,11 +582,13 @@ namespace CoronaTracker.Database
             {
                 output = new VaccinateInstance(reader.GetDateTime(1), reader.GetDateTime(2), reader.GetString(3));
                 reader.Close();
+                LogClass.Log($"Got vaccinate {output.ToString()}");
                 return output;
             }
             else
             {
                 reader.Close();
+                LogClass.Log($"Vaccinate with ID {patientId} does not exists");
                 return null;
             }
         }
@@ -572,6 +603,7 @@ namespace CoronaTracker.Database
         /// </returns>
         public static VaccineTypeInstance GetVaccineType(string name)
         {
+            LogClass.Log($"Getting vaccine type by name {name}");
             VaccineTypeInstance output;
             var command = new MySqlCommand($"SELECT * FROM VaccineType WHERE VaccineType.VaccineType_Name='{name}';", connection);
             var reader = command.ExecuteReader();
@@ -579,11 +611,13 @@ namespace CoronaTracker.Database
             {
                 output = new VaccineTypeInstance(reader.GetInt32(0), reader.GetString(1), reader.GetString(2));
                 reader.Close();
+                LogClass.Log($"Got vaccine type {output.ToString()}");
                 return output;
             }
             else
             {
                 reader.Close();
+                LogClass.Log($"Vaccine type with name {name} does not exists");
                 return null;
             }
         }
@@ -596,6 +630,7 @@ namespace CoronaTracker.Database
         /// </returns>
         public static List<VaccineTypeInstance> GetVaccineTypes()
         {
+            LogClass.Log($"Getting all vaccine types");
             List<VaccineTypeInstance> output = new List<VaccineTypeInstance>();
             var command = new MySqlCommand("SELECT * FROM VaccineType;", connection);
             var reader = command.ExecuteReader();
@@ -604,6 +639,7 @@ namespace CoronaTracker.Database
                 output.Add(new VaccineTypeInstance(reader.GetInt32(0), reader.GetString(1), reader.GetString(2)));
             }
             reader.Close();
+            LogClass.Log($"Got all vaccine types. Count: {output.Count}");
             return output;
         }
 
@@ -615,6 +651,7 @@ namespace CoronaTracker.Database
         /// </returns>
         public static List<PatientInstance> GetPatients()
         {
+            LogClass.Log($"Getting all patients");
             List<PatientInstance> output = new List<PatientInstance>();
             var command = new MySqlCommand("SELECT * FROM Patient;", connection);
             var reader = command.ExecuteReader();
@@ -623,6 +660,7 @@ namespace CoronaTracker.Database
                 output.Add(new PatientInstance(reader.GetString(1), reader.GetString(2), reader.GetString(3), reader.GetString(4), reader.GetInt32(5), reader.GetInt32(6), reader.GetString(7)));
             }
             reader.Close();
+            LogClass.Log($"Got all patients. Count: {output.Count}");
             return output;
         }
 
@@ -636,6 +674,7 @@ namespace CoronaTracker.Database
         /// </returns>
         public static List<FindsInstance> GetFinds(String firstCode, String secondCode)
         {
+            LogClass.Log($"Gettings all finds by personal number {firstCode} / {secondCode}");
             List<FindsInstance> output = new List<FindsInstance>();
             var command = new MySqlCommand($"SELECT Infection.Infection_ID, Infection.Infection_Found, Employee.Employee_Fullname, Patient.Patient_PersonalNumberFirst, Patient.Patient_PersonalNumberSecond FROM ((Infection INNER JOIN Employee ON Infection.Employee_Employee_ID = Employee.Employee_ID) INNER JOIN Patient ON Infection.Patient_Patient_ID = Patient.Patient_ID) WHERE Patient.Patient_PersonalNumberFirst='{firstCode}' AND Patient.Patient_PersonalNumberSecond='{secondCode}';", connection);
             var reader = command.ExecuteReader();
@@ -644,6 +683,7 @@ namespace CoronaTracker.Database
                 output.Add(new FindsInstance(reader.GetInt32(0), reader.GetDateTime(1), reader.GetString(2)));
             }
             reader.Close();
+            LogClass.Log($"Got all finds. Count: {output.Count}");
             return output;
         }
 
@@ -655,6 +695,7 @@ namespace CoronaTracker.Database
         /// </returns>
         public static List<int> GetInfections()
         {
+            LogClass.Log($"Getting all infections");
             List<int> output = new List<int>();
 
             DateTime dt = DateTime.Now.AddMonths(-5);
@@ -674,7 +715,7 @@ namespace CoronaTracker.Database
                     break;
                 }
             }
-
+            LogClass.Log($"Got all infection. Count: {output.Count}");
             return output;
         }
 
@@ -687,6 +728,7 @@ namespace CoronaTracker.Database
         /// </returns>
         public static bool AddAutoLoginSession()
         {
+            LogClass.Log($"Adding auto login session");
             string mac = GetMACAddress();
             string ip = GetIPAddress();
 
@@ -695,6 +737,7 @@ namespace CoronaTracker.Database
             if (reader.Read())
             {
                 reader.Close();
+                LogClass.Log($"Auto login session already exists");
                 return false;
             }
 
@@ -702,6 +745,7 @@ namespace CoronaTracker.Database
             string query = $"INSERT INTO AutoLoginSession(AutoLoginSession_MAC, AutoLoginSession_IP, AutoLoginSession_StartDate, Employee_Employee_ID) VALUES('{mac}', '{ip}', '{DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss")}', {ProgramVariables.ID});";
             command = new MySqlCommand(query, connection);
             command.ExecuteNonQuery();
+            LogClass.Log($"Added auto login session");
             return true;
         }
 
@@ -753,17 +797,20 @@ namespace CoronaTracker.Database
         /// </returns>
         public static bool AddPatientVaccine(DateTime first, DateTime second, int type, int patient, int employee)
         {
+            LogClass.Log($"Adding patient vaccine for {patient}");
             var command = new MySqlCommand("SELECT VaccineAction_ID FROM VaccineAction WHERE Patient_Patient_ID=" + patient + ";", connection);
             var reader = command.ExecuteReader();
             if (reader.Read())
             {
                 reader.Close();
+                LogClass.Log($"Vaccine for patient {patient} already exists");
                 return false;
             }
             reader.Close();
             string query = $"INSERT INTO VaccineAction(VaccineAction_FirstDate, VaccineAction_SecondDate, VaccineType_VaccineType_ID, Patient_Patient_ID, Employee_Employee_ID) VALUES('{first.ToString("yyyy-MM-dd HH:mm:ss")}', '{second.ToString("yyyy-MM-dd HH:mm:ss")}', {type}, {patient}, {employee});";
             command = new MySqlCommand(query, connection);
             command.ExecuteNonQuery();
+            LogClass.Log($"Added patient vaccine");
             return true;
         }
 

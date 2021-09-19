@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -21,9 +22,9 @@ namespace CoronaTracker.Instances
             writer = new StreamWriter("log.txt", true);
         }
 
-        public static void Log(string value)
+        public static void Log(string value, [CallerLineNumber] int lineNumber = 0, [CallerMemberName] string caller = null)
         {
-            log += $"\n[{DateTime.Now.ToString("dd/MM/yyyy HH:mm:ss")}] » {value}";
+            log += $"\n[{DateTime.Now.ToString("dd/MM/yyyy HH:mm:ss")}] ({caller}:{lineNumber}) » {value}";
             index++;
             if(index == 100)
             {
