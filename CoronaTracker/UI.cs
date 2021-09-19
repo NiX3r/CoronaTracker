@@ -1,4 +1,5 @@
-﻿using CoronaTracker.SubForms;
+﻿using CoronaTracker.Instances;
+using CoronaTracker.SubForms;
 using CoronaTracker.Timers;
 using CoronaTracker.Utils;
 using System;
@@ -24,6 +25,7 @@ namespace CoronaTracker
 
         public UI()
         {
+            LogClass.Log($"Start initialize sub sub form");
             InitializeComponent();
 
             logLabel.Hide();
@@ -34,6 +36,7 @@ namespace CoronaTracker
             pictureBox2.Region = new Region(path);
 
             OpenChildForm(new HomeSubForm(), button6);
+            LogClass.Log($"Sub sub form successfully initialized");
 
         }
         
@@ -43,8 +46,10 @@ namespace CoronaTracker
         private extern static void SendMessage(System.IntPtr hWnd, int wMsg, int wParam, int lParam);
         private void UpperPanel_MouseDown(object sender, MouseEventArgs e)
         {
+            LogClass.Log($"UpperPanel mouse down event handler start");
             ReleaseCapture();
             SendMessage(this.Handle, 0x112, 0xf012, 0);
+            LogClass.Log($"UpperPanel mouse down event handler end");
         }
 
         public void UpdateProfilePicture()
@@ -54,7 +59,7 @@ namespace CoronaTracker
 
         public void OpenChildForm(Form childForm, Button button)
         {
-
+            LogClass.Log($"Start open child form");
             // Setup child form
             if (currentChildForm != null)
             {
@@ -79,13 +84,16 @@ namespace CoronaTracker
             currentButton.TextAlign = ContentAlignment.MiddleRight;
             currentButton.BackColor = Color.FromArgb(44, 44, 44);
             currentButton.TextAlign = ContentAlignment.MiddleRight;
+            LogClass.Log($"Successfully opened child form");
         }
 
         private void button7_Click(object sender, EventArgs e)
         {
-
+            LogClass.Log($"button7 click event handler start");
             File.Delete("temp.jpg");
             File.Delete("temp.pdf");
+            LogClass.Log($"Ending program");
+            LogClass.Save();
             ProgramVariables.LoginUI.EndApp();
             Application.Exit();
         }
@@ -97,24 +105,29 @@ namespace CoronaTracker
 
         private void UI_VisibleChanged(object sender, EventArgs e)
         {
-            if(ProgramVariables.Fullname != null)
+            LogClass.Log($"UI visible changed event handler start");
+            if (ProgramVariables.Fullname != null)
             {
                 label4.Text = ProgramVariables.Fullname;
                 pictureBox2.ImageLocation = ProgramVariables.ProfileURL;
             }
+            LogClass.Log($"UI visible changed event handler end");
         }
 
         private void label3_Click(object sender, EventArgs e)
         {
+            LogClass.Log($"label3 click event handler start");
             ProgramVariables.Fullname = null;
             ProgramVariables.ID = 0;
             ProgramVariables.ProfileURL = null;
             ProgramVariables.LoginUI.Show();
             this.Hide();
+            LogClass.Log($"label3 click event handler end");
         }
 
         private void button6_Click(object sender, EventArgs e)
         {
+            LogClass.Log($"button6 click event handler start");
             if (((Button)sender).Text.Equals("Home"))
                 OpenChildForm(new HomeSubForm(), (Button)sender);
             else if (((Button)sender).Text.Equals("Countries"))
@@ -127,6 +140,7 @@ namespace CoronaTracker
                 OpenChildForm(new DashboardSubForm(), (Button)sender);
             else if (((Button)sender).Text.Equals("Settings") && HasAccess())
                 OpenChildForm(new SettingsSubForm(), (Button)sender);
+            LogClass.Log($"button6 click event handler end");
         }
 
         private bool HasAccess()

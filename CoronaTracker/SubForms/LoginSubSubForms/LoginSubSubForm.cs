@@ -1,4 +1,5 @@
 ﻿using CoronaTracker.Database;
+using CoronaTracker.Instances;
 using CoronaTracker.Utils;
 using System;
 using System.Collections.Generic;
@@ -16,7 +17,9 @@ namespace CoronaTracker.SubForms.LoginSubSubForms
     {
         public LoginSubSubForm()
         {
+            LogClass.Log($"Start initialize sub sub form");
             InitializeComponent();
+            LogClass.Log($"Sub sub form successfully initialized");
         }
 
         /// <summary>
@@ -48,6 +51,7 @@ namespace CoronaTracker.SubForms.LoginSubSubForms
 
         private void button1_Click(object sender, EventArgs e)
         {
+            LogClass.Log($"button1 click event handler start");
             if (!textBox1.Text.Equals("") && !textBox2.Text.Equals(""))
             {
                 switch (DatabaseMethods.LogIn(textBox1.Text, PasswordEncryption(textBox2.Text)))
@@ -75,6 +79,7 @@ namespace CoronaTracker.SubForms.LoginSubSubForms
             {
                 MessageBox.Show("Please type password and email!");
             }
+            LogClass.Log($"button1 click event handler end");
         }
     }
 }

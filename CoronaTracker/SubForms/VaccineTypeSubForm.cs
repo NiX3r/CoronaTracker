@@ -1,5 +1,6 @@
 ﻿using CoronaTracker.Database;
 using CoronaTracker.Database.DatabaseInstances;
+using CoronaTracker.Instances;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -27,6 +28,7 @@ namespace CoronaTracker.SubForms
         /// </summary>
         public VaccineTypeSubForm()
         {
+            LogClass.Log($"Start initialize sub sub form");
             InitializeComponent();
 
             vaccineTypes = DatabaseMethods.GetVaccineTypes();
@@ -39,6 +41,7 @@ namespace CoronaTracker.SubForms
             {
                 addButton(type);
             }
+            LogClass.Log($"Sub sub form successfully initialized");
 
         }
 
@@ -48,6 +51,7 @@ namespace CoronaTracker.SubForms
         /// <param name="type"> variable for vaccine type </param>
         private void addButton(VaccineTypeInstance type)
         {
+            LogClass.Log($"Adding new button");
             Button bt = setDefaults();
             bt.Name = bt.Text = type.Name;
             this.panel1.Controls.Add(bt);
@@ -56,6 +60,7 @@ namespace CoronaTracker.SubForms
             buttons.Add(((Button)this.panel1.Controls[type.Name]));
             ((Button)this.panel1.Controls[type.Name]).Show();
             index++;
+            LogClass.Log("New button added");
         }
 
         /// <summary>
@@ -66,6 +71,7 @@ namespace CoronaTracker.SubForms
         /// </returns>
         private Button setDefaults()
         {
+            LogClass.Log($"Start set button defaults");
             Button output = new Button();
             output.Size = buttonPattern.Size;
             output.BackColor = Color.FromArgb(44, 44, 44);
@@ -74,6 +80,7 @@ namespace CoronaTracker.SubForms
             output.Font = new Font("MS Reference Sans Serif", 11.0f, FontStyle.Bold);
             output.ForeColor = Color.FromArgb(240, 240, 240);
             output.Click += button_click;
+            LogClass.Log($"Button defaults set");
             return output;
         }
 
@@ -84,7 +91,8 @@ namespace CoronaTracker.SubForms
         /// <param name="e"> variable for event arguments </param>
         private void button_click(object sender, EventArgs e)
         {
-            foreach(VaccineTypeInstance type in vaccineTypes)
+            LogClass.Log($"button click event handler start");
+            foreach (VaccineTypeInstance type in vaccineTypes)
             {
                 if (((Button)sender).Text.Equals(type.Name))
                 {
@@ -92,6 +100,7 @@ namespace CoronaTracker.SubForms
                     richTextBox1.Text = type.Description;
                 }
             }
+            LogClass.Log($"button click event handler start");
         }
 
         /// <summary>
@@ -101,6 +110,7 @@ namespace CoronaTracker.SubForms
         /// <param name="e"> variable for event arguments </param>
         private void pictureBox2_Click(object sender, EventArgs e)
         {
+            LogClass.Log($"pictureBox2 click event handler start");
             if (!textBox2.Text.Equals(""))
             {
                 if(MessageBox.Show("Are you sure to add vaccine type?", "Database Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
@@ -122,6 +132,7 @@ namespace CoronaTracker.SubForms
             {
                 MessageBox.Show("Name is needed!");
             }
+            LogClass.Log($"pictureBox2 click event handler end");
         }
 
         /// <summary>
@@ -131,6 +142,7 @@ namespace CoronaTracker.SubForms
         /// <param name="e"> variable for event arguments </param>
         private void pictureBox1_Click(object sender, EventArgs e)
         {
+            LogClass.Log($"pictureBox1 click event handler start");
             if (!textBox2.Text.Equals(""))
             {
                 if (MessageBox.Show("Are you sure to edit vaccine type?", "Database Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
@@ -156,6 +168,7 @@ namespace CoronaTracker.SubForms
             {
                 MessageBox.Show("Name is needed!");
             }
+            LogClass.Log($"pictureBox1 click event handler end");
         }
 
         /// <summary>
@@ -165,6 +178,7 @@ namespace CoronaTracker.SubForms
         /// <param name="e"> variable for event arguments </param>
         private void pictureBox3_Click(object sender, EventArgs e)
         {
+            LogClass.Log($"pictureBox3 click event handler start");
             if (!textBox2.Text.Equals(""))
             {
                 if (MessageBox.Show("Are you sure to remove vaccine type?", "Database Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
@@ -198,6 +212,7 @@ namespace CoronaTracker.SubForms
             {
                 MessageBox.Show("Name is needed!");
             }
+            LogClass.Log($"pictureBox3 click event handler end");
         }
 
         /// <summary>
@@ -207,10 +222,12 @@ namespace CoronaTracker.SubForms
         /// <param name="e"> variable for event arguments </param>
         private void textBox1_Enter(object sender, EventArgs e)
         {
+            LogClass.Log($"textBox1 enter event handler start");
             if (textBox1.Text.Equals("Type for search..."))
             {
                 textBox1.Text = "";
             }
+            LogClass.Log($"textBox1 enter event handler end");
         }
 
         /// <summary>
@@ -220,6 +237,7 @@ namespace CoronaTracker.SubForms
         /// <param name="e"> variable for event arguments </param>
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
+            LogClass.Log($"textBox1 text changed event handler start");
             panel1.Controls.Clear();
             buttons.Clear();
             index = 0;
@@ -232,6 +250,7 @@ namespace CoronaTracker.SubForms
                     addButton(type);
                 }
             }
+            LogClass.Log($"textBox1 text changed event handler start");
         }
     }
 }

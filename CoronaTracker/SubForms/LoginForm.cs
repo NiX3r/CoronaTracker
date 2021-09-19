@@ -1,6 +1,7 @@
 ﻿using CoronaTracker.Database;
 using CoronaTracker.Database.DatabaseInstances;
 using CoronaTracker.Enums;
+using CoronaTracker.Instances;
 using CoronaTracker.SubForms.LoginSubSubForms;
 using CoronaTracker.Utils;
 using System;
@@ -32,7 +33,9 @@ namespace CoronaTracker.SubForms
         public LoginForm()
         {
 
+            LogClass.Log($"Start initialize sub sub form");
             InitializeComponent();
+            LogClass.Log($"Sub sub form successfully initialized");
 
             state = LoginWindowStatus.SignIn;
             OpenChildForm(new LoginSubSubForm());
@@ -41,7 +44,7 @@ namespace CoronaTracker.SubForms
 
         public void OpenChildForm(Form childForm)
         {
-
+            LogClass.Log($"Start open child form");
             // Setup child form
             if (currentChildForm != null)
             {
@@ -53,7 +56,8 @@ namespace CoronaTracker.SubForms
             SubFormPanel.Controls.Add(childForm);
             SubFormPanel.Tag = childForm;
             childForm.BringToFront();
-            childForm.Show();
+            childForm.Show(); 
+            LogClass.Log($"Open child form end");
 
         }
 
@@ -62,6 +66,8 @@ namespace CoronaTracker.SubForms
         /// </summary>
         public void EndApp()
         {
+            LogClass.Log($"Ending program");
+            LogClass.Save();
             Application.Exit();
         }
 
@@ -79,8 +85,10 @@ namespace CoronaTracker.SubForms
         private extern static void SendMessage(System.IntPtr hWnd, int wMsg, int wParam, int lParam);
         private void LoginForm_MouseDown(object sender, MouseEventArgs e)
         {
+            LogClass.Log($"loginForm mouse down event handler start");
             ReleaseCapture();
             SendMessage(this.Handle, 0x112, 0xf012, 0);
+            LogClass.Log($"loginForm mouse down event handler end");
         }
 
         /// <summary>
@@ -90,11 +98,13 @@ namespace CoronaTracker.SubForms
         /// <param name="e"> variable for event arguments </param>
         private void label3_Click(object sender, EventArgs e)
         {
-            if(state != LoginWindowStatus.SignUp)
+            LogClass.Log($"label3 click event handler start");
+            if (state != LoginWindowStatus.SignUp)
             {
                 state = LoginWindowStatus.SignUp;
                 OpenChildForm(new RegisterSubSubForm());
             }
+            LogClass.Log($"label3 click event handler end");
         }
 
         /// <summary>
@@ -104,25 +114,31 @@ namespace CoronaTracker.SubForms
         /// <param name="e"> variable for event arguments </param>
         private void button7_Click(object sender, EventArgs e)
         {
+            LogClass.Log($"Ending program");
+            LogClass.Save();
             Application.Exit();
         }
 
         private void label10_Click(object sender, EventArgs e)
         {
+            LogClass.Log($"label10 click event handler start");
             if (state != LoginWindowStatus.SignIn)
             {
                 state = LoginWindowStatus.SignIn;
                 OpenChildForm(new LoginSubSubForm());
             }
+            LogClass.Log($"label10 click event handler end");
         }
 
         private void label9_Click(object sender, EventArgs e)
         {
+            LogClass.Log($"label9 click event handler start");
             if (state != LoginWindowStatus.ForgetPassword)
             {
                 state = LoginWindowStatus.ForgetPassword;
                 OpenChildForm(new ForgetSubSubForm());
             }
+            LogClass.Log($"label9 click event handler end");
         }
     }
 }

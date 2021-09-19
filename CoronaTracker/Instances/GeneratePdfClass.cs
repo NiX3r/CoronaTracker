@@ -27,6 +27,7 @@ namespace CoronaTracker.Instances
 
             try
             {
+                LogClass.Log($"Starting generating underwent PDF");
                 WebClient client = new WebClient();
                 string url = "http://coronatracker.ncodes.eu/underwent.html";
                 string qr = "https://api.qrserver.com/v1/create-qr-code/?size=128x128&data=" + "CoronaTracker-by-nCodes.eu_" + patientID + "_" + patient.PersonalNumberFirst + "_" + patient.PersonalNumberSecond;
@@ -60,12 +61,13 @@ namespace CoronaTracker.Instances
                          .Content();
 
                 File.WriteAllBytes("temp.pdf", pdf);
-
+                LogClass.Log($"PDF successfully generated");
                 return true;
             }
             catch(Exception ex)
             {
                 MessageBox.Show(ex.Message);
+                LogClass.Log($"PDF unsuccessfully generated. Error: {ex.Message}");
                 return false;
             }
 
@@ -75,6 +77,7 @@ namespace CoronaTracker.Instances
         {
             try
             {
+                LogClass.Log($"Starting generate vaccinate PDF");
                 WebClient client = new WebClient();
                 string url = "http://coronatracker.ncodes.eu/vaccinate.html";
                 string qr = "https://api.qrserver.com/v1/create-qr-code/?size=128x128&data=" + "CoronaTracker-by-nCodes.eu_" + patientID + "_" + patient.PersonalNumberFirst + "_" + patient.PersonalNumberSecond;
@@ -99,12 +102,13 @@ namespace CoronaTracker.Instances
                          .Content();
 
                 File.WriteAllBytes("temp.pdf", pdf);
-
+                LogClass.Log($"PDF successfully generated");
                 return true;
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
+                LogClass.Log($"PDF unsuccessfully generated. Error: {ex.Message}");
                 return false;
             }
         }

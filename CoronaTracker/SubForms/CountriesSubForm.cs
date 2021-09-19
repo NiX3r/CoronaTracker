@@ -23,9 +23,11 @@ namespace CoronaTracker.SubForms
         /// </summary>
         public CountriesSubForm()
         {
+            LogClass.Log($"Start initialize sub sub form");
             InitializeComponent();
 
             lastestCountry = null;
+            LogClass.Log($"Sub sub form successfully initialized");
 
         }
 
@@ -34,7 +36,7 @@ namespace CoronaTracker.SubForms
         /// </summary>
         private void SetCountryData()
         {
-
+            LogClass.Log($"Start set country data");
             lastestCountry = RestAPI.GetCovidDataAsync(textBox1.Text).Result;
 
             if (lastestCountry != null)
@@ -55,6 +57,7 @@ namespace CoronaTracker.SubForms
             {
                 MessageBox.Show("Unfortunately country with name '" + textBox1.Text + "' does not exists!");
             }
+            LogClass.Log($"Successfully set country data");
 
         }
 
@@ -65,10 +68,12 @@ namespace CoronaTracker.SubForms
         /// <param name="e"> variable for event arguments </param>
         private void textBox1_Enter(object sender, EventArgs e)
         {
-            if(textBox1.Text.Equals("Type for search..."))
+            LogClass.Log($"textBox1 enter event handler start");
+            if (textBox1.Text.Equals("Type for search..."))
             {
                 textBox1.Text = "";
             }
+            LogClass.Log($"textBox1 enter event handler end");
         }
 
         /// <summary>
@@ -78,9 +83,9 @@ namespace CoronaTracker.SubForms
         /// <param name="e"> variable for event arguments </param>
         private void button1_Click(object sender, EventArgs e)
         {
-
+            LogClass.Log($"button1 click event handler start");
             SetCountryData();
-            
+            LogClass.Log($"button1 click event handler end");
         }
     }
 }

@@ -22,6 +22,7 @@ namespace CoronaTracker.SubForms.LoginSubSubForms
 
         public ForgetSubSubForm()
         {
+            LogClass.Log($"Start initialize sub sub form");
             InitializeComponent();
 
             label1.Hide();
@@ -33,11 +34,12 @@ namespace CoronaTracker.SubForms.LoginSubSubForms
 
             code = PasswordEncryption(MacAddress() + DateTime.Now.ToString("yyyyMMddHHmmss"));
             code = code.Substring(0, 8);
-
+            LogClass.Log($"Sub sub form successfully initialized");
         }
 
         private string MacAddress()
         {
+            LogClass.Log($"Getting mac accress");
             String macadress = string.Empty;
 
             foreach (NetworkInterface nic in NetworkInterface.GetAllNetworkInterfaces())
@@ -49,7 +51,7 @@ namespace CoronaTracker.SubForms.LoginSubSubForms
                     break;
                 }
             }
-
+            LogClass.Log($"Got mac address: {macadress}");
             return macadress;
         }
 
@@ -75,8 +77,8 @@ namespace CoronaTracker.SubForms.LoginSubSubForms
 
         private void button1_Click(object sender, EventArgs e)
         {
-
-            if(button1.Text.Equals("Send Mail"))
+            LogClass.Log($"button1 click event handler start");
+            if (button1.Text.Equals("Send Mail"))
             {
                 if (!textBox1.Text.Equals("") && textBox1.Text.Contains("@") && textBox1.Text.Contains("."))
                 {
@@ -134,7 +136,7 @@ namespace CoronaTracker.SubForms.LoginSubSubForms
                     }
                 }
             }
-
+            LogClass.Log($"button1 click event handler end");
         }
     }
 }

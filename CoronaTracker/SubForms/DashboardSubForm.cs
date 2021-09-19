@@ -1,4 +1,5 @@
 ﻿using CoronaTracker.Database;
+using CoronaTracker.Instances;
 using LiveCharts;
 using LiveCharts.Wpf;
 using System;
@@ -36,6 +37,7 @@ namespace CoronaTracker.SubForms
         /// </summary>
         public DashboardSubForm()
         {
+            LogClass.Log($"Start initialize sub sub form");
             InitializeComponent();
 
             IntPtr handle = CreateRoundRectRgn(0, 0, panel1.Width, panel1.Height, 30, 30);
@@ -51,7 +53,8 @@ namespace CoronaTracker.SubForms
             label3.Text = DatabaseMethods.GetVacinnatePatientsCount().ToString();
             label8.Text = DatabaseMethods.GetConfirmedPatientsCount().ToString();
             label7.Text = DatabaseMethods.GetInfectionCount().ToString();
-            
+
+            LogClass.Log($"Sub sub form successfully initialized");
         }
 
         /// <summary>
@@ -61,6 +64,7 @@ namespace CoronaTracker.SubForms
         /// <param name="e"></param>
         private void DashboardSubForm_Load(object sender, EventArgs e)
         {
+            LogClass.Log($"DashboardSubForm load event handler start");
             DateTime dt = DateTime.Now.AddMonths(-5);
             DateTime now = DateTime.Now;
             List<string> labels = new List<string>();
@@ -95,6 +99,7 @@ namespace CoronaTracker.SubForms
                     Values = values
                 }
             };
+            LogClass.Log($"DashboardSubForm load event handler end");
         }
     }
 }

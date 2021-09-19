@@ -1,4 +1,5 @@
-﻿using CoronaTracker.SubForms.PatientSubSubForms;
+﻿using CoronaTracker.Instances;
+using CoronaTracker.SubForms.PatientSubSubForms;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -25,10 +26,12 @@ namespace CoronaTracker.SubForms
         /// </summary>
         public PatientSubForm()
         {
+            LogClass.Log($"Start initialize sub sub form");
             InitializeComponent();
 
             OpenChildForm(new ListSubSubForm(), button1);
 
+            LogClass.Log($"Sub sub form successfully initialized");
         }
 
         /// <summary>
@@ -49,7 +52,7 @@ namespace CoronaTracker.SubForms
         /// <param name="button"> variable for button to set </param>
         public void OpenChildForm(Form childForm, Button button)
         {
-
+            LogClass.Log($"Start open child form");
             // Setup child form
             if (currentChildForm != null)
             {
@@ -74,6 +77,7 @@ namespace CoronaTracker.SubForms
             currentButton.TextAlign = ContentAlignment.BottomCenter;
             currentButton.BackColor = Color.FromArgb(55,55,55);
             currentButton.TextAlign = ContentAlignment.BottomCenter;
+            LogClass.Log($"Oepn child form end");
         }
 
         /// <summary>
@@ -83,6 +87,7 @@ namespace CoronaTracker.SubForms
         /// <param name="e"> variable for event arguments </param>
         private void button1_Click(object sender, EventArgs e)
         {
+            LogClass.Log($"button1 click event handler start");
             switch (((Button)sender).Text)
             {
                 case "List":
@@ -95,6 +100,7 @@ namespace CoronaTracker.SubForms
                     OpenChildForm(new VaccinationsSubSubForm(), (Button)sender);
                     break;
             }
+            LogClass.Log($"button1 click event handler end");
         }
     }
 }

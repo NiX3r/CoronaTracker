@@ -1,5 +1,6 @@
 ﻿using CoronaTracker.Database;
 using CoronaTracker.Database.DatabaseInstances;
+using CoronaTracker.Instances;
 using CoronaTracker.Utils;
 using System;
 using System.Collections.Generic;
@@ -21,6 +22,7 @@ namespace CoronaTracker.SubForms
         /// </summary>
         public SettingsSubForm()
         {
+            LogClass.Log($"Start initialize sub sub form");
             InitializeComponent();
 
             EmployeeInstance employee = DatabaseMethods.GetEmployeeByID(ProgramVariables.ID);
@@ -37,6 +39,7 @@ namespace CoronaTracker.SubForms
             else
                 notPermited.Hide();
 
+            LogClass.Log($"Sub sub form successfully initialized");
         }
 
         /// <summary>
@@ -73,14 +76,14 @@ namespace CoronaTracker.SubForms
         /// <param name="e"> variable for event arguments </param>
         private void button1_Click(object sender, EventArgs e)
         {
-
+            LogClass.Log($"button1 click event handler start");
             if (MessageBox.Show("Are you sure to edit your profile information?", "Action with database", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
             {
                 DatabaseMethods.EditEmployeeInfo(textBox1.Text, Convert.ToInt32(textBox2.Text));
                 ProgramVariables.ProfileURL = textBox1.Text;
                 ProgramVariables.ProgramUI.UpdateProfilePicture();
             }
-
+            LogClass.Log($"button1 click event handler end");
         }
 
         /// <summary>
@@ -90,6 +93,7 @@ namespace CoronaTracker.SubForms
         /// <param name="e"> variable for event arguments </param>
         private void button2_Click(object sender, EventArgs e)
         {
+            LogClass.Log($"button2 click event handler start");
             try
             {
                 pictureBox1.ImageLocation = textBox1.Text;
@@ -98,6 +102,7 @@ namespace CoronaTracker.SubForms
             {
                 MessageBox.Show("Could not load image");
             }
+            LogClass.Log($"button2 click event handler end");
         }
 
         /// <summary>
@@ -107,10 +112,12 @@ namespace CoronaTracker.SubForms
         /// <param name="e"> variable for event arguments </param>
         private void textBox2_KeyPress(object sender, KeyPressEventArgs e)
         {
+            LogClass.Log($"textBox2 key press event handler start");
             if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
             {
                 e.Handled = true;
             }
+            LogClass.Log($"textBox2 key press event handler end");
         }
 
         /// <summary>
@@ -120,7 +127,7 @@ namespace CoronaTracker.SubForms
         /// <param name="e"> variable for event arguments </param>
         private void button3_Click(object sender, EventArgs e)
         {
-
+            LogClass.Log($"button3 click event handler start");
             if (MessageBox.Show("Are you sure to change your password?", "Action with database", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
             {
                 if (textBox4.Text == textBox5.Text && textBox4.Text != "" && textBox3.Text != "")
@@ -136,7 +143,7 @@ namespace CoronaTracker.SubForms
                     if (!DatabaseMethods.AddAutoLoginSession())
                         MessageBox.Show("Auto login already exists");
             }
-            
+            LogClass.Log($"button3 click event handler end");
         }
 
         /// <summary>
@@ -146,7 +153,8 @@ namespace CoronaTracker.SubForms
         /// <param name="e"> variable for event arguments </param>
         private void button4_Click(object sender, EventArgs e)
         {
-            if(textBox6.Text != "" && textBox6.Text.Contains("@") && textBox6.Text.Contains("."))
+            LogClass.Log($"button4 event handler start");
+            if (textBox6.Text != "" && textBox6.Text.Contains("@") && textBox6.Text.Contains("."))
             {
                 String pose = DatabaseMethods.GetEmployeeRoleByEmail(textBox6.Text);
                 switch (pose)
@@ -171,6 +179,7 @@ namespace CoronaTracker.SubForms
                         break;
                 }
             }
+            LogClass.Log($"button4 event handler end");
         }
 
         /// <summary>
@@ -180,6 +189,7 @@ namespace CoronaTracker.SubForms
         /// <param name="e"> variable for event arguments </param>
         private void button5_Click(object sender, EventArgs e)
         {
+            LogClass.Log($"button5 click event handler start");
             if (MessageBox.Show("Are you sure to change pose?", "Action with database", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
             {
                 if (textBox6.Text != "" && textBox6.Text.Contains("@") && textBox6.Text.Contains("."))
@@ -198,6 +208,7 @@ namespace CoronaTracker.SubForms
 
                 }
             }
+            LogClass.Log($"button5 click event handler end");
         }
     }
 }

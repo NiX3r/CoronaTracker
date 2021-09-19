@@ -827,18 +827,21 @@ namespace CoronaTracker.Database
         /// </returns>
         public static bool AddUser(String fullname, String email, int phone, String password)
         {
+            LogClass.Log($"Adding employee account name '{fullname}' with email {email}");
             var command = new MySqlCommand("SELECT Employee_ID FROM Employee WHERE Employee_Email='" + email + "';", connection);
             var reader = command.ExecuteReader();
 
             if (reader.Read())
             {
                 reader.Close();
+                LogClass.Log($"Employee account with this email already exists");
                 return false;
             }
 
             reader.Close();
             command = new MySqlCommand($"INSERT INTO Employee(Employee_Fullname, Employee_Email, Employee_Phone, Employee_Pose, Employee_Password, Employee_Created) VALUES('{fullname}', '{email}', {phone}, 'guest', '{password}', '{DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss")}');", connection);
             command.ExecuteNonQuery();
+            LogClass.Log($"Added employee account");
             return true;
         }
 
@@ -853,6 +856,7 @@ namespace CoronaTracker.Database
         /// </returns>
         public static bool AddFinds(String firstCode, String secondCode)
         {
+            LogClass.Log($"Adding finds to patient by personal code {firstCode} / {secondCode}");
             int id;
             var command = new MySqlCommand("SELECT Patient_ID FROM Patient WHERE Patient_PersonalNumberFirst='" + firstCode + "' AND Patient_PersonalNumberSecond='" + secondCode + "';", connection);
             var reader = command.ExecuteReader();
@@ -860,6 +864,7 @@ namespace CoronaTracker.Database
             if (!reader.Read())
             {
                 reader.Close();
+                LogClass.Log($"Patient with this personal code does not exists");
                 return false;
             }
 
@@ -867,6 +872,7 @@ namespace CoronaTracker.Database
             reader.Close();
             command = new MySqlCommand($"INSERT INTO Infection(Infection_Found, Patient_Patient_ID, Employee_Employee_ID) VALUES('{DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss")}', {id}, {ProgramVariables.ID});", connection);
             command.ExecuteNonQuery();
+            LogClass.Log($"Added finds to patient");
             return true;
         }
 
@@ -886,18 +892,21 @@ namespace CoronaTracker.Database
         /// </returns>
         public static bool AddPatient(String personNumberFirst, String personNumberSecond, String fullname, String email, int phone, int insurance, String description = "")
         {
+            LogClass.Log($"Adding patient '{fullname}' with personal number {personNumberFirst} / {personNumberSecond}");
             var command = new MySqlCommand("SELECT Patient_ID FROM Patient WHERE Patient_PersonalNumberFirst='" + personNumberFirst + "' AND Patient_PersonalNumberSecond='" + personNumberSecond + "';", connection);
             var reader = command.ExecuteReader();
 
             if (reader.Read())
             {
                 reader.Close();
+                LogClass.Log($"Patient with personal code already exists");
                 return false;
             }
 
             reader.Close();
             command = new MySqlCommand($"INSERT INTO Patient(Patient_PersonalNumberFirst, Patient_PersonalNumberSecond, Patient_Fullname, Patient_Email, Patient_Phone, Patient_InsuranceCode, Patient_Description, Patient_Created) VALUES('{personNumberFirst}', '{personNumberSecond}', '{fullname}', '{email}', {phone}, {insurance}, '{description}', '{DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss")}');", connection);
             command.ExecuteNonQuery();
+            LogClass.Log($"Added patient");
             return true;
         }
 
@@ -912,18 +921,21 @@ namespace CoronaTracker.Database
         /// </returns>
         public static bool AddVaccineType(String name, String description = "")
         {
+            LogClass.Log($"Adding vaccine type '{name}'");
             var command = new MySqlCommand("SELECT VaccineType_ID FROM VaccineType WHERE VaccineType_Name='" + name + "';", connection);
             var reader = command.ExecuteReader();
 
             if (reader.Read())
             {
                 reader.Close();
+                LogClass.Log($"Vaccine type with this name already exists");
                 return false;
             }
 
             reader.Close();
             command = new MySqlCommand($"INSERT INTO VaccineType(VaccineType_Name, VaccineType_Description) VALUES('{name}', '{description}');", connection);
             command.ExecuteNonQuery();
+            LogClass.Log($"Added vaccine type");
             return true;
         }
 
@@ -937,18 +949,21 @@ namespace CoronaTracker.Database
         /// </returns>
         public static bool RemoveVaccineType(String name)
         {
+            LogClass.Log($"Removing vaccine type with name '{name}'");
             var command = new MySqlCommand("SELECT VaccineType_ID FROM VaccineType WHERE VaccineType_Name='" + name + "';", connection);
             var reader = command.ExecuteReader();
 
             if (!reader.Read())
             {
                 reader.Close();
+                LogClass.Log($"Vaccine type with this name already exists");
                 return false;
             }
 
             reader.Close();
             command = new MySqlCommand($"DELETE FROM VaccineType WHERE VaccineType_Name='{name}';", connection);
             command.ExecuteNonQuery();
+            LogClass.Log($"Removed vaccine type");
             return true;
         }
 
@@ -962,18 +977,21 @@ namespace CoronaTracker.Database
         /// </returns>
         public static bool RemoveFinds(int ID)
         {
+            LogClass.Log($"Removing finds by ID {ID}");
             var command = new MySqlCommand("SELECT Infection_ID FROM Infection WHERE Infection_ID=" + ID + ";", connection);
             var reader = command.ExecuteReader();
 
             if (!reader.Read())
             {
                 reader.Close();
+                LogClass.Log($"Finds with this ID does not exists");
                 return false;
             }
 
             reader.Close();
             command = new MySqlCommand($"DELETE FROM Infection WHERE Infection_ID={ID};", connection);
             command.ExecuteNonQuery();
+            LogClass.Log($"Removed finds");
             return true;
         }
 
@@ -988,18 +1006,21 @@ namespace CoronaTracker.Database
         /// </returns>
         public static bool RemovePatient(String personNumberFirst, String personNumberSecond)
         {
+            LogClass.Log($"Removing patient by personal number {personNumberFirst} / {personNumberSecond}");
             var command = new MySqlCommand($"SELECT Patient_ID FROM Patient WHERE Patient_PersonalNumberFirst='{personNumberFirst}' AND Patient_PersonalNumberSecond='{personNumberSecond}';", connection);
             var reader = command.ExecuteReader();
 
             if (!reader.Read())
             {
                 reader.Close();
+                LogClass.Log($"Patient with this personal number does not exists");
                 return false;
             }
 
             reader.Close();
             command = new MySqlCommand($"DELETE FROM Patient WHERE Patient_PersonalNumberFirst='{personNumberFirst}' AND Patient_PersonalNumberSecond='{personNumberSecond}';", connection);
             command.ExecuteNonQuery();
+            LogClass.Log($"Removed patient");
             return true;
         }
 
@@ -1014,18 +1035,21 @@ namespace CoronaTracker.Database
         /// </returns>
         public static bool EditEmployeeInfo(String profileURL, int phone)
         {
+            LogClass.Log($"Editing logged in employee profile info");
             var command = new MySqlCommand("SELECT Employee_ID FROM Employee WHERE Employee_ID=" + ProgramVariables.ID + ";", connection);
             var reader = command.ExecuteReader();
 
             if (!reader.Read())
             {
                 reader.Close();
+                LogClass.Log($"Employee with this ID does not exists");
                 return false;
             }
 
             reader.Close();
             command = new MySqlCommand($"UPDATE Employee SET Employee_ProfileURL='{profileURL}',Employee_Phone={phone} WHERE Employee_ID={ProgramVariables.ID};", connection);
             command.ExecuteNonQuery();
+            LogClass.Log($"Edited logged in employee profile info");
             return true;
         }
 
@@ -1040,18 +1064,21 @@ namespace CoronaTracker.Database
         /// </returns>
         public static bool EditVaccineType(String name, String description = "")
         {
+            LogClass.Log($"Editing vaccine type with name '{name}'");
             var command = new MySqlCommand("SELECT VaccineType_ID FROM VaccineType WHERE VaccineType_Name='" + name + "';", connection);
             var reader = command.ExecuteReader();
 
             if (!reader.Read())
             {
                 reader.Close();
+                LogClass.Log($"Vaccine type with this name does not exists");
                 return false;
             }
 
             reader.Close();
             command = new MySqlCommand($"UPDATE VaccineType SET VaccineType_Description='{description}' WHERE VaccineType_Name='{name}';", connection);
             command.ExecuteNonQuery();
+            LogClass.Log($"Edited vaccine type");
             return true;
         }
 
@@ -1071,18 +1098,21 @@ namespace CoronaTracker.Database
         /// </returns>
         public static bool EditPatient(String personalNumberFirst, String personalNumberSecond, String fullname, String email, int phone, int insurance, String description = "")
         {
+            LogClass.Log($"Editing patient by personal number {personalNumberFirst} / {personalNumberSecond}");
             var command = new MySqlCommand("SELECT Patient_ID FROM Patient WHERE Patient_PersonalNumberFirst='" + personalNumberFirst + "' AND Patient_PersonalNumberSecond='" + personalNumberSecond + "';", connection);
             var reader = command.ExecuteReader();
 
             if (!reader.Read())
             {
                 reader.Close();
+                LogClass.Log($"Patient with this personal number does not exists");
                 return false;
             }
 
             reader.Close();
             command = new MySqlCommand($"UPDATE Patient SET Patient_Fullname='{fullname}', Patient_Email='{email}', Patient_Phone={phone}, Patient_InsuranceCode={insurance}, Patient_Description='{description}' WHERE Patient_PersonalNumberFirst='{personalNumberFirst}' AND Patient_PersonalNumberSecond='{personalNumberSecond}';", connection);
             command.ExecuteNonQuery();
+            LogClass.Log($"Edited patient");
             return true;
         }
 
@@ -1095,12 +1125,14 @@ namespace CoronaTracker.Database
         /// </returns>
         public static String CheckVersion()
         {
+            LogClass.Log($"Starting check version and get download data");
             var command = new MySqlCommand("SELECT ProgramData_Value FROM ProgramData WHERE ProgramData_Key='version';", connection);
             var reader = command.ExecuteReader();
             reader.Read();
             if (reader.GetString(0).Equals(ProgramVariables.Version))
             {
                 reader.Close();
+                LogClass.Log($"Program is up to date");
                 return "";
             }
             else
@@ -1109,6 +1141,7 @@ namespace CoronaTracker.Database
                 if(Convert.ToInt32(ProgramVariables.Version.Replace(".", "")) > Convert.ToInt32(reader.GetString(0).Replace(".", "")))
                 {
                     reader.Close();
+                    LogClass.Log($"Program is in beta mode");
                     return "-1";
                 }
 
@@ -1119,6 +1152,7 @@ namespace CoronaTracker.Database
                 reader.Read();
                 output = reader.GetString(0);
                 reader.Close();
+                LogClass.Log($"Returning download link to newest version");
                 return output;
             }
         }
@@ -1133,7 +1167,7 @@ namespace CoronaTracker.Database
         /// </returns>
         public static bool CheckCodeValidity(int id)
         {
-
+            LogClass.Log($"Check reset password session code valid by ID {id}");
             var command = new MySqlCommand("SELECT ResetPasswordSession_DateTime,ResetPasswordSession_Status FROM ResetPasswordSession WHERE Employee_Employee_ID=" + id + ";", connection);
             var reader = command.ExecuteReader();
             bool output = true;
@@ -1155,6 +1189,7 @@ namespace CoronaTracker.Database
                 }
             }
             reader.Close();
+            LogClass.Log($"Reset password session code status: {output.ToString()}");
             return output;
 
         }
@@ -1170,6 +1205,7 @@ namespace CoronaTracker.Database
         /// </returns>
         public static int UpdatePoseByEmail(String email, String pose)
         {
+            LogClass.Log($"Updating pose by email {email} to {pose}");
             var command = new MySqlCommand($"SELECT Employee_ID FROM Employee WHERE Employee_Email='{email}';", connection);
             var reader = command.ExecuteReader();
 
@@ -1178,11 +1214,13 @@ namespace CoronaTracker.Database
                 reader.Close();
                 command = new MySqlCommand($"UPDATE Employee SET Employee_Pose='{pose}' WHERE Employee_Email='{email}'", connection);
                 command.ExecuteNonQuery();
+                LogClass.Log($"Updated pose");
                 return 1;
             }
             else
             {
                 reader.Close();
+                LogClass.Log($"Employee account with this email does not exists");
                 return 2;
             }
         }
@@ -1198,6 +1236,7 @@ namespace CoronaTracker.Database
         /// </returns>
         public static int UpdatePassword(String oldPassword, String newPassword)
         {
+            LogClass.Log($"Updating password for logged in employee");
             var command = new MySqlCommand($"SELECT Employee_ID FROM Employee WHERE Employee_Password='{oldPassword}' AND Employee_ID={ProgramVariables.ID};", connection);
             var reader = command.ExecuteReader();
 
@@ -1206,11 +1245,13 @@ namespace CoronaTracker.Database
                 reader.Close();
                 command = new MySqlCommand($"UPDATE Employee SET Employee_Password='{newPassword}' WHERE Employee_ID={ProgramVariables.ID}", connection);
                 command.ExecuteNonQuery();
+                LogClass.Log($"Updated password");
                 return 1;
             }
             else
             {
                 reader.Close();
+                LogClass.Log($"Employee account with this ID does not exists");
                 return 2;
             }
         }
@@ -1228,11 +1269,12 @@ namespace CoronaTracker.Database
         /// </returns>
         public static int LogIn(String email, String password)
         {
+            LogClass.Log($"Logging in with email {email}");
             var command = new MySqlCommand("SELECT Employee_ID FROM Employee WHERE Employee_Email='" + email + "';", connection);
             var reader = command.ExecuteReader();
 
             if (reader.Read())
-            {
+            {;
                 // SELECT COUNT(LoginAttempts_ID) FROM LoginAttempts WHERE LoginAttempts_DateTime>DATE_SUB(NOW(), INTERVAL 1 HOUR) AND LoginAttempts_IsSuccess=false;
                 int first, second;
                 first = second = -1;
@@ -1256,6 +1298,7 @@ namespace CoronaTracker.Database
                         if(((first + 2) == third) && ((second + 1) == third))
                         {
                             reader.Close();
+                            LogClass.Log($"Employee account is temporary banned");
                             return -2;
                         }
                         else
@@ -1276,18 +1319,21 @@ namespace CoronaTracker.Database
                     ProgramVariables.Pose = GetPoseByID(ProgramVariables.ID);
                     reader.Close();
                     LogLogIn(ID, true);
+                    LogClass.Log($"Logged in successfully");
                     return 1;
                 }
                 else
                 {
                     reader.Close();
                     LogLogIn(ID, false);
+                    LogClass.Log($"Employee with this email or password does not exists");
                     return -1;
                 }
             }
             else
             {
                 reader.Close();
+                LogClass.Log($"Employee account with this email does not exists");
                 return 0;
             }
         }

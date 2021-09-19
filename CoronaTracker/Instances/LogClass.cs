@@ -19,12 +19,11 @@ namespace CoronaTracker.Instances
         {
             log = "";
             index = 0;
-            writer = new StreamWriter("log.txt", true);
         }
 
-        public static void Log(string value, [CallerLineNumber] int lineNumber = 0, [CallerMemberName] string caller = null)
+        public static void Log(string value, [CallerLineNumber] int lineNumber = 0, [CallerMemberName] string caller = "null", [CallerFilePath] string file = "null")
         {
-            log += $"\n[{DateTime.Now.ToString("dd/MM/yyyy HH:mm:ss")}] ({caller}:{lineNumber}) » {value}";
+            log += $"\n[{DateTime.Now.ToString("dd/MM/yyyy HH:mm:ss")}] {file.Substring(file.LastIndexOf('\\') + 1)}:{caller}:{lineNumber} » {value}";
             index++;
             if(index == 100)
             {
@@ -36,13 +35,10 @@ namespace CoronaTracker.Instances
 
         public static void Save()
         {
+            writer = new StreamWriter("log.txt", true);
             log.Substring(1);
             writer.Write(log);
             writer.Flush();
-        }
-
-        public static void Close()
-        {
             writer.Close();
         }
 

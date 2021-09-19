@@ -1,4 +1,5 @@
 ﻿using CoronaTracker.Database;
+using CoronaTracker.Instances;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -41,7 +42,9 @@ namespace CoronaTracker.Timers
         /// <param name="e"> variable for event arguments </param>
         private void OnTimedEvent(object sender, ElapsedEventArgs e)
         {
+            LogClass.Log($"Refreshing database connection");
             DatabaseMethods.RefreshDatabaseConnection();
+            LogClass.Log($"Database connection successfully refreshed");
         }
     }
 }

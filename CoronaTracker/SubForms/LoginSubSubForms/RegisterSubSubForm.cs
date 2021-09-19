@@ -1,4 +1,5 @@
 ﻿using CoronaTracker.Database;
+using CoronaTracker.Instances;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -15,7 +16,9 @@ namespace CoronaTracker.SubForms.LoginSubSubForms
     {
         public RegisterSubSubForm()
         {
+            LogClass.Log($"Start initialize sub sub form");
             InitializeComponent();
+            LogClass.Log($"Sub sub form successfully initialized");
         }
 
         /// <summary>
@@ -47,6 +50,7 @@ namespace CoronaTracker.SubForms.LoginSubSubForms
 
         private void button1_Click(object sender, EventArgs e)
         {
+            LogClass.Log($"button1 click event handler start");
             // Checks basic informations
             if (!textBox1.Text.Equals("") && !textBox2.Text.Equals("") && !textBox3.Text.Equals("") && !textBox4.Text.Equals("") && !textBox5.Text.Equals("") &&
                 textBox3.Text.Length == 9 && textBox2.Text.Equals(textBox5.Text) && textBox1.Text.Contains(".") && textBox1.Text.Contains("@"))
@@ -60,15 +64,19 @@ namespace CoronaTracker.SubForms.LoginSubSubForms
                 else
                     MessageBox.Show("Account cannot be create!");
             }
+            LogClass.Log($"button1 click event handler end");
         }
 
         private void textBox3_KeyPress(object sender, KeyPressEventArgs e)
         {
+            LogClass.Log($"textBox3 key press event handler start");
             if (!Char.IsNumber(e.KeyChar) && !Char.IsControl(e.KeyChar))
             {
                 e.Handled = true;
+                LogClass.Log($"textBox3 key press event handler end - handled");
                 return;
             }
+            LogClass.Log($"textBox3 key press event handler end");
         }
     }
 }
