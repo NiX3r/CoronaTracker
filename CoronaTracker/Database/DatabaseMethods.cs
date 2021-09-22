@@ -43,7 +43,7 @@ namespace CoronaTracker.Database
         public static void RefreshDatabaseConnection()
         {
             LogClass.Log("Trying to refresh connection");
-            connection.Clone();
+            connection.Close();
             connection = DatabaseSecret.GetConnection();
             try
             {
