@@ -156,5 +156,9 @@ namespace CoronaTracker
             return currentChildForm;
         }
 
+        private void pictureBox3_Click(object sender, EventArgs e)
+        {
+            new ReportBug().Show();
+        }
     }
 }

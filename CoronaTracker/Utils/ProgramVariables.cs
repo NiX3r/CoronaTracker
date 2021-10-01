@@ -36,5 +36,7 @@ namespace CoronaTracker.Utils
         public static String Version { get; set; }
         // Instance for refresh database connection timer
         public static RefreshConnectionTimer RefreshConnection { get; set; }
+        // Instance for send discord webhooks
+        public static DiscordWebhook Webhook { get; set; }
     }
 }

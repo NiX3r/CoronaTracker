@@ -28,12 +28,12 @@ namespace CoronaTracker
             LogClass.LogClassInitialize();
             LogClass.Log("Program started. Version: " + ProgramVariables.Version);
 
-            DiscordWebhook dw = new DiscordWebhook();
-            dw.ProfilePicture = "";
-            dw.UserName = "";
-            dw.WebHook = SecretClass.GetWebhookLink();
-
-            dw.SendMessage("test");
+            LogClass.Log("Creating discord webhook instance");
+            ProgramVariables.Webhook = new DiscordWebhook();
+            ProgramVariables.Webhook.ProfilePicture = "";
+            ProgramVariables.Webhook.UserName = "";
+            ProgramVariables.Webhook.WebHook = SecretClass.GetWebhookLink();
+            LogClass.Log("Webhook instance created");
 
             LogClass.Log("Loading input parameters");
             if (args.Length > 0)

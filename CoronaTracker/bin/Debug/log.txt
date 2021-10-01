@@ -487,3 +487,331 @@
 [01/10/2021 15:11:58] UI.cs:button7_Click:95 » Ending program
 [01/10/2021 15:11:58] UI.cs:button7_Click:95 » Ending program
 [01/10/2021 15:11:58] LoginForm.cs:EndApp:69 » Ending program
+[01/10/2021 18:05:18] Program.cs:Main:29 » Program started. Version: 1.5.0
+[01/10/2021 18:05:19] Program.cs:Main:38 » Loading input parameters
+[01/10/2021 18:05:19] Program.cs:Main:53 » Input parameters loaded
+[01/10/2021 18:05:19] Program.cs:Main:54 » Loading initialize database
+[01/10/2021 18:05:19] Program.cs:Main:56 » Database initialized
+[01/10/2021 18:05:19] Program.cs:Main:57 » Loading data from database
+[01/10/2021 18:05:19] DatabaseMethods.cs:CheckVersion:1130 » Starting check version and get download data
+[01/10/2021 18:05:19] DatabaseMethods.cs:CheckVersion:1137 » Program is up to date
+[01/10/2021 18:05:19] Program.cs:Main:71 » Data from database loaded
+[01/10/2021 18:05:19] Program.cs:Main:72 » Initializing program variables
+[01/10/2021 18:05:19] UI.cs:.ctor:28 » Start initialize sub sub form
+[01/10/2021 18:05:19] HomeSubForm.cs:.ctor:21 » Start initialize sub sub form
+[01/10/2021 18:05:19] HomeSubForm.cs:.ctor:28 » Sub sub form successfully initialized
+[01/10/2021 18:05:19] UI.cs:OpenChildForm:62 » Start open child form
+[01/10/2021 18:05:19] HomeSubForm.cs:HomeSubForm_VisibleChanged:42 » HomeSubForm visible changed event handler start
+[01/10/2021 18:05:19] HomeSubForm.cs:HomeSubForm_VisibleChanged:58 » HomeSubForm visible changed event handler end
+[01/10/2021 18:05:19] HomeSubForm.cs:HomeSubForm_VisibleChanged:42 » HomeSubForm visible changed event handler start
+[01/10/2021 18:05:19] HomeSubForm.cs:HomeSubForm_VisibleChanged:58 » HomeSubForm visible changed event handler end
+[01/10/2021 18:05:19] HomeSubForm.cs:HomeSubForm_VisibleChanged:42 » HomeSubForm visible changed event handler start
+[01/10/2021 18:05:19] HomeSubForm.cs:HomeSubForm_VisibleChanged:58 » HomeSubForm visible changed event handler end
+[01/10/2021 18:05:19] UI.cs:OpenChildForm:87 » Successfully opened child form
+[01/10/2021 18:05:19] UI.cs:.ctor:39 » Sub sub form successfully initialized
+[01/10/2021 18:05:19] LoginForm.cs:.ctor:36 » Start initialize sub sub form
+[01/10/2021 18:05:19] LoginForm.cs:.ctor:38 » Sub sub form successfully initialized
+[01/10/2021 18:05:19] LoginSubSubForm.cs:.ctor:20 » Start initialize sub sub form
+[01/10/2021 18:05:19] LoginSubSubForm.cs:.ctor:22 » Sub sub form successfully initialized
+[01/10/2021 18:05:19] LoginForm.cs:OpenChildForm:47 » Start open child form
+[01/10/2021 18:05:19] LoginForm.cs:OpenChildForm:60 » Open child form end
+[01/10/2021 18:05:19] Program.cs:Main:79 » Program variables initialized
+[01/10/2021 18:05:19] DatabaseMethods.cs:HasAutoLogin:461 » Check if current computer has auto login
+[01/10/2021 18:05:19] DatabaseMethods.cs:HasAutoLogin:471 » Current computer auto login output: 38
+[01/10/2021 18:05:19] DatabaseMethods.cs:GetEmployeeByID:485 » Getting employee by id 38
+[01/10/2021 18:05:19] DatabaseMethods.cs:GetEmployeeByID:492 » Got employee. Output: CoronaTracker.Database.DatabaseInstances.EmployeeInstance
+[01/10/2021 18:05:19] DatabaseMethods.cs:GetPoseByID:402 » Getting employee pose by ID 38
+[01/10/2021 18:05:20] DatabaseMethods.cs:GetPoseByID:426 » Got employee pose. Output: Developer
+[01/10/2021 18:05:20] HomeSubForm.cs:HomeSubForm_VisibleChanged:42 » HomeSubForm visible changed event handler start
+[01/10/2021 18:05:20] RestAPI.cs:GetCovidDataAsync:47 » Start getting covid data by name czechia
+[01/10/2021 18:05:20] RestAPI.cs:GetCovidDataAsync:66 » Successfully get covid data
+[01/10/2021 18:05:20] HomeSubForm.cs:HomeSubForm_VisibleChanged:58 » HomeSubForm visible changed event handler end
+[01/10/2021 18:05:20] HomeSubForm.cs:HomeSubForm_VisibleChanged:42 » HomeSubForm visible changed event handler start
+[01/10/2021 18:05:20] RestAPI.cs:GetCovidDataAsync:47 » Start getting covid data by name czechia
+[01/10/2021 18:05:20] RestAPI.cs:GetCovidDataAsync:69 » Unsuccessfully get covid data
+[01/10/2021 18:05:20] HomeSubForm.cs:HomeSubForm_VisibleChanged:58 » HomeSubForm visible changed event handler end
+[01/10/2021 18:05:20] UI.cs:UI_VisibleChanged:108 » UI visible changed event handler start
+[01/10/2021 18:05:20] UI.cs:UI_VisibleChanged:114 » UI visible changed event handler end
+[01/10/2021 18:05:20] HomeSubForm.cs:HomeSubForm_VisibleChanged:42 » HomeSubForm visible changed event handler start
+[01/10/2021 18:05:20] RestAPI.cs:GetCovidDataAsync:47 » Start getting covid data by name czechia
+[01/10/2021 18:05:20] RestAPI.cs:GetCovidDataAsync:69 » Unsuccessfully get covid data
+[01/10/2021 18:05:20] HomeSubForm.cs:HomeSubForm_VisibleChanged:58 » HomeSubForm visible changed event handler end
+[01/10/2021 18:05:21] UI.cs:UpperPanel_MouseDown:49 » UpperPanel mouse down event handler start
+[01/10/2021 18:05:21] UI.cs:UpperPanel_MouseDown:52 » UpperPanel mouse down event handler end
+[01/10/2021 18:05:22] UI.cs:button7_Click:92 » button7 click event handler start
+[01/10/2021 18:05:22] UI.cs:button7_Click:95 » Ending program
+[01/10/2021 18:05:21] UI.cs:UpperPanel_MouseDown:52 » UpperPanel mouse down event handler end
+[01/10/2021 18:05:22] UI.cs:button7_Click:92 » button7 click event handler start
+[01/10/2021 18:05:22] UI.cs:button7_Click:95 » Ending program
+[01/10/2021 18:05:22] LoginForm.cs:EndApp:69 » Ending program
+[01/10/2021 18:25:08] Program.cs:Main:29 » Program started. Version: 1.5.0
+[01/10/2021 18:25:08] Program.cs:Main:31 » Creating discord webhook instance
+[01/10/2021 18:25:08] Program.cs:Main:36 » Webhook instance created
+[01/10/2021 18:25:08] Program.cs:Main:38 » Loading input parameters
+[01/10/2021 18:25:08] Program.cs:Main:53 » Input parameters loaded
+[01/10/2021 18:25:08] Program.cs:Main:54 » Loading initialize database
+[01/10/2021 18:25:08] Program.cs:Main:56 » Database initialized
+[01/10/2021 18:25:08] Program.cs:Main:57 » Loading data from database
+[01/10/2021 18:25:08] DatabaseMethods.cs:CheckVersion:1149 » Starting check version and get download data
+[01/10/2021 18:25:08] DatabaseMethods.cs:CheckVersion:1156 » Program is up to date
+[01/10/2021 18:25:08] Program.cs:Main:71 » Data from database loaded
+[01/10/2021 18:25:08] Program.cs:Main:72 » Initializing program variables
+[01/10/2021 18:25:08] UI.cs:.ctor:28 » Start initialize sub sub form
+[01/10/2021 18:25:08] HomeSubForm.cs:.ctor:21 » Start initialize sub sub form
+[01/10/2021 18:25:08] HomeSubForm.cs:.ctor:28 » Sub sub form successfully initialized
+[01/10/2021 18:25:08] UI.cs:OpenChildForm:62 » Start open child form
+[01/10/2021 18:25:08] HomeSubForm.cs:HomeSubForm_VisibleChanged:42 » HomeSubForm visible changed event handler start
+[01/10/2021 18:25:08] HomeSubForm.cs:HomeSubForm_VisibleChanged:58 » HomeSubForm visible changed event handler end
+[01/10/2021 18:25:08] HomeSubForm.cs:HomeSubForm_VisibleChanged:42 » HomeSubForm visible changed event handler start
+[01/10/2021 18:25:08] HomeSubForm.cs:HomeSubForm_VisibleChanged:58 » HomeSubForm visible changed event handler end
+[01/10/2021 18:25:08] HomeSubForm.cs:HomeSubForm_VisibleChanged:42 » HomeSubForm visible changed event handler start
+[01/10/2021 18:25:08] HomeSubForm.cs:HomeSubForm_VisibleChanged:58 » HomeSubForm visible changed event handler end
+[01/10/2021 18:25:08] UI.cs:OpenChildForm:87 » Successfully opened child form
+[01/10/2021 18:25:08] UI.cs:.ctor:39 » Sub sub form successfully initialized
+[01/10/2021 18:25:08] LoginForm.cs:.ctor:36 » Start initialize sub sub form
+[01/10/2021 18:25:08] LoginForm.cs:.ctor:38 » Sub sub form successfully initialized
+[01/10/2021 18:25:08] LoginSubSubForm.cs:.ctor:20 » Start initialize sub sub form
+[01/10/2021 18:25:08] LoginSubSubForm.cs:.ctor:22 » Sub sub form successfully initialized
+[01/10/2021 18:25:08] LoginForm.cs:OpenChildForm:47 » Start open child form
+[01/10/2021 18:25:08] LoginForm.cs:OpenChildForm:60 » Open child form end
+[01/10/2021 18:25:08] Program.cs:Main:79 » Program variables initialized
+[01/10/2021 18:25:08] DatabaseMethods.cs:HasAutoLogin:480 » Check if current computer has auto login
+[01/10/2021 18:25:08] DatabaseMethods.cs:HasAutoLogin:490 » Current computer auto login output: 38
+[01/10/2021 18:25:08] DatabaseMethods.cs:GetEmployeeByID:504 » Getting employee by id 38
+[01/10/2021 18:25:08] DatabaseMethods.cs:GetEmployeeByID:511 » Got employee. Output: CoronaTracker.Database.DatabaseInstances.EmployeeInstance
+[01/10/2021 18:25:08] DatabaseMethods.cs:GetPoseByID:421 » Getting employee pose by ID 38
+[01/10/2021 18:25:08] DatabaseMethods.cs:GetPoseByID:445 » Got employee pose. Output: Developer
+[01/10/2021 18:25:08] HomeSubForm.cs:HomeSubForm_VisibleChanged:42 » HomeSubForm visible changed event handler start
+[01/10/2021 18:25:08] RestAPI.cs:GetCovidDataAsync:47 » Start getting covid data by name czechia
+[01/10/2021 18:25:08] RestAPI.cs:GetCovidDataAsync:66 » Successfully get covid data
+[01/10/2021 18:25:09] HomeSubForm.cs:HomeSubForm_VisibleChanged:58 » HomeSubForm visible changed event handler end
+[01/10/2021 18:25:09] HomeSubForm.cs:HomeSubForm_VisibleChanged:42 » HomeSubForm visible changed event handler start
+[01/10/2021 18:25:09] RestAPI.cs:GetCovidDataAsync:47 » Start getting covid data by name czechia
+[01/10/2021 18:25:09] RestAPI.cs:GetCovidDataAsync:69 » Unsuccessfully get covid data
+[01/10/2021 18:25:09] HomeSubForm.cs:HomeSubForm_VisibleChanged:58 » HomeSubForm visible changed event handler end
+[01/10/2021 18:25:09] UI.cs:UI_VisibleChanged:108 » UI visible changed event handler start
+[01/10/2021 18:25:09] UI.cs:UI_VisibleChanged:114 » UI visible changed event handler end
+[01/10/2021 18:25:09] HomeSubForm.cs:HomeSubForm_VisibleChanged:42 » HomeSubForm visible changed event handler start
+[01/10/2021 18:25:09] RestAPI.cs:GetCovidDataAsync:47 » Start getting covid data by name czechia
+[01/10/2021 18:25:09] RestAPI.cs:GetCovidDataAsync:69 » Unsuccessfully get covid data
+[01/10/2021 18:25:09] HomeSubForm.cs:HomeSubForm_VisibleChanged:58 » HomeSubForm visible changed event handler end
+[01/10/2021 18:25:10] UI.cs:button7_Click:92 » button7 click event handler start
+[01/10/2021 18:25:10] UI.cs:button7_Click:95 » Ending program
+[01/10/2021 18:25:09] HomeSubForm.cs:HomeSubForm_VisibleChanged:58 » HomeSubForm visible changed event handler end
+[01/10/2021 18:25:10] UI.cs:button7_Click:92 » button7 click event handler start
+[01/10/2021 18:25:10] UI.cs:button7_Click:95 » Ending program
+[01/10/2021 18:25:10] LoginForm.cs:EndApp:69 » Ending program
+[01/10/2021 18:27:08] Program.cs:Main:29 » Program started. Version: 1.5.0
+[01/10/2021 18:27:08] Program.cs:Main:31 » Creating discord webhook instance
+[01/10/2021 18:27:08] Program.cs:Main:36 » Webhook instance created
+[01/10/2021 18:27:08] Program.cs:Main:38 » Loading input parameters
+[01/10/2021 18:27:08] Program.cs:Main:53 » Input parameters loaded
+[01/10/2021 18:27:08] Program.cs:Main:54 » Loading initialize database
+[01/10/2021 18:27:09] Program.cs:Main:56 » Database initialized
+[01/10/2021 18:27:09] Program.cs:Main:57 » Loading data from database
+[01/10/2021 18:27:09] DatabaseMethods.cs:CheckVersion:1149 » Starting check version and get download data
+[01/10/2021 18:27:09] DatabaseMethods.cs:CheckVersion:1156 » Program is up to date
+[01/10/2021 18:27:09] Program.cs:Main:71 » Data from database loaded
+[01/10/2021 18:27:09] Program.cs:Main:72 » Initializing program variables
+[01/10/2021 18:27:09] UI.cs:.ctor:28 » Start initialize sub sub form
+[01/10/2021 18:27:09] HomeSubForm.cs:.ctor:21 » Start initialize sub sub form
+[01/10/2021 18:27:09] HomeSubForm.cs:.ctor:28 » Sub sub form successfully initialized
+[01/10/2021 18:27:09] UI.cs:OpenChildForm:62 » Start open child form
+[01/10/2021 18:27:09] HomeSubForm.cs:HomeSubForm_VisibleChanged:42 » HomeSubForm visible changed event handler start
+[01/10/2021 18:27:09] HomeSubForm.cs:HomeSubForm_VisibleChanged:58 » HomeSubForm visible changed event handler end
+[01/10/2021 18:27:09] HomeSubForm.cs:HomeSubForm_VisibleChanged:42 » HomeSubForm visible changed event handler start
+[01/10/2021 18:27:09] HomeSubForm.cs:HomeSubForm_VisibleChanged:58 » HomeSubForm visible changed event handler end
+[01/10/2021 18:27:09] HomeSubForm.cs:HomeSubForm_VisibleChanged:42 » HomeSubForm visible changed event handler start
+[01/10/2021 18:27:09] HomeSubForm.cs:HomeSubForm_VisibleChanged:58 » HomeSubForm visible changed event handler end
+[01/10/2021 18:27:09] UI.cs:OpenChildForm:87 » Successfully opened child form
+[01/10/2021 18:27:09] UI.cs:.ctor:39 » Sub sub form successfully initialized
+[01/10/2021 18:27:09] LoginForm.cs:.ctor:36 » Start initialize sub sub form
+[01/10/2021 18:27:09] LoginForm.cs:.ctor:38 » Sub sub form successfully initialized
+[01/10/2021 18:27:09] LoginSubSubForm.cs:.ctor:20 » Start initialize sub sub form
+[01/10/2021 18:27:09] LoginSubSubForm.cs:.ctor:22 » Sub sub form successfully initialized
+[01/10/2021 18:27:09] LoginForm.cs:OpenChildForm:47 » Start open child form
+[01/10/2021 18:27:09] LoginForm.cs:OpenChildForm:60 » Open child form end
+[01/10/2021 18:27:09] Program.cs:Main:79 » Program variables initialized
+[01/10/2021 18:27:09] DatabaseMethods.cs:HasAutoLogin:480 » Check if current computer has auto login
+[01/10/2021 18:27:09] DatabaseMethods.cs:HasAutoLogin:490 » Current computer auto login output: 38
+[01/10/2021 18:27:09] DatabaseMethods.cs:GetEmployeeByID:504 » Getting employee by id 38
+[01/10/2021 18:27:09] DatabaseMethods.cs:GetEmployeeByID:511 » Got employee. Output: CoronaTracker.Database.DatabaseInstances.EmployeeInstance
+[01/10/2021 18:27:09] DatabaseMethods.cs:GetPoseByID:421 » Getting employee pose by ID 38
+[01/10/2021 18:27:09] DatabaseMethods.cs:GetPoseByID:445 » Got employee pose. Output: Developer
+[01/10/2021 18:27:09] HomeSubForm.cs:HomeSubForm_VisibleChanged:42 » HomeSubForm visible changed event handler start
+[01/10/2021 18:27:09] RestAPI.cs:GetCovidDataAsync:47 » Start getting covid data by name czechia
+[01/10/2021 18:27:09] RestAPI.cs:GetCovidDataAsync:66 » Successfully get covid data
+[01/10/2021 18:27:09] HomeSubForm.cs:HomeSubForm_VisibleChanged:58 » HomeSubForm visible changed event handler end
+[01/10/2021 18:27:09] HomeSubForm.cs:HomeSubForm_VisibleChanged:42 » HomeSubForm visible changed event handler start
+[01/10/2021 18:27:09] RestAPI.cs:GetCovidDataAsync:47 » Start getting covid data by name czechia
+[01/10/2021 18:27:09] RestAPI.cs:GetCovidDataAsync:69 » Unsuccessfully get covid data
+[01/10/2021 18:27:09] HomeSubForm.cs:HomeSubForm_VisibleChanged:58 » HomeSubForm visible changed event handler end
+[01/10/2021 18:27:09] UI.cs:UI_VisibleChanged:108 » UI visible changed event handler start
+[01/10/2021 18:27:09] UI.cs:UI_VisibleChanged:114 » UI visible changed event handler end
+[01/10/2021 18:27:09] HomeSubForm.cs:HomeSubForm_VisibleChanged:42 » HomeSubForm visible changed event handler start
+[01/10/2021 18:27:09] RestAPI.cs:GetCovidDataAsync:47 » Start getting covid data by name czechia
+[01/10/2021 18:27:10] RestAPI.cs:GetCovidDataAsync:69 » Unsuccessfully get covid data
+[01/10/2021 18:27:10] HomeSubForm.cs:HomeSubForm_VisibleChanged:58 » HomeSubForm visible changed event handler end
+[01/10/2021 18:27:24] UI.cs:button7_Click:92 » button7 click event handler start
+[01/10/2021 18:27:24] UI.cs:button7_Click:95 » Ending program
+[01/10/2021 18:27:10] HomeSubForm.cs:HomeSubForm_VisibleChanged:58 » HomeSubForm visible changed event handler end
+[01/10/2021 18:27:24] UI.cs:button7_Click:92 » button7 click event handler start
+[01/10/2021 18:27:24] UI.cs:button7_Click:95 » Ending program
+[01/10/2021 18:27:24] LoginForm.cs:EndApp:69 » Ending program
+[01/10/2021 18:28:56] Program.cs:Main:29 » Program started. Version: 1.5.0
+[01/10/2021 18:28:56] Program.cs:Main:31 » Creating discord webhook instance
+[01/10/2021 18:28:56] Program.cs:Main:36 » Webhook instance created
+[01/10/2021 18:28:56] Program.cs:Main:38 » Loading input parameters
+[01/10/2021 18:28:56] Program.cs:Main:53 » Input parameters loaded
+[01/10/2021 18:28:56] Program.cs:Main:54 » Loading initialize database
+[01/10/2021 18:28:57] Program.cs:Main:56 » Database initialized
+[01/10/2021 18:28:57] Program.cs:Main:57 » Loading data from database
+[01/10/2021 18:28:57] DatabaseMethods.cs:CheckVersion:1149 » Starting check version and get download data
+[01/10/2021 18:28:57] DatabaseMethods.cs:CheckVersion:1156 » Program is up to date
+[01/10/2021 18:28:57] Program.cs:Main:71 » Data from database loaded
+[01/10/2021 18:28:57] Program.cs:Main:72 » Initializing program variables
+[01/10/2021 18:28:57] UI.cs:.ctor:28 » Start initialize sub sub form
+[01/10/2021 18:28:57] HomeSubForm.cs:.ctor:21 » Start initialize sub sub form
+[01/10/2021 18:28:57] HomeSubForm.cs:.ctor:28 » Sub sub form successfully initialized
+[01/10/2021 18:28:57] UI.cs:OpenChildForm:62 » Start open child form
+[01/10/2021 18:28:57] HomeSubForm.cs:HomeSubForm_VisibleChanged:42 » HomeSubForm visible changed event handler start
+[01/10/2021 18:28:57] HomeSubForm.cs:HomeSubForm_VisibleChanged:58 » HomeSubForm visible changed event handler end
+[01/10/2021 18:28:57] HomeSubForm.cs:HomeSubForm_VisibleChanged:42 » HomeSubForm visible changed event handler start
+[01/10/2021 18:28:57] HomeSubForm.cs:HomeSubForm_VisibleChanged:58 » HomeSubForm visible changed event handler end
+[01/10/2021 18:28:57] HomeSubForm.cs:HomeSubForm_VisibleChanged:42 » HomeSubForm visible changed event handler start
+[01/10/2021 18:28:57] HomeSubForm.cs:HomeSubForm_VisibleChanged:58 » HomeSubForm visible changed event handler end
+[01/10/2021 18:28:57] UI.cs:OpenChildForm:87 » Successfully opened child form
+[01/10/2021 18:28:57] UI.cs:.ctor:39 » Sub sub form successfully initialized
+[01/10/2021 18:28:57] LoginForm.cs:.ctor:36 » Start initialize sub sub form
+[01/10/2021 18:28:57] LoginForm.cs:.ctor:38 » Sub sub form successfully initialized
+[01/10/2021 18:28:57] LoginSubSubForm.cs:.ctor:20 » Start initialize sub sub form
+[01/10/2021 18:28:57] LoginSubSubForm.cs:.ctor:22 » Sub sub form successfully initialized
+[01/10/2021 18:28:57] LoginForm.cs:OpenChildForm:47 » Start open child form
+[01/10/2021 18:28:57] LoginForm.cs:OpenChildForm:60 » Open child form end
+[01/10/2021 18:28:57] Program.cs:Main:79 » Program variables initialized
+[01/10/2021 18:28:57] DatabaseMethods.cs:HasAutoLogin:480 » Check if current computer has auto login
+[01/10/2021 18:28:57] DatabaseMethods.cs:HasAutoLogin:490 » Current computer auto login output: 38
+[01/10/2021 18:28:57] DatabaseMethods.cs:GetEmployeeByID:504 » Getting employee by id 38
+[01/10/2021 18:28:57] DatabaseMethods.cs:GetEmployeeByID:511 » Got employee. Output: CoronaTracker.Database.DatabaseInstances.EmployeeInstance
+[01/10/2021 18:28:57] DatabaseMethods.cs:GetPoseByID:421 » Getting employee pose by ID 38
+[01/10/2021 18:28:57] DatabaseMethods.cs:GetPoseByID:445 » Got employee pose. Output: Developer
+[01/10/2021 18:28:57] HomeSubForm.cs:HomeSubForm_VisibleChanged:42 » HomeSubForm visible changed event handler start
+[01/10/2021 18:28:57] RestAPI.cs:GetCovidDataAsync:47 » Start getting covid data by name czechia
+[01/10/2021 18:28:57] RestAPI.cs:GetCovidDataAsync:66 » Successfully get covid data
+[01/10/2021 18:28:57] HomeSubForm.cs:HomeSubForm_VisibleChanged:58 » HomeSubForm visible changed event handler end
+[01/10/2021 18:28:57] HomeSubForm.cs:HomeSubForm_VisibleChanged:42 » HomeSubForm visible changed event handler start
+[01/10/2021 18:28:57] RestAPI.cs:GetCovidDataAsync:47 » Start getting covid data by name czechia
+[01/10/2021 18:28:57] RestAPI.cs:GetCovidDataAsync:69 » Unsuccessfully get covid data
+[01/10/2021 18:28:57] HomeSubForm.cs:HomeSubForm_VisibleChanged:58 » HomeSubForm visible changed event handler end
+[01/10/2021 18:28:57] UI.cs:UI_VisibleChanged:108 » UI visible changed event handler start
+[01/10/2021 18:28:57] UI.cs:UI_VisibleChanged:114 » UI visible changed event handler end
+[01/10/2021 18:28:57] HomeSubForm.cs:HomeSubForm_VisibleChanged:42 » HomeSubForm visible changed event handler start
+[01/10/2021 18:28:57] RestAPI.cs:GetCovidDataAsync:47 » Start getting covid data by name czechia
+[01/10/2021 18:28:57] RestAPI.cs:GetCovidDataAsync:69 » Unsuccessfully get covid data
+[01/10/2021 18:28:57] HomeSubForm.cs:HomeSubForm_VisibleChanged:58 » HomeSubForm visible changed event handler end
+[01/10/2021 18:29:00] ReportBug.cs:ReportBug_MouseDown:102 » ReportBug mouse down event handler start
+[01/10/2021 18:29:01] ReportBug.cs:ReportBug_MouseDown:105 » ReportBug mouse down event handler end
+[01/10/2021 18:30:43] Program.cs:Main:29 » Program started. Version: 1.5.0
+[01/10/2021 18:30:43] Program.cs:Main:31 » Creating discord webhook instance
+[01/10/2021 18:30:43] Program.cs:Main:36 » Webhook instance created
+[01/10/2021 18:30:43] Program.cs:Main:38 » Loading input parameters
+[01/10/2021 18:30:43] Program.cs:Main:53 » Input parameters loaded
+[01/10/2021 18:30:43] Program.cs:Main:54 » Loading initialize database
+[01/10/2021 18:30:44] Program.cs:Main:56 » Database initialized
+[01/10/2021 18:30:44] Program.cs:Main:57 » Loading data from database
+[01/10/2021 18:30:44] DatabaseMethods.cs:CheckVersion:1149 » Starting check version and get download data
+[01/10/2021 18:30:44] DatabaseMethods.cs:CheckVersion:1156 » Program is up to date
+[01/10/2021 18:30:44] Program.cs:Main:71 » Data from database loaded
+[01/10/2021 18:30:44] Program.cs:Main:72 » Initializing program variables
+[01/10/2021 18:30:44] UI.cs:.ctor:28 » Start initialize sub sub form
+[01/10/2021 18:30:44] HomeSubForm.cs:.ctor:21 » Start initialize sub sub form
+[01/10/2021 18:30:44] HomeSubForm.cs:.ctor:28 » Sub sub form successfully initialized
+[01/10/2021 18:30:44] UI.cs:OpenChildForm:62 » Start open child form
+[01/10/2021 18:30:44] HomeSubForm.cs:HomeSubForm_VisibleChanged:42 » HomeSubForm visible changed event handler start
+[01/10/2021 18:30:44] HomeSubForm.cs:HomeSubForm_VisibleChanged:58 » HomeSubForm visible changed event handler end
+[01/10/2021 18:30:44] HomeSubForm.cs:HomeSubForm_VisibleChanged:42 » HomeSubForm visible changed event handler start
+[01/10/2021 18:30:44] HomeSubForm.cs:HomeSubForm_VisibleChanged:58 » HomeSubForm visible changed event handler end
+[01/10/2021 18:30:44] HomeSubForm.cs:HomeSubForm_VisibleChanged:42 » HomeSubForm visible changed event handler start
+[01/10/2021 18:30:44] HomeSubForm.cs:HomeSubForm_VisibleChanged:58 » HomeSubForm visible changed event handler end
+[01/10/2021 18:30:44] UI.cs:OpenChildForm:87 » Successfully opened child form
+[01/10/2021 18:30:44] UI.cs:.ctor:39 » Sub sub form successfully initialized
+[01/10/2021 18:30:44] LoginForm.cs:.ctor:36 » Start initialize sub sub form
+[01/10/2021 18:30:44] LoginForm.cs:.ctor:38 » Sub sub form successfully initialized
+[01/10/2021 18:30:44] LoginSubSubForm.cs:.ctor:20 » Start initialize sub sub form
+[01/10/2021 18:30:44] LoginSubSubForm.cs:.ctor:22 » Sub sub form successfully initialized
+[01/10/2021 18:30:44] LoginForm.cs:OpenChildForm:47 » Start open child form
+[01/10/2021 18:30:44] LoginForm.cs:OpenChildForm:60 » Open child form end
+[01/10/2021 18:30:44] Program.cs:Main:79 » Program variables initialized
+[01/10/2021 18:30:44] DatabaseMethods.cs:HasAutoLogin:480 » Check if current computer has auto login
+[01/10/2021 18:30:44] DatabaseMethods.cs:HasAutoLogin:490 » Current computer auto login output: 38
+[01/10/2021 18:30:44] DatabaseMethods.cs:GetEmployeeByID:504 » Getting employee by id 38
+[01/10/2021 18:30:44] DatabaseMethods.cs:GetEmployeeByID:511 » Got employee. Output: CoronaTracker.Database.DatabaseInstances.EmployeeInstance
+[01/10/2021 18:30:44] DatabaseMethods.cs:GetPoseByID:421 » Getting employee pose by ID 38
+[01/10/2021 18:30:44] DatabaseMethods.cs:GetPoseByID:445 » Got employee pose. Output: Developer
+[01/10/2021 18:30:44] HomeSubForm.cs:HomeSubForm_VisibleChanged:42 » HomeSubForm visible changed event handler start
+[01/10/2021 18:30:44] RestAPI.cs:GetCovidDataAsync:47 » Start getting covid data by name czechia
+[01/10/2021 18:30:44] RestAPI.cs:GetCovidDataAsync:66 » Successfully get covid data
+[01/10/2021 18:30:44] HomeSubForm.cs:HomeSubForm_VisibleChanged:58 » HomeSubForm visible changed event handler end
+[01/10/2021 18:30:44] HomeSubForm.cs:HomeSubForm_VisibleChanged:42 » HomeSubForm visible changed event handler start
+[01/10/2021 18:30:44] RestAPI.cs:GetCovidDataAsync:47 » Start getting covid data by name czechia
+[01/10/2021 18:30:44] RestAPI.cs:GetCovidDataAsync:69 » Unsuccessfully get covid data
+[01/10/2021 18:30:44] HomeSubForm.cs:HomeSubForm_VisibleChanged:58 » HomeSubForm visible changed event handler end
+[01/10/2021 18:30:44] UI.cs:UI_VisibleChanged:108 » UI visible changed event handler start
+[01/10/2021 18:30:44] UI.cs:UI_VisibleChanged:114 » UI visible changed event handler end
+[01/10/2021 18:30:44] HomeSubForm.cs:HomeSubForm_VisibleChanged:42 » HomeSubForm visible changed event handler start
+[01/10/2021 18:30:44] RestAPI.cs:GetCovidDataAsync:47 » Start getting covid data by name czechia
+[01/10/2021 18:30:44] RestAPI.cs:GetCovidDataAsync:69 » Unsuccessfully get covid data
+[01/10/2021 18:30:44] HomeSubForm.cs:HomeSubForm_VisibleChanged:58 » HomeSubForm visible changed event handler end
+[01/10/2021 18:33:00] Program.cs:Main:29 » Program started. Version: 1.5.0
+[01/10/2021 18:33:00] Program.cs:Main:31 » Creating discord webhook instance
+[01/10/2021 18:33:00] Program.cs:Main:36 » Webhook instance created
+[01/10/2021 18:33:00] Program.cs:Main:38 » Loading input parameters
+[01/10/2021 18:33:00] Program.cs:Main:53 » Input parameters loaded
+[01/10/2021 18:33:00] Program.cs:Main:54 » Loading initialize database
+[01/10/2021 18:33:00] Program.cs:Main:56 » Database initialized
+[01/10/2021 18:33:00] Program.cs:Main:57 » Loading data from database
+[01/10/2021 18:33:00] DatabaseMethods.cs:CheckVersion:1149 » Starting check version and get download data
+[01/10/2021 18:33:00] DatabaseMethods.cs:CheckVersion:1156 » Program is up to date
+[01/10/2021 18:33:00] Program.cs:Main:71 » Data from database loaded
+[01/10/2021 18:33:00] Program.cs:Main:72 » Initializing program variables
+[01/10/2021 18:33:00] UI.cs:.ctor:28 » Start initialize sub sub form
+[01/10/2021 18:33:01] HomeSubForm.cs:.ctor:21 » Start initialize sub sub form
+[01/10/2021 18:33:01] HomeSubForm.cs:.ctor:28 » Sub sub form successfully initialized
+[01/10/2021 18:33:01] UI.cs:OpenChildForm:62 » Start open child form
+[01/10/2021 18:33:01] HomeSubForm.cs:HomeSubForm_VisibleChanged:42 » HomeSubForm visible changed event handler start
+[01/10/2021 18:33:01] HomeSubForm.cs:HomeSubForm_VisibleChanged:58 » HomeSubForm visible changed event handler end
+[01/10/2021 18:33:01] HomeSubForm.cs:HomeSubForm_VisibleChanged:42 » HomeSubForm visible changed event handler start
+[01/10/2021 18:33:01] HomeSubForm.cs:HomeSubForm_VisibleChanged:58 » HomeSubForm visible changed event handler end
+[01/10/2021 18:33:01] HomeSubForm.cs:HomeSubForm_VisibleChanged:42 » HomeSubForm visible changed event handler start
+[01/10/2021 18:33:01] HomeSubForm.cs:HomeSubForm_VisibleChanged:58 » HomeSubForm visible changed event handler end
+[01/10/2021 18:33:01] UI.cs:OpenChildForm:87 » Successfully opened child form
+[01/10/2021 18:33:01] UI.cs:.ctor:39 » Sub sub form successfully initialized
+[01/10/2021 18:33:01] LoginForm.cs:.ctor:36 » Start initialize sub sub form
+[01/10/2021 18:33:01] LoginForm.cs:.ctor:38 » Sub sub form successfully initialized
+[01/10/2021 18:33:01] LoginSubSubForm.cs:.ctor:20 » Start initialize sub sub form
+[01/10/2021 18:33:01] LoginSubSubForm.cs:.ctor:22 » Sub sub form successfully initialized
+[01/10/2021 18:33:01] LoginForm.cs:OpenChildForm:47 » Start open child form
+[01/10/2021 18:33:01] LoginForm.cs:OpenChildForm:60 » Open child form end
+[01/10/2021 18:33:01] Program.cs:Main:79 » Program variables initialized
+[01/10/2021 18:33:01] DatabaseMethods.cs:HasAutoLogin:480 » Check if current computer has auto login
+[01/10/2021 18:33:01] DatabaseMethods.cs:HasAutoLogin:490 » Current computer auto login output: 38
+[01/10/2021 18:33:01] DatabaseMethods.cs:GetEmployeeByID:504 » Getting employee by id 38
+[01/10/2021 18:33:01] DatabaseMethods.cs:GetEmployeeByID:511 » Got employee. Output: CoronaTracker.Database.DatabaseInstances.EmployeeInstance
+[01/10/2021 18:33:01] DatabaseMethods.cs:GetPoseByID:421 » Getting employee pose by ID 38
+[01/10/2021 18:33:01] DatabaseMethods.cs:GetPoseByID:445 » Got employee pose. Output: Developer
+[01/10/2021 18:33:01] HomeSubForm.cs:HomeSubForm_VisibleChanged:42 » HomeSubForm visible changed event handler start
+[01/10/2021 18:33:01] RestAPI.cs:GetCovidDataAsync:47 » Start getting covid data by name czechia
+[01/10/2021 18:33:01] RestAPI.cs:GetCovidDataAsync:66 » Successfully get covid data
+[01/10/2021 18:33:01] HomeSubForm.cs:HomeSubForm_VisibleChanged:58 » HomeSubForm visible changed event handler end
+[01/10/2021 18:33:01] HomeSubForm.cs:HomeSubForm_VisibleChanged:42 » HomeSubForm visible changed event handler start
+[01/10/2021 18:33:01] RestAPI.cs:GetCovidDataAsync:47 » Start getting covid data by name czechia
+[01/10/2021 18:33:01] RestAPI.cs:GetCovidDataAsync:69 » Unsuccessfully get covid data
+[01/10/2021 18:33:01] HomeSubForm.cs:HomeSubForm_VisibleChanged:58 » HomeSubForm visible changed event handler end
+[01/10/2021 18:33:01] UI.cs:UI_VisibleChanged:108 » UI visible changed event handler start
+[01/10/2021 18:33:01] UI.cs:UI_VisibleChanged:114 » UI visible changed event handler end
+[01/10/2021 18:33:01] HomeSubForm.cs:HomeSubForm_VisibleChanged:42 » HomeSubForm visible changed event handler start
+[01/10/2021 18:33:01] RestAPI.cs:GetCovidDataAsync:47 » Start getting covid data by name czechia
+[01/10/2021 18:33:01] RestAPI.cs:GetCovidDataAsync:69 » Unsuccessfully get covid data
+[01/10/2021 18:33:01] HomeSubForm.cs:HomeSubForm_VisibleChanged:58 » HomeSubForm visible changed event handler end
+[01/10/2021 18:33:03] ReportBug.cs:ReportBug_MouseDown:102 » ReportBug mouse down event handler start
+[01/10/2021 18:33:04] ReportBug.cs:ReportBug_MouseDown:105 » ReportBug mouse down event handler end

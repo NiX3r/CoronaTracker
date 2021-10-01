@@ -108,6 +108,25 @@ namespace CoronaTracker.Database
             LogClass.Log("Reset password logged");
         }
 
+        public static void AddBugReport(string topic, string type, int priority, DateTime create, string system, string description, string log)
+        {
+
+            LogClass.Log("Starting add bug report");
+            var macAddr =
+                (
+                from nic in NetworkInterface.GetAllNetworkInterfaces()
+                where nic.OperationalStatus == OperationalStatus.Up
+                select nic.GetPhysicalAddress().ToString()
+            ).FirstOrDefault();
+            string externalIpString = new WebClient().DownloadString("http://icanhazip.com").Replace("\\r\\n", "").Replace("\\n", "").Trim();
+
+            var command = new MySqlCommand($"INSERT INTO Report(Employee_ID, Topic, Type, CreateDate, MACAddress, IPAddress, OperationSystem, Description, Priority, LastLog) VALUES({ProgramVariables.ID}, '{topic}', '{type}', '{create.ToString("yyyy-MM-dd HH:mm:ss")}', '{macAddr}', '{externalIpString}', '{system}', '{description}', {priority}, '{log}');", connection);
+            command.ExecuteNonQuery();
+
+            LogClass.Log("Bug report successfully created");
+
+        }
+
         /// <summary>
         /// Function to get url address of lastest link to download
         /// </summary>
