@@ -162,3 +162,4 @@ D:\Programmin\C#\CoronaTracker\CoronaTracker\CoronaTracker\obj\Debug\CoronaTrack
 D:\Programmin\C#\CoronaTracker\CoronaTracker\CoronaTracker\obj\Debug\CoronaTracker.exe
 D:\Programmin\C#\CoronaTracker\CoronaTracker\CoronaTracker\obj\Debug\CoronaTracker.pdb
 D:\Programmin\C#\CoronaTracker\CoronaTracker\CoronaTracker\obj\Debug\CoronaTracker.SubForms.ReportBug.resources
+D:\Programmin\C#\CoronaTracker\CoronaTracker\CoronaTracker\obj\Debug\CoronaTracker.SubForms.LogForm.resources

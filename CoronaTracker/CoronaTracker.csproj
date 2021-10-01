@@ -136,6 +136,12 @@
     <Compile Include="SubForms\HomeSubForm.Designer.cs">
       <DependentUpon>HomeSubForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="SubForms\LogForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SubForms\LogForm.Designer.cs">
+      <DependentUpon>LogForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="SubForms\LoginForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -235,6 +241,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="SubForms\HomeSubForm.resx">
       <DependentUpon>HomeSubForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SubForms\LogForm.resx">
+      <DependentUpon>LogForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="SubForms\LoginForm.resx">
       <DependentUpon>LoginForm.cs</DependentUpon>

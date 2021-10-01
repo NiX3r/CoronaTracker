@@ -44,7 +44,17 @@ namespace CoronaTracker
                     {
                         isDev = true;
                     }
-                    if (s.Contains("-v"))
+                    else if (s.Equals("-logoff"))
+                    {
+                        LogClass.DoLog = false;
+                    }
+                    else if (s.Equals("-showlog"))
+                    {
+                        LogClass.DoLogForm = true;
+                        if (Application.OpenForms.OfType<LogForm>().FirstOrDefault() == null)
+                            LogClass.LogForm.Show();
+                    }
+                    else if (s.Contains("-v"))
                     {
                         ProgramVariables.Version = s.Substring(2);
                     }
