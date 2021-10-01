@@ -281,7 +281,7 @@ namespace CoronaTracker.SubForms.PatientSubSubForms
 
         private void pictureBox4_Click(object sender, EventArgs e)
         {
-            if(EmailWriterClass.Write(DatabaseMethods.GetPatientIDByPersonalNumber(textBox2.Text, textBox3.Text), Convert.ToInt32(textBox2.Text), Convert.ToInt32(textBox3.Text), textBox5.Text))
+            if(EmailWriter.Write(DatabaseMethods.GetPatientIDByPersonalNumber(textBox2.Text, textBox3.Text), Convert.ToInt32(textBox2.Text), Convert.ToInt32(textBox3.Text), textBox5.Text))
             {
                 MessageBox.Show("Email has been successfully sent!");
             }

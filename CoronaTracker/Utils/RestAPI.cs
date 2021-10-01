@@ -46,7 +46,16 @@ namespace CoronaTracker.Utils
         {
             LogClass.Log($"Start getting covid data by name {country}");
             var client = new HttpClient();
-            var request = SecretClass.GetRestInfo(country);
+            var request = new HttpRequestMessage
+            {
+                Method = HttpMethod.Get,
+                RequestUri = new Uri("https://covid-19-data.p.rapidapi.com/country?name=" + country),
+                Headers =
+                {
+                    { "x-rapidapi-key", SecretClass.GetRestApiKey() },
+                    { "x-rapidapi-host", SecretClass.GetRestApiHost()}
+                }
+            };
             using (var response = client.SendAsync(request))
             {
                 String body = await response.Result.Content.ReadAsStringAsync();

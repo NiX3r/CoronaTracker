@@ -105,7 +105,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Database\DatabaseInstances\DatabaseSecret.cs" />
     <Compile Include="Database\DatabaseInstances\EmployeeInstance.cs" />
     <Compile Include="Database\DatabaseInstances\FindsInstance.cs" />
     <Compile Include="Database\DatabaseInstances\PatientInstance.cs" />
@@ -116,10 +115,8 @@
     <Compile Include="Enums\EmployeePoseEnum.cs" />
     <Compile Include="Enums\LoginWindowStatusEnum.cs" />
     <Compile Include="Instances\CovidInfo.cs" />
-    <Compile Include="Instances\EmailWriterClass.cs" />
     <Compile Include="Instances\GeneratePdfClass.cs" />
     <Compile Include="Instances\LogClass.cs" />
-    <Compile Include="Instances\SecretClass.cs" />
     <Compile Include="SubForms\CountriesSubForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -208,8 +205,10 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Utils\EmailWriter.cs" />
     <Compile Include="Utils\ProgramVariables.cs" />
     <Compile Include="Utils\RestAPI.cs" />
+    <Compile Include="Utils\SecretClass.cs" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>

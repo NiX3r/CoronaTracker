@@ -1,5 +1,6 @@
 ﻿using CoronaTracker.Database;
 using CoronaTracker.Instances;
+using CoronaTracker.Utils;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -87,7 +88,7 @@ namespace CoronaTracker.SubForms.LoginSubSubForms
                     {
                         if (DatabaseMethods.CheckCodeValidity(id))
                         {
-                            if (EmailWriterClass.WriteCodeEmail(textBox1.Text, code))
+                            if (EmailWriter.WriteCodeEmail(textBox1.Text, code))
                             {
                                 DatabaseMethods.LogResetPassword(textBox1.Text, code, id);
                                 textBox1.ReadOnly = true;

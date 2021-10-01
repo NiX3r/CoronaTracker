@@ -27,7 +27,8 @@ namespace CoronaTracker.Database
         /// </summary>
         public static void SetupDatabase()
         {
-            connection = DatabaseSecret.GetConnection();
+            string connectionCredentials = $"server={SecretClass.GetDatabaseServer()};user={SecretClass.GetDatabaseUsername()};pwd={SecretClass.GetDatabasePassword()};database={SecretClass.GetDatabaseDatabase()}";
+            connection = new MySqlConnection(connectionCredentials);
             try
             {
                 connection.Open();
@@ -43,8 +44,9 @@ namespace CoronaTracker.Database
         public static void RefreshDatabaseConnection()
         {
             LogClass.Log("Trying to refresh connection");
+            string connectionCredentials = $"server={SecretClass.GetDatabaseServer()};user={SecretClass.GetDatabaseUsername()};pwd={SecretClass.GetDatabasePassword()};database={SecretClass.GetDatabaseDatabase()}";
             connection.Close();
-            connection = DatabaseSecret.GetConnection();
+            connection = new MySqlConnection(connectionCredentials);
             try
             {
                 connection.Open(); 
