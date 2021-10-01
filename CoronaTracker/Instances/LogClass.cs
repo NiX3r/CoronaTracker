@@ -25,7 +25,7 @@ namespace CoronaTracker.Instances
         {
             log += $"\n[{DateTime.Now.ToString("dd/MM/yyyy HH:mm:ss")}] {file.Substring(file.LastIndexOf('\\') + 1)}:{caller}:{lineNumber} » {value}";
             index++;
-            if(index == 100)
+            if(index == 10)
             {
                 index = 0;
                 Save();
