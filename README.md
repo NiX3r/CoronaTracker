@@ -1,5 +1,5 @@
 # CoronaTracker <img src="http://coronatracker.ncodes.eu/coronavirus.png" width="50" height="50">
-Seminar school project
+Seminar school project.
 
 ## Introduce CoronaTracker
 This program was created for seminar school project as recession to Corona virus. Program is develop for non-exists hospital. It saved patients and their data about covid data. In databa I store Employees data such as fullname, email, phone, pose, etc. Then Vaccinate, Finds, Vaccine types. And lastable program data such as version and download link to lastest release.
