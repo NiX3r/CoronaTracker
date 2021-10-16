@@ -4,7 +4,7 @@ using System.Linq;
 using System.Net;
 using System.Net.Mail;
 using System.Text;
-using System.Threading.Tasks;
+using System.Threading;
 using System.Windows;
 
 namespace CoronaTracker.Utils
@@ -12,7 +12,22 @@ namespace CoronaTracker.Utils
     class EmailWriter
     {
 
-        public static bool Write(int ID, int firstPersonalNumber, int secondPersonalNumber, string mailTo)
+        private static int ID, firstPersonalNumber, secondPersonalNumber;
+        private static string mailTo;
+
+        public static void AsyncWrite(int aID, int afirstPersonalNumber, int asecondPersonalNumber, string amailTo)
+        {
+
+            ID = aID;
+            firstPersonalNumber = afirstPersonalNumber;
+            secondPersonalNumber = asecondPersonalNumber;
+            mailTo = amailTo;
+
+            Thread mailer = new Thread(new ThreadStart(Write));
+            mailer.Start();
+        }
+
+        static void Write()
         {
 
             string pictureUrl = "https://api.qrserver.com/v1/create-qr-code/?size=512x512&data=" + "CoronaTracker-by-nCodes.eu_" + ID + "_" + firstPersonalNumber + "_" + secondPersonalNumber;
@@ -36,7 +51,7 @@ namespace CoronaTracker.Utils
                 MailMessage message = new MailMessage();
                 SmtpClient smtp = new SmtpClient();
                 Attachment attachment = new Attachment("temp.jpg");
-                message.From = new MailAddress("info@coronatracker.ncodes.eu");
+                message.From = new MailAddress(SecretClass.GetEmailEmail());
                 message.To.Add(new MailAddress(mailTo));
                 message.Subject = head;
                 message.Attachments.Add(attachment);
@@ -50,12 +65,11 @@ namespace CoronaTracker.Utils
                 smtp.DeliveryMethod = SmtpDeliveryMethod.Network;
                 smtp.Send(message);
                 attachment.Dispose();
-                return true;
+                MessageBox.Show("You successfully sent an email!");
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
-                return false;
             }
 
         }
@@ -77,7 +91,7 @@ namespace CoronaTracker.Utils
             {
                 MailMessage message = new MailMessage();
                 SmtpClient smtp = new SmtpClient();
-                message.From = new MailAddress("info@coronatracker.ncodes.eu");
+                message.From = new MailAddress(SecretClass.GetEmailEmail());
                 message.To.Add(new MailAddress(email));
                 message.Subject = head;
                 message.IsBodyHtml = true;

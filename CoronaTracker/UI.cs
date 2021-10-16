@@ -90,8 +90,15 @@ namespace CoronaTracker
         private void button7_Click(object sender, EventArgs e)
         {
             LogClass.Log($"button7 click event handler start");
-            File.Delete("temp.jpg");
-            File.Delete("temp.pdf");
+            try
+            {
+                File.Delete("temp.jpg");
+                File.Delete("temp.pdf");
+            }
+            catch(Exception ex)
+            {
+
+            }
             LogClass.Log($"Ending program");
             LogClass.Save();
             ProgramVariables.LoginUI.EndApp();

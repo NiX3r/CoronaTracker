@@ -76,11 +76,6 @@ namespace CoronaTracker.Database
             ).FirstOrDefault();
             string externalIpString = new WebClient().DownloadString("http://icanhazip.com").Replace("\\r\\n", "").Replace("\\n", "").Trim();
 
-            MessageBox.Show("ID: " + GUser_ID + "\n" +
-                            "IP: " + externalIpString + "\n" +
-                            "MAC:" + macAddr + "\n" +
-                            "Success: " + logIn);
-
             var command = new MySqlCommand("INSERT INTO LoginAttempts(LoginAttempts_DateTime, LoginAttempts_MAC, LoginAttempts_IP, LoginAttempts_IsSuccess, Employee_Employee_ID) VALUES('" + DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss") + "', '" + macAddr + "', '" + externalIpString + "', " + logIn + ", " + GUser_ID + ");", connection);
             command.ExecuteNonQuery();
             LogClass.Log("Login logged");
@@ -1337,8 +1332,8 @@ namespace CoronaTracker.Database
                     ProgramVariables.ID = reader.GetInt32(0);
                     ProgramVariables.Fullname = reader.GetString(1);
                     ProgramVariables.ProfileURL = reader.IsDBNull(2) ? "" : reader.GetString(2);
-                    ProgramVariables.Pose = GetPoseByID(ProgramVariables.ID);
                     reader.Close();
+                    ProgramVariables.Pose = GetPoseByID(ProgramVariables.ID);
                     LogLogIn(ID, true);
                     LogClass.Log($"Logged in successfully");
                     return 1;

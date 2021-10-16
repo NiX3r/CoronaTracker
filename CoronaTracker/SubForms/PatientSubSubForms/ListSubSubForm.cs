@@ -12,6 +12,7 @@ using System.Drawing;
 using System.Linq;
 using System.Runtime.InteropServices;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using ZXing;
@@ -281,10 +282,8 @@ namespace CoronaTracker.SubForms.PatientSubSubForms
 
         private void pictureBox4_Click(object sender, EventArgs e)
         {
-            if(EmailWriter.Write(DatabaseMethods.GetPatientIDByPersonalNumber(textBox2.Text, textBox3.Text), Convert.ToInt32(textBox2.Text), Convert.ToInt32(textBox3.Text), textBox5.Text))
-            {
-                MessageBox.Show("Email has been successfully sent!");
-            }
+
+            EmailWriter.AsyncWrite(DatabaseMethods.GetPatientIDByPersonalNumber(textBox2.Text, textBox3.Text), Convert.ToInt32(textBox2.Text), Convert.ToInt32(textBox3.Text), textBox5.Text);
         }
     }
 }
