@@ -21,6 +21,7 @@ This program was created for seminar school project as recession to Corona virus
 	- In sign in / sign up using SHA256 with 2 salts
 	- Can update password in settings
 	- Auto login sessions included
+	- Reset password via email code
 - Polyformism
 - Github Connection
 - Structure
