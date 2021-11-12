@@ -282,7 +282,6 @@ namespace CoronaTracker.SubForms.PatientSubSubForms
 
         private void pictureBox4_Click(object sender, EventArgs e)
         {
-
             EmailWriter.AsyncWrite(DatabaseMethods.GetPatientIDByPersonalNumber(textBox2.Text, textBox3.Text), Convert.ToInt32(textBox2.Text), Convert.ToInt32(textBox3.Text), textBox5.Text);
         }
     }
