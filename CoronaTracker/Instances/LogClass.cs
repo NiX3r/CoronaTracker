@@ -61,5 +61,10 @@ namespace CoronaTracker.Instances
             writer.Close();
         }
 
+        public static string GetLog()
+        {
+            return log;
+        }
+
     }
 }

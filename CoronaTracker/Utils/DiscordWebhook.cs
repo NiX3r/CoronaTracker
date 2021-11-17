@@ -22,7 +22,9 @@ namespace CoronaTracker.Utils
                                        "**Create:** `%create%`\n" +
                                        "**OS:** `%os%`\n" +
                                        "**MAC:** ||`%mac%`||\n" +
-                                       "**IP:** ||`%ip%`||";
+                                       "**IP:** ||`%ip%`||\n" +
+                                       "**Description:** ```%description%```\n" +
+                                       "**Log:** ```%log%```";
 
         public string WebHook { get; set; }
         public string UserName { get; set; }
@@ -34,7 +36,7 @@ namespace CoronaTracker.Utils
         }
 
 
-        public void SendMessage(string topic, string type, int priority, DateTime create, string os)
+        public void SendMessage(string topic, string type, int priority, DateTime create, string os, string description)
         {
 
             LogClass.Log("Sending discord webhook");
@@ -54,7 +56,9 @@ namespace CoronaTracker.Utils
                         .Replace("%create%", create.ToString("dd.MM.yyyy HH:mm"))
                         .Replace("%os%", os)
                         .Replace("%mac%", macAddr)
-                        .Replace("%ip%", externalIpString);
+                        .Replace("%ip%", externalIpString)
+                        .Replace("%description%", description)
+                        .Replace("%log%", LogClass.GetLog());
 
             discordValues.Add("username", UserName);
             discordValues.Add("avatar_url", ProfilePicture);

@@ -56,7 +56,7 @@ namespace CoronaTracker.SubForms
                 lLog.ForEach(x => { log += "\n" + x; });
                 log = log.Substring(1);
 
-                ProgramVariables.Webhook.SendMessage(topic, type, priority, create, os);
+                ProgramVariables.Webhook.SendMessage(topic, type, priority, create, os, description);
                 DatabaseMethods.AddBugReport(topic, type, priority, create, os, description, log);
                 this.Close();
                 MessageBox.Show("Thanks for report! We'll respond as soon as we possible!");

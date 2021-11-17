@@ -220,3 +220,5 @@ P:\CSharp\CoronaTracker\CoronaTracker\bin\Debug\System.Runtime.CompilerServices.
 P:\CSharp\CoronaTracker\CoronaTracker\bin\Debug\System.Threading.Tasks.Extensions.xml
 P:\CSharp\CoronaTracker\CoronaTracker\bin\Debug\zxing.xml
 P:\CSharp\CoronaTracker\CoronaTracker\bin\Debug\zxing.presentation.xml
+P:\CSharp\CoronaTracker\CoronaTracker\obj\Debug\CoronaTracker.csproj.SuggestedBindingRedirects.cache
+P:\CSharp\CoronaTracker\CoronaTracker\obj\Debug\CoronaTracker.csproj.CopyComplete

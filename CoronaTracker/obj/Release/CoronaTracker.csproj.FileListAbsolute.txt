@@ -164,3 +164,5 @@ P:\CSharp\CoronaTracker\CoronaTracker\obj\Release\CoronaTracker.csproj.GenerateR
 P:\CSharp\CoronaTracker\CoronaTracker\obj\Release\CoronaTracker.csproj.CoreCompileInputs.cache
 P:\CSharp\CoronaTracker\CoronaTracker\obj\Release\CoronaTracker.exe
 P:\CSharp\CoronaTracker\CoronaTracker\obj\Release\CoronaTracker.pdb
+P:\CSharp\CoronaTracker\CoronaTracker\obj\Release\CoronaTracker.csproj.SuggestedBindingRedirects.cache
+P:\CSharp\CoronaTracker\CoronaTracker\obj\Release\CoronaTracker.csproj.CopyComplete
