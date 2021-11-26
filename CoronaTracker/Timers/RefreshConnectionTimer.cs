@@ -18,7 +18,7 @@ namespace CoronaTracker.Timers
         /// </summary>
         public RefreshConnectionTimer()
         {
-            timer = new Timer(3600000);
+            timer = new Timer(1800000);
             timer.Elapsed += OnTimedEvent;
             timer.AutoReset = true;
         }

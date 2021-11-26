@@ -28,7 +28,6 @@ namespace CoronaTracker.Instances
             DoLog = true;
             DoLogForm = false;
             LogForm = new LogForm();
-
         }
 
         public static void Log(string value, [CallerLineNumber] int lineNumber = 0, [CallerMemberName] string caller = "null", [CallerFilePath] string file = "null")
@@ -53,7 +52,7 @@ namespace CoronaTracker.Instances
 
         public static void Save()
         {
-            writer = new StreamWriter("log.txt", true);
+            writer = new StreamWriter("logger.log", true);
             if(log.Length > 2)
                 log.Substring(1);
             writer.Write(log);

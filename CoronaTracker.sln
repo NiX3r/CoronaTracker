@@ -1,11 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.31229.75
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31903.59
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CoronaTracker", "CoronaTracker\CoronaTracker.csproj", "{A108192D-100C-47F8-89E6-6D79DF113356}"
 EndProject
-Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "CoronaTracker Setup", "CoronaTracker Setup\CoronaTracker Setup.vdproj", "{9915D3FE-3C9B-4051-A67E-9029AD43FBE3}"
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "Setup", "Setup\Setup.vdproj", "{00A007F5-1297-4823-A997-7A865F63C9BC}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -17,8 +17,8 @@ Global
 		{A108192D-100C-47F8-89E6-6D79DF113356}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A108192D-100C-47F8-89E6-6D79DF113356}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A108192D-100C-47F8-89E6-6D79DF113356}.Release|Any CPU.Build.0 = Release|Any CPU
-		{9915D3FE-3C9B-4051-A67E-9029AD43FBE3}.Debug|Any CPU.ActiveCfg = Debug
-		{9915D3FE-3C9B-4051-A67E-9029AD43FBE3}.Release|Any CPU.ActiveCfg = Release
+		{00A007F5-1297-4823-A997-7A865F63C9BC}.Debug|Any CPU.ActiveCfg = Debug
+		{00A007F5-1297-4823-A997-7A865F63C9BC}.Release|Any CPU.ActiveCfg = Release
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
