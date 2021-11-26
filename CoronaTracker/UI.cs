@@ -63,7 +63,7 @@ namespace CoronaTracker
             // Setup child form
             if (currentChildForm != null)
             {
-                currentChildForm.Close();
+                currentChildForm.Hide();
             }
             currentChildForm = childForm;
             childForm.TopLevel = false;
