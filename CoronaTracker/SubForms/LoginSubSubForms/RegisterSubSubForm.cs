@@ -64,6 +64,8 @@ namespace CoronaTracker.SubForms.LoginSubSubForms
                 else
                     MessageBox.Show("Account cannot be create!");
             }
+            else
+                MessageBox.Show("You type bad input! Please try again");
             LogClass.Log($"button1 click event handler end");
         }
 

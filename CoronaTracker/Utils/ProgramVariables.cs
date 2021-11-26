@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 using static CoronaTracker.Enums.EmployeePoseEnum;
 
 namespace CoronaTracker.Utils
@@ -38,5 +39,7 @@ namespace CoronaTracker.Utils
         public static RefreshConnectionTimer RefreshConnection { get; set; }
         // Instance for send discord webhooks
         public static DiscordWebhook Webhook { get; set; }
+        // Instance for cache
+        public static Dictionary<string, Form> FormCache { get; set; }
     }
 }

@@ -135,7 +135,8 @@ namespace CoronaTracker
         private void button6_Click(object sender, EventArgs e)
         {
             LogClass.Log($"button6 click event handler start");
-            if (((Button)sender).Text.Equals("Home"))
+
+            /*if (((Button)sender).Text.Equals("Home"))
                 OpenChildForm(new HomeSubForm(), (Button)sender);
             else if (((Button)sender).Text.Equals("Countries"))
                 OpenChildForm(new CountriesSubForm(), (Button)sender);
@@ -146,7 +147,30 @@ namespace CoronaTracker
             else if (((Button)sender).Text.Equals("Dashboard"))
                 OpenChildForm(new DashboardSubForm(), (Button)sender);
             else if (((Button)sender).Text.Equals("Settings") && HasAccess())
-                OpenChildForm(new SettingsSubForm(), (Button)sender);
+                OpenChildForm(new SettingsSubForm(), (Button)sender);*/
+
+            if (((Button)sender).Text.Equals(currentButton.Text))
+            {
+                LogClass.Log("User tried to open same form");
+                return;
+            }
+
+            if (((Button)sender).Text.Equals("Vaccine") ||
+               ((Button)sender).Text.Equals("Patient") ||
+               ((Button)sender).Text.Equals("Settings"))
+            {
+                if (HasAccess())
+                {
+                    OpenChildForm(ProgramVariables.FormCache[((Button)sender).Text], (Button)sender);
+                }
+                else
+                {
+                    MessageBox.Show("Unfortunately, you do not have access to this section.\n\nTip: Ask your leader to change you user status");
+                }
+            }
+            else
+                OpenChildForm(ProgramVariables.FormCache[((Button)sender).Text], (Button)sender);
+
             LogClass.Log($"button6 click event handler end");
         }
 

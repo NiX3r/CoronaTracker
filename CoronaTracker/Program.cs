@@ -24,7 +24,7 @@ namespace CoronaTracker
         static void Main(string[] args)
         {
 
-            ProgramVariables.Version = "1.5.0";
+            ProgramVariables.Version = "2.1.0";
             LogClass.LogClassInitialize();
             LogClass.Log("Program started. Version: " + ProgramVariables.Version);
 
@@ -80,6 +80,10 @@ namespace CoronaTracker
             }
             LogClass.Log("Data from database loaded");
             LogClass.Log("Initializing program variables");
+
+
+            ProgramVariables.FormCache = new Dictionary<string, Form>();
+
             ProgramVariables.RefreshConnection = new RefreshConnectionTimer();
             ProgramVariables.ProgramUI = new UI();
             ProgramVariables.LoginUI = new LoginForm();
@@ -95,6 +99,13 @@ namespace CoronaTracker
                 ProgramVariables.Fullname = user.Fullname;
                 ProgramVariables.ProfileURL = user.ProfilePictureURL;
                 ProgramVariables.Pose = EmployeePose.Developer;
+
+                ProgramVariables.FormCache.Add("Home", new HomeSubForm());
+                ProgramVariables.FormCache.Add("Dashboard", new DashboardSubForm());
+                ProgramVariables.FormCache.Add("Countries", new CountriesSubForm());
+                ProgramVariables.FormCache.Add("Patient", new PatientSubForm());
+                ProgramVariables.FormCache.Add("Vaccine", new VaccineTypeSubForm());
+                ProgramVariables.FormCache.Add("Settings", new SettingsSubForm());
                 Application.Run(ProgramVariables.ProgramUI);
             }
             else if (id != 0)
@@ -104,10 +115,25 @@ namespace CoronaTracker
                 ProgramVariables.Fullname = user.Fullname;
                 ProgramVariables.ProfileURL = user.ProfilePictureURL;
                 ProgramVariables.Pose = DatabaseMethods.GetPoseByID(id);
+
+                ProgramVariables.FormCache.Add("Home", new HomeSubForm());
+                ProgramVariables.FormCache.Add("Dashboard", new DashboardSubForm());
+                ProgramVariables.FormCache.Add("Countries", new CountriesSubForm());
+                ProgramVariables.FormCache.Add("Patient", new PatientSubForm());
+                ProgramVariables.FormCache.Add("Vaccine", new VaccineTypeSubForm());
+                ProgramVariables.FormCache.Add("Settings", new SettingsSubForm());
                 Application.Run(ProgramVariables.ProgramUI);
             }
             else
+            {
+                ProgramVariables.FormCache.Add("Home", new HomeSubForm());
+                ProgramVariables.FormCache.Add("Dashboard", new DashboardSubForm());
+                ProgramVariables.FormCache.Add("Countries", new CountriesSubForm());
+                ProgramVariables.FormCache.Add("Patient", new PatientSubForm());
+                ProgramVariables.FormCache.Add("Vaccine", new VaccineTypeSubForm());
+                ProgramVariables.FormCache.Add("Settings", new SettingsSubForm());
                 Application.Run(ProgramVariables.LoginUI);
+            }
         }
 
     }

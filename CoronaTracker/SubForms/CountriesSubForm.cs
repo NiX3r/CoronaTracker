@@ -46,7 +46,7 @@ namespace CoronaTracker.SubForms
                 label11.Text = lastestCountry.critical.ToString();
                 label4.Text = lastestCountry.deaths.ToString();
 
-                pictureBox4.ImageLocation = "https://www.countryflags.io/" + lastestCountry.code + "/flat/64.png";
+                pictureBox4.ImageLocation = "https://www.countryflagicons.com/FLAT/64/" + lastestCountry.code + ".png";
 
                 label8.Text = "Last update: " + lastestCountry.lastUpdate.ToString();
                 label9.Text = "Last change: " + lastestCountry.lastChange.ToString();
