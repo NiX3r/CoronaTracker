@@ -55,14 +55,7 @@ namespace CoronaTracker.SubForms.LoginSubSubForms
             if (!textBox1.Text.Equals("") && !textBox2.Text.Equals("") && !textBox3.Text.Equals("") && !textBox4.Text.Equals("") && !textBox5.Text.Equals("") &&
                 textBox3.Text.Length == 9 && textBox2.Text.Equals(textBox5.Text) && textBox1.Text.Contains(".") && textBox1.Text.Contains("@"))
             {
-                if (DatabaseMethods.AddUser(textBox4.Text, textBox1.Text, Convert.ToInt32(textBox3.Text), PasswordEncryption(textBox2.Text)))
-                {
-                    button1.Text = "Account created! Please log in";
-                    button1.BackColor = Color.Lime;
-                    button1.Enabled = false;
-                }
-                else
-                    MessageBox.Show("Account cannot be create!");
+                addUser();
             }
             else
                 MessageBox.Show("You type bad input! Please try again");
@@ -79,6 +72,27 @@ namespace CoronaTracker.SubForms.LoginSubSubForms
                 return;
             }
             LogClass.Log($"textBox3 key press event handler end");
+        }
+
+        private void addUser()
+        {
+            if (DatabaseMethods.AddUser(textBox4.Text, textBox1.Text, Convert.ToInt32(textBox3.Text), PasswordEncryption(textBox2.Text)))
+            {
+                button1.Text = "Account created! Please log in";
+                button1.BackColor = Color.Lime;
+                button1.Enabled = false;
+            }
+            else
+                MessageBox.Show("Account cannot be create!");
+        }
+
+        private void textBox5_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if(e.KeyChar == 13)
+            {
+                e.Handled= true;
+                addUser();
+            }
         }
     }
 }

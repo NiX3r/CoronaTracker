@@ -54,32 +54,49 @@ namespace CoronaTracker.SubForms.LoginSubSubForms
             LogClass.Log($"button1 click event handler start");
             if (!textBox1.Text.Equals("") && !textBox2.Text.Equals(""))
             {
-                switch (DatabaseMethods.LogIn(textBox1.Text, PasswordEncryption(textBox2.Text)))
-                {
-                    case -2:
-                        MessageBox.Show("Your account is temporary ban!");
-                        textBox1.Text = textBox2.Text = "";
-                        break;
-                    case -1: // email correct | password uncorrect
-                        MessageBox.Show("Email or password is uncorrect!");
-                        textBox1.Text = textBox2.Text = "";
-                        break;
-                    case 0: // email uncorrect
-                        MessageBox.Show("Email or password is uncorrect!");
-                        textBox1.Text = textBox2.Text = "";
-                        break;
-                    case 1: // successfully login
-                        ProgramVariables.ProgramUI.Show();
-                        ProgramVariables.LoginUI.CloseForm();
-                        textBox1.Text = textBox2.Text = "";
-                        break;
-                }
+                login();
             }
             else
             {
                 MessageBox.Show("Please type password and email!");
             }
             LogClass.Log($"button1 click event handler end");
+        }
+
+        private void login()
+        {
+            switch (DatabaseMethods.LogIn(textBox1.Text, PasswordEncryption(textBox2.Text)))
+            {
+                case -2:
+                    MessageBox.Show("Your account is temporary ban!");
+                    LogClass.Log("User's account is temporary banned");
+                    textBox1.Text = textBox2.Text = "";
+                    break;
+                case -1: // email incorrect | password incorrect
+                    MessageBox.Show("Email or password is incorrect!");
+                    LogClass.Log("Email or password is incorrect");
+                    textBox1.Text = textBox2.Text = "";
+                    break;
+                case 0: // email incorrect
+                    MessageBox.Show("Email or password is incorrect!");
+                    LogClass.Log("Email is incorrect");
+                    textBox1.Text = textBox2.Text = "";
+                    break;
+                case 1: // successfully login
+                    ProgramVariables.ProgramUI.Show();
+                    ProgramVariables.LoginUI.CloseForm();
+                    textBox1.Text = textBox2.Text = "";
+                    break;
+            }
+        }
+
+        private void textBox2_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == 13)
+            {
+                e.Handled = true;
+                login();
+            }
         }
     }
 }
