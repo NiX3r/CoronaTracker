@@ -189,7 +189,8 @@ namespace CoronaTracker
 
         private void pictureBox3_Click(object sender, EventArgs e)
         {
-            new ReportBug().Show();
+            if (!ProgramVariables.FormCache["REPORT"].Visible)
+                ProgramVariables.FormCache["REPORT"].Show();
         }
     }
 }

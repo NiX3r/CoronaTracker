@@ -83,6 +83,7 @@ namespace CoronaTracker
 
 
             ProgramVariables.FormCache = new Dictionary<string, Form>();
+            ProgramVariables.FormCache.Add("REPORT", new ReportBug());
 
             ProgramVariables.RefreshConnection = new RefreshConnectionTimer();
             ProgramVariables.ProgramUI = new UI();
