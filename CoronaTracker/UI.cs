@@ -95,7 +95,7 @@ namespace CoronaTracker
                 File.Delete("temp.jpg");
                 File.Delete("temp.pdf");
             }
-            catch(Exception ex)
+            catch
             {
 
             }

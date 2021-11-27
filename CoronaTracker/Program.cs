@@ -24,14 +24,12 @@ namespace CoronaTracker
         static void Main(string[] args)
         {
 
-            ProgramVariables.Version = "2.1.0";
+            ProgramVariables.Version = "2.2.0";
             LogClass.LogClassInitialize();
             LogClass.Log("Program started. Version: " + ProgramVariables.Version);
 
             LogClass.Log("Creating discord webhook instance");
             ProgramVariables.Webhook = new DiscordWebhook();
-            ProgramVariables.Webhook.ProfilePicture = "";
-            ProgramVariables.Webhook.UserName = "";
             ProgramVariables.Webhook.WebHook = SecretClass.GetWebhookLink();
             LogClass.Log("Webhook instance created");
 
@@ -70,7 +68,7 @@ namespace CoronaTracker
                 ProgramVariables.Version += " - DEV MODE";
             if (versionCheck.Equals("-1"))
             {
-                ProgramVariables.Version += " - alfa";
+                ProgramVariables.Version += " - pre-release";
             }
             else if (!versionCheck.Equals(""))
             {
@@ -84,6 +82,12 @@ namespace CoronaTracker
 
             ProgramVariables.FormCache = new Dictionary<string, Form>();
             ProgramVariables.FormCache.Add("REPORT", new ReportBug());
+            ProgramVariables.FormCache.Add("Home", new HomeSubForm());
+            ProgramVariables.FormCache.Add("Dashboard", new DashboardSubForm());
+            ProgramVariables.FormCache.Add("Countries", new CountriesSubForm());
+            ProgramVariables.FormCache.Add("Patient", new PatientSubForm());
+            ProgramVariables.FormCache.Add("Vaccine", new VaccineTypeSubForm());
+            ProgramVariables.FormCache.Add("Settings", new SettingsSubForm());
 
             ProgramVariables.RefreshConnection = new RefreshConnectionTimer();
             ProgramVariables.ProgramUI = new UI();
@@ -101,12 +105,6 @@ namespace CoronaTracker
                 ProgramVariables.ProfileURL = user.ProfilePictureURL;
                 ProgramVariables.Pose = EmployeePose.Developer;
 
-                ProgramVariables.FormCache.Add("Home", new HomeSubForm());
-                ProgramVariables.FormCache.Add("Dashboard", new DashboardSubForm());
-                ProgramVariables.FormCache.Add("Countries", new CountriesSubForm());
-                ProgramVariables.FormCache.Add("Patient", new PatientSubForm());
-                ProgramVariables.FormCache.Add("Vaccine", new VaccineTypeSubForm());
-                ProgramVariables.FormCache.Add("Settings", new SettingsSubForm());
                 Application.Run(ProgramVariables.ProgramUI);
             }
             else if (id != 0)
@@ -117,22 +115,10 @@ namespace CoronaTracker
                 ProgramVariables.ProfileURL = user.ProfilePictureURL;
                 ProgramVariables.Pose = DatabaseMethods.GetPoseByID(id);
 
-                ProgramVariables.FormCache.Add("Home", new HomeSubForm());
-                ProgramVariables.FormCache.Add("Dashboard", new DashboardSubForm());
-                ProgramVariables.FormCache.Add("Countries", new CountriesSubForm());
-                ProgramVariables.FormCache.Add("Patient", new PatientSubForm());
-                ProgramVariables.FormCache.Add("Vaccine", new VaccineTypeSubForm());
-                ProgramVariables.FormCache.Add("Settings", new SettingsSubForm());
                 Application.Run(ProgramVariables.ProgramUI);
             }
             else
             {
-                ProgramVariables.FormCache.Add("Home", new HomeSubForm());
-                ProgramVariables.FormCache.Add("Dashboard", new DashboardSubForm());
-                ProgramVariables.FormCache.Add("Countries", new CountriesSubForm());
-                ProgramVariables.FormCache.Add("Patient", new PatientSubForm());
-                ProgramVariables.FormCache.Add("Vaccine", new VaccineTypeSubForm());
-                ProgramVariables.FormCache.Add("Settings", new SettingsSubForm());
                 Application.Run(ProgramVariables.LoginUI);
             }
         }

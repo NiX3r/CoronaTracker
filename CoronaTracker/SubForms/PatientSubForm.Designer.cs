@@ -112,6 +112,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "PatientSubForm";
             this.Text = "PatientSubForm";
+            this.Load += new System.EventHandler(this.PatientSubForm_Load);
             this.panel1.ResumeLayout(false);
             this.ResumeLayout(false);
 

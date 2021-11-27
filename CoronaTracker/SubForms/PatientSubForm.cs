@@ -29,8 +29,6 @@ namespace CoronaTracker.SubForms
             LogClass.Log($"Start initialize sub sub form");
             InitializeComponent();
 
-            OpenChildForm(new ListSubSubForm(), button1);
-
             LogClass.Log($"Sub sub form successfully initialized");
         }
 
@@ -101,6 +99,11 @@ namespace CoronaTracker.SubForms
                     break;
             }
             LogClass.Log($"button1 click event handler end");
+        }
+
+        private void PatientSubForm_Load(object sender, EventArgs e)
+        {
+            OpenChildForm(new ListSubSubForm(), button1);
         }
     }
 }

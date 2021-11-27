@@ -37,27 +37,11 @@ namespace CoronaTracker.SubForms
                 string description = richTextBox1.Text;
                 int priority = (int)numericUpDown1.Value;
                 List<string> lLog = new List<string>();
-                string log = "";
 
                 LogClass.Save();
-                StreamReader sr = new StreamReader("log.txt");
-                while (!sr.EndOfStream)
-                {
-
-                    string line = sr.ReadLine();
-
-                    if (lLog.Count == 10)
-                        lLog.RemoveAt(0);
-
-                    lLog.Add(line);
-
-                }
-
-                lLog.ForEach(x => { log += "\n" + x; });
-                log = log.Substring(1);
 
                 ProgramVariables.Webhook.SendMessage(topic, type, priority, create, os, description);
-                DatabaseMethods.AddBugReport(topic, type, priority, create, os, description, log);
+                DatabaseMethods.AddBugReport(topic, type, priority, create, os, description);
                 this.Close();
                 MessageBox.Show("Thanks for report! We'll respond as soon as we possible!");
 

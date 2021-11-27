@@ -49,11 +49,6 @@ namespace CoronaTracker.SubForms
             handle = CreateRoundRectRgn(0, 0, panel5.Width, panel5.Height, 30, 30);
             panel5.Region = Region.FromHrgn(handle);
 
-            label2.Text = DatabaseMethods.GetPatientsCount().ToString();
-            label3.Text = DatabaseMethods.GetVacinnatePatientsCount().ToString();
-            label8.Text = DatabaseMethods.GetConfirmedPatientsCount().ToString();
-            label7.Text = DatabaseMethods.GetInfectionCount().ToString();
-
             LogClass.Log($"Sub sub form successfully initialized");
         }
 
@@ -68,6 +63,11 @@ namespace CoronaTracker.SubForms
             DateTime dt = DateTime.Now.AddMonths(-5);
             DateTime now = DateTime.Now;
             List<string> labels = new List<string>();
+
+            label2.Text = DatabaseMethods.GetPatientsCount().ToString();
+            label3.Text = DatabaseMethods.GetVacinnatePatientsCount().ToString();
+            label8.Text = DatabaseMethods.GetConfirmedPatientsCount().ToString();
+            label7.Text = DatabaseMethods.GetInfectionCount().ToString();
 
             while (true)
             {

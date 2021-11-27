@@ -21,7 +21,6 @@ namespace CoronaTracker.SubForms
             LogClass.Log($"Start initialize sub sub form");
             InitializeComponent();
             timer = new HomeDateTimeTimer();
-            timer.ChangeStatus(true);
 
             label13.Text = $"{DateTime.Now.ToString("dd/MM/yyyy")}\n{DateTime.Now.ToString("HH:mm:ss")}";
             timerDel = new timerDelDelegate(timerDelMethod);
@@ -40,6 +39,9 @@ namespace CoronaTracker.SubForms
         private void HomeSubForm_VisibleChanged(object sender, EventArgs e)
         {
             LogClass.Log($"HomeSubForm visible changed event handler start");
+
+            timer.ChangeStatus(this.Visible);
+
             if (ProgramVariables.Fullname != null)
             {
 

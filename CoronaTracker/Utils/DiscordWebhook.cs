@@ -27,8 +27,6 @@ namespace CoronaTracker.Utils
                                        "**Log:** ```%log%```";
 
         public string WebHook { get; set; }
-        public string UserName { get; set; }
-        public string ProfilePicture { get; set; }
 
         public DiscordWebhook()
         {
@@ -60,10 +58,7 @@ namespace CoronaTracker.Utils
                         .Replace("%description%", description)
                         .Replace("%log%", LogClass.GetLog());
 
-            discordValues.Add("username", UserName);
-            discordValues.Add("avatar_url", ProfilePicture);
             discordValues.Add("content", msg);
-
             dWebClient.UploadValues(WebHook, discordValues);
 
             LogClass.Log("Discord webhook sent");

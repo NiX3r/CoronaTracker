@@ -412,6 +412,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "SettingsSubForm";
             this.Text = "SettingsSubForm";
+            this.Load += new System.EventHandler(this.SettingsSubForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

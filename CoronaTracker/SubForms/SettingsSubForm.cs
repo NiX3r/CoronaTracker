@@ -25,20 +25,6 @@ namespace CoronaTracker.SubForms
             LogClass.Log($"Start initialize sub sub form");
             InitializeComponent();
 
-            EmployeeInstance employee = DatabaseMethods.GetEmployeeByID(ProgramVariables.ID);
-            textBox1.Text = employee.ProfilePictureURL;
-            textBox2.Text = employee.Phone.ToString();
-            pictureBox1.ImageLocation = employee.ProfilePictureURL;
-
-            // Checks if employee is permitted to edit others poses
-            if (!DatabaseMethods.HasEmployeePermitChangePose())
-            {
-                button4.Hide();
-                button5.Hide();
-            }
-            else
-                notPermited.Hide();
-
             LogClass.Log($"Sub sub form successfully initialized");
         }
 
@@ -209,6 +195,23 @@ namespace CoronaTracker.SubForms
                 }
             }
             LogClass.Log($"button5 click event handler end");
+        }
+
+        private void SettingsSubForm_Load(object sender, EventArgs e)
+        {
+            EmployeeInstance employee = DatabaseMethods.GetEmployeeByID(ProgramVariables.ID);
+            textBox1.Text = employee.ProfilePictureURL;
+            textBox2.Text = employee.Phone.ToString();
+            pictureBox1.ImageLocation = employee.ProfilePictureURL;
+
+            // Checks if employee is permitted to edit others poses
+            if (!DatabaseMethods.HasEmployeePermitChangePose())
+            {
+                button4.Hide();
+                button5.Hide();
+            }
+            else
+                notPermited.Hide();
         }
     }
 }

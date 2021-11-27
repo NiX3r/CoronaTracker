@@ -31,16 +31,7 @@ namespace CoronaTracker.SubForms
             LogClass.Log($"Start initialize sub sub form");
             InitializeComponent();
 
-            vaccineTypes = DatabaseMethods.GetVaccineTypes();
-            buttonPattern.Hide();
-
-            index = 0;
-            buttons = new List<Button>();
-
-            foreach(VaccineTypeInstance type in vaccineTypes)
-            {
-                addButton(type);
-            }
+            
             LogClass.Log($"Sub sub form successfully initialized");
 
         }
@@ -251,6 +242,20 @@ namespace CoronaTracker.SubForms
                 }
             }
             LogClass.Log($"textBox1 text changed event handler start");
+        }
+
+        private void VaccineTypeSubForm_Load(object sender, EventArgs e)
+        {
+            vaccineTypes = DatabaseMethods.GetVaccineTypes();
+            buttonPattern.Hide();
+
+            index = 0;
+            buttons = new List<Button>();
+
+            foreach (VaccineTypeInstance type in vaccineTypes)
+            {
+                addButton(type);
+            }
         }
     }
 }
