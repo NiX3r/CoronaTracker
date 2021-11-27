@@ -74,7 +74,8 @@ namespace CoronaTracker.SubForms
 
         private void button7_Click(object sender, EventArgs e)
         {
-            this.Close();
+            textBox1.Text = richTextBox1.Text = "";
+            this.Hide();
         }
 
         [DllImport("user32.DLL", EntryPoint = "ReleaseCapture")]
