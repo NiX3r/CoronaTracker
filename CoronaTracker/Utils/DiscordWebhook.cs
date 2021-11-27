@@ -1,4 +1,6 @@
 ﻿using CoronaTracker.Instances;
+using Discord;
+using Discord.Webhook;
 using System;
 using System.Collections.Generic;
 using System.Collections.Specialized;
@@ -15,28 +17,14 @@ namespace CoronaTracker.Utils
     class DiscordWebhook
     {
 
-        //private readonly WebClient dWebClient;
-        //private static NameValueCollection discordValues = new NameValueCollection();
-        private const string example = "__**BUG REPORT**__\n" +
-                                       "**Topic:** `%topic%`\n" +
-                                       "**Type:** `%type%`\n" +
-                                       "**Priority:** `%priority%`\n" +
-                                       "**Create:** `%create%`\n" +
-                                       "**OS:** `%os%`\n" +
-                                       "**MAC:** ||`%mac%`||\n" +
-                                       "**IP:** ||`%ip%`||\n" +
-                                       "**Description:** ```%description%```\n" +
-                                       "**Log:** ```%log%```";
-
-        //public string WebHook { get; set; }
+        private DiscordWebhookClient DCW;
 
         public DiscordWebhook()
         {
-            //dWebClient = new WebClient();
+            DCW = new DiscordWebhookClient(SecretClass.GetWebhookLink());
         }
 
-
-        public void SendMessage(string topic, string type, int priority, DateTime create, string os, string description)
+        public async void SendMessage(string topic, string type, int priority, DateTime create, string os, string description)
         {
 
             LogClass.Log("Sending discord webhook");
@@ -49,47 +37,24 @@ namespace CoronaTracker.Utils
             ).FirstOrDefault();
             string externalIpString = new WebClient().DownloadString("http://icanhazip.com").Replace("\\r\\n", "").Replace("\\n", "").Trim();
 
-            string msg = example;
-            msg = msg.Replace("%topic%", topic)
-                        .Replace("%type%", type)
-                        .Replace("%priority%", priority.ToString())
-                        .Replace("%create%", create.ToString("dd.MM.yyyy HH:mm"))
-                        .Replace("%os%", os)
-                        .Replace("%mac%", macAddr)
-                        .Replace("%ip%", externalIpString)
-                        .Replace("%description%", description)
-                        .Replace("%log%", LogClass.GetLog());
-            msg = msg.Replace("\"", "");
+            var eb = new EmbedBuilder();
+            eb.AddField("Topic", "`" + topic + "`");
+            eb.AddField("Type", "`" + type + "`", true);
+            eb.AddField("Priority", "`" + priority.ToString() + "`", true);
+            eb.AddField("Create", "`" + create.ToString("dd.MM.yyyy HH:mm") + "`", false);
+            eb.AddField("OS", "`" + os + "`", false);
+            eb.AddField("MAC", "`" + macAddr + "`", true);
+            eb.AddField("IP", "`" + externalIpString + "`", true);
+            eb.AddField("Description", "`" + description + "`", false);
+            eb.WithColor(121, 0, 255);
 
-            MessageBox.Show(msg);
+            // Here you make an array with 1 entry, which is the embed ( from EmbedBuilder.Build() )
+            Embed[] embedArray = new Embed[] { eb.Build() };
 
-            /*discordValues.Add("content", msg);
-            dWebClient.UploadValues(WebHook, discordValues);*/
-
-            var httpRequest = (HttpWebRequest)WebRequest.Create(SecretClass.GetWebhookLink());
-            httpRequest.Method = "POST";
-
-            httpRequest.ContentType = "application/json";
-
-            using (var streamWriter = new StreamWriter(httpRequest.GetRequestStream()))
-            {
-                streamWriter.Write(msg);
-            }
-
-            var httpResponse = (HttpWebResponse)httpRequest.GetResponse();
-            using (var streamReader = new StreamReader(httpResponse.GetResponseStream()))
-            {
-                var result = streamReader.ReadToEnd();
-            }
-
-            LogClass.Log("Discord webhook sent");
+            // Now you pass it into the method like this: 'embeds: embedArray'
+            await DCW.SendFileAsync(filePath: "./logger.log", text: "", false, embeds: embedArray, $"({ProgramVariables.ID}) {ProgramVariables.Fullname}", ProgramVariables.ProfileURL);
 
         }
-
-        /*public void Dispose()
-        {
-            dWebClient.Dispose();
-        }*/
 
     }
 }

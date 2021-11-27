@@ -42,7 +42,7 @@ namespace CoronaTracker.Instances
             }
 
             index++;
-            if(index == 50)
+            if(index == 10)
             {
                 index = 0;
                 Save();
