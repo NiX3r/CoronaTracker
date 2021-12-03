@@ -89,6 +89,8 @@ namespace CoronaTracker
             ProgramVariables.FormCache.Add("Vaccine", new VaccineTypeSubForm());
             ProgramVariables.FormCache.Add("Settings", new SettingsSubForm());
 
+            ProgramVariables.CovidCache = new Dictionary<string, CovidInfo>();
+
             ProgramVariables.RefreshConnection = new RefreshConnectionTimer();
             ProgramVariables.ProgramUI = new UI();
             ProgramVariables.LoginUI = new LoginForm();

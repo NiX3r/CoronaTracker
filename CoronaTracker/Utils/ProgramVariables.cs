@@ -31,8 +31,6 @@ namespace CoronaTracker.Utils
         public static EmployeePose Pose { get; set; }
         // Instance for logged in employee id
         public static int ID { get; set; }
-        // Instance for covid data from every country ( does not work yet )
-        public static List<CovidInfo> CovidData { get; set; }
         // Instance for this program version
         public static String Version { get; set; }
         // Instance for refresh database connection timer
@@ -41,5 +39,6 @@ namespace CoronaTracker.Utils
         public static DiscordWebhook Webhook { get; set; }
         // Instance for cache
         public static Dictionary<string, Form> FormCache { get; set; }
+        public static Dictionary<string, CovidInfo> CovidCache { get; set; }
     }
 }

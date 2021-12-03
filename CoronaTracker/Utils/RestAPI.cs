@@ -8,32 +8,14 @@ using System.Linq;
 using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace CoronaTracker.Utils
 {
     class RestAPI
     {
 
-        /// <summary>
-        /// Function for load Covid data from trackcorona
-        /// Does not work yet!
-        /// </summary>
-        /// <returns>
-        /// return nothing
-        /// </returns>
-        public static async Task GetCovidDataAsync()
-        {
-            LogClass.Log($"Start getting covid data");
-            using (var httpClient = new HttpClient())
-            {
-                using (var request = new HttpRequestMessage(new HttpMethod("GET"), "https://www.trackcorona.live/api/countries"))
-                {
-                    var response = await httpClient.SendAsync(request);
-                    ProgramVariables.CovidData = JsonConvert.DeserializeObject<List<CovidInfo>>(response.Content.ReadAsStringAsync().Result.Replace("{\"code\": 200, \"data\": ", "").Replace("}]}", "}]"));
-                }
-            }
-            LogClass.Log($"Successfully get covid data");
-        }
+        private static string URL = "https://covid-19-data.p.rapidapi.com/";
 
         /// <summary>
         /// Function for load Covid data from rapidapi
@@ -49,7 +31,7 @@ namespace CoronaTracker.Utils
             var request = new HttpRequestMessage
             {
                 Method = HttpMethod.Get,
-                RequestUri = new Uri("https://covid-19-data.p.rapidapi.com/country?name=" + country),
+                RequestUri = new Uri(URL + "country?name=" + country),
                 Headers =
                 {
                     { "x-rapidapi-key", SecretClass.GetRestApiKey() },

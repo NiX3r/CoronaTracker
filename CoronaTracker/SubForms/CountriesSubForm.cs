@@ -5,7 +5,10 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Globalization;
+using System.IO;
 using System.Linq;
+using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -16,7 +19,8 @@ namespace CoronaTracker.SubForms
     {
 
         // Instance for lastest selected country
-        private CovidInfo lastestCountry;
+        private Button TEMPLATE;
+        private Dictionary<string, Bitmap> COUNTRIES;
 
         /// <summary>
         /// Constructor for countries sub form
@@ -25,19 +29,36 @@ namespace CoronaTracker.SubForms
         {
             LogClass.Log($"Start initialize sub sub form");
             InitializeComponent();
-
-            lastestCountry = null;
+            TEMPLATE = button2;
+            COUNTRIES = new Dictionary<string, Bitmap>();
+            LoadCountriesDefault();
             LogClass.Log($"Sub sub form successfully initialized");
+        }
 
+        private void LoadCountriesDefault()
+        {
+            foreach(RegionInfo info in CultureInfo.GetCultures(CultureTypes.SpecificCultures).Select(x => new RegionInfo(x.LCID)))
+            {
+                if (!COUNTRIES.ContainsKey(info.Name))
+                {
+                    try
+                    {
+                        WebClient client = new WebClient();
+                        Stream stream = client.OpenRead("https://www.countryflagicons.com/FLAT/32/" + info.TwoLetterISORegionName + ".png");
+                        Bitmap bitmap = new Bitmap(stream);
+                        COUNTRIES.Add(info.DisplayName, bitmap);
+                    }
+                    catch { }
+                }
+            }
         }
 
         /// <summary>
         /// Function to update country data
         /// </summary>
-        private void SetCountryData()
+        private void SetCountryData(CovidInfo lastestCountry)
         {
             LogClass.Log($"Start set country data");
-            lastestCountry = RestAPI.GetCovidDataAsync(textBox1.Text).Result;
 
             if (lastestCountry != null)
             {
@@ -46,12 +67,10 @@ namespace CoronaTracker.SubForms
                 label11.Text = lastestCountry.critical.ToString();
                 label4.Text = lastestCountry.deaths.ToString();
 
-                pictureBox4.ImageLocation = "https://www.countryflagicons.com/FLAT/64/" + lastestCountry.code + ".png";
+                //pictureBox4.ImageLocation = "https://www.countryflagicons.com/FLAT/64/" + lastestCountry.code + ".png";
 
                 label8.Text = "Last update: " + lastestCountry.lastUpdate.ToString();
                 label9.Text = "Last change: " + lastestCountry.lastChange.ToString();
-
-                label7.Text = lastestCountry.country;
             }
             else
             {
@@ -76,16 +95,74 @@ namespace CoronaTracker.SubForms
             LogClass.Log($"textBox1 enter event handler end");
         }
 
-        /// <summary>
-        /// Function to catch button event and set data
-        /// </summary>
-        /// <param name="sender"> variable for sender </param>
-        /// <param name="e"> variable for event arguments </param>
-        private void button1_Click(object sender, EventArgs e)
+        private Button CopyDefault()
         {
-            LogClass.Log($"button1 click event handler start");
-            SetCountryData();
-            LogClass.Log($"button1 click event handler end");
+            Button button = new Button();
+            button.Dock = TEMPLATE.Dock;
+            button.FlatAppearance.BorderSize = TEMPLATE.FlatAppearance.BorderSize;
+            button.FlatStyle = TEMPLATE.FlatStyle;
+            button.Font = TEMPLATE.Font;
+            button.ForeColor = TEMPLATE.ForeColor;
+            button.BackColor = TEMPLATE.BackColor;
+            button.ImageAlign = TEMPLATE.ImageAlign;
+            button.Width = 47;
+            button.Click += onClick;
+            return button;
+        }
+
+        public void LoadList(string regex = "")
+        {
+            LogClass.Log("Loading countries list" + (regex.Equals("") ? "" : " with parameters '" + regex + "'"));
+
+            panel5.Controls.Clear();
+            foreach(string country in COUNTRIES.Keys)
+            {
+                if (country.ToLower().Contains(regex.ToLower()))
+                {
+                    Button p = CopyDefault();
+                    p.Text = country;
+                    p.Image = COUNTRIES[country];
+                    panel5.Controls.Add(p);
+                }
+            }
+
+            LogClass.Log("Successfully loaded");
+        }
+
+        private void CountriesSubForm_Load(object sender, EventArgs e)
+        {
+            LoadList();
+        }
+
+        private void onClick(object sender, EventArgs e)
+        {
+            if (!ProgramVariables.CovidCache.ContainsKey(((Button)sender).Text))
+            {
+                CovidInfo info = RestAPI.GetCovidDataAsync(((Button)sender).Text).Result;
+                if(info != null)
+                {
+                    ProgramVariables.CovidCache.Add(((Button)sender).Text, info);
+                    pictureBox4.Image = COUNTRIES[((Button)sender).Text];
+                    label7.Text = ((Button)sender).Text;
+                    SetCountryData(info);
+                }
+            }
+            else
+            {
+                CovidInfo info = ProgramVariables.CovidCache[((Button)sender).Text];
+                pictureBox4.Image = COUNTRIES[((Button)sender).Text];
+                label7.Text = ((Button)sender).Text;
+                SetCountryData(info);
+            }
+        }
+
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+            if (!textBox1.Text.Equals(""))
+            {
+                LoadList(textBox1.Text);
+            }
         }
     }
 }
