@@ -245,7 +245,7 @@ namespace CoronaTracker.SubForms.PatientSubSubForms
                     patient = DatabaseMethods.GetPatient(Convert.ToInt32(content[1]));
                     if (patient != null)
                     {
-                        ((ListSubSubForm)((PatientSubForm)ProgramVariables.ProgramUI.GetCurrentForm()).GetCurrentForm()).Invoke(setData);
+                        ((ListSubSubForm)((PatientSubForm)ProgramVariables.ProgramThread.GetMainUI().GetCurrentForm()).GetCurrentForm()).Invoke(setData);
                     }
                     else
                         MessageBox.Show("Patient does not exists!");

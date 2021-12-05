@@ -83,8 +83,8 @@ namespace CoronaTracker.SubForms.LoginSubSubForms
                     textBox1.Text = textBox2.Text = "";
                     break;
                 case 1: // successfully login
-                    ProgramVariables.ProgramUI.Show();
-                    ProgramVariables.LoginUI.CloseForm();
+                    ProgramVariables.ProgramThread.ShowMainUI();
+                    ProgramVariables.ProgramThread.HideLoginUI();
                     textBox1.Text = textBox2.Text = "";
                     break;
             }

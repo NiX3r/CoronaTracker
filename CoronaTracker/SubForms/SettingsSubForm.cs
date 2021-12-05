@@ -67,7 +67,7 @@ namespace CoronaTracker.SubForms
             {
                 DatabaseMethods.EditEmployeeInfo(textBox1.Text, Convert.ToInt32(textBox2.Text));
                 ProgramVariables.ProfileURL = textBox1.Text;
-                ProgramVariables.ProgramUI.UpdateProfilePicture();
+                ProgramVariables.ProgramThread.GetMainUI().UpdateProfilePicture();
             }
             LogClass.Log($"button1 click event handler end");
         }

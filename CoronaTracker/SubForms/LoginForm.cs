@@ -66,9 +66,7 @@ namespace CoronaTracker.SubForms
         /// </summary>
         public void EndApp()
         {
-            LogClass.Log($"Ending program");
-            LogClass.Save();
-            Application.Exit();
+            ProgramVariables.ProgramThread.KillTheApp();
         }
 
         public void CloseForm()

@@ -19,10 +19,8 @@ namespace CoronaTracker.Utils
 
     class ProgramVariables
     {
-        // Instance for main graphic user interface
-        public static UI ProgramUI { get; set; }
-        // Instance for login graphic user interface
-        public static LoginForm LoginUI { get; set; }
+        // Instance for main program thread
+        public static MainProgramThread ProgramThread { get; set; }
         // Instance for logged in employee fullname
         public static String Fullname { get; set; }
         // Instance for logged in employee profile picture url

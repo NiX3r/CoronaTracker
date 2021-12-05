@@ -36,7 +36,7 @@ namespace CoronaTracker
             pictureBox2.Region = new Region(path);
 
             OpenChildForm(new HomeSubForm(), button6);
-            LogClass.Log($"Sub sub form successfully initialized");
+            LogClass.Log($"Main UI form successfully initialized");
 
         }
         
@@ -99,10 +99,7 @@ namespace CoronaTracker
             {
 
             }
-            LogClass.Log($"Ending program");
-            LogClass.Save();
-            ProgramVariables.LoginUI.EndApp();
-            Application.Exit();
+            ProgramVariables.ProgramThread.KillTheApp();
         }
 
         private void button8_Click(object sender, EventArgs e)
@@ -127,7 +124,7 @@ namespace CoronaTracker
             ProgramVariables.Fullname = null;
             ProgramVariables.ID = 0;
             ProgramVariables.ProfileURL = null;
-            ProgramVariables.LoginUI.Show();
+            ProgramVariables.ProgramThread.GetLoginUI().Show();
             this.Hide();
             LogClass.Log($"label3 click event handler end");
         }

@@ -163,6 +163,12 @@
     <Compile Include="SubForms\HomeSubForm.Designer.cs">
       <DependentUpon>HomeSubForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="SubForms\LoadingForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SubForms\LoadingForm.Designer.cs">
+      <DependentUpon>LoadingForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="SubForms\LogForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -192,6 +198,12 @@
     </Compile>
     <Compile Include="SubForms\LoginSubSubForms\RegisterSubSubForm.Designer.cs">
       <DependentUpon>RegisterSubSubForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SubForms\MainProgramThread.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SubForms\MainProgramThread.Designer.cs">
+      <DependentUpon>MainProgramThread.cs</DependentUpon>
     </Compile>
     <Compile Include="SubForms\PatientSubForm.cs">
       <SubType>Form</SubType>
@@ -269,6 +281,9 @@
     <EmbeddedResource Include="SubForms\HomeSubForm.resx">
       <DependentUpon>HomeSubForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="SubForms\LoadingForm.resx">
+      <DependentUpon>LoadingForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="SubForms\LogForm.resx">
       <DependentUpon>LogForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -283,6 +298,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="SubForms\LoginSubSubForms\RegisterSubSubForm.resx">
       <DependentUpon>RegisterSubSubForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SubForms\MainProgramThread.resx">
+      <DependentUpon>MainProgramThread.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="SubForms\PatientSubForm.resx">
       <DependentUpon>PatientSubForm.cs</DependentUpon>
@@ -331,6 +349,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="coronavirus.ico" />
+    <None Include="Resources\loading.gif" />
     <None Include="Resources\stink-bug.png" />
     <None Include="Resources\caution-sign.png" />
     <None Include="Resources\vaccine.png" />
