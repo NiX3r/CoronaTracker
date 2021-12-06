@@ -22,17 +22,19 @@ This program was created for seminar school project as recession to Corona virus
 	- Can update password in settings
 	- Auto login sessions included
 	- Reset password via email code
+- **Synchronizing Multi-Threading**
+- Program archstructure
 - Polyformism
 - Github Connection
 - Structure
 - App Installer
 - Others
-	- Automatically send emails via own domain
-	- Generate PDF file from HTML model
-	- Automatically refresh database connection (to be safe)
-	- Dashboard data science
-	- QR code webcam loader
-	- Check version correction
+  - Automatically send emails via own domain
+  - Generate PDF file from HTML model
+  - Automatically refresh database connection (to be safe)
+  - Dashboard data science
+  - QR code webcam loader
+  - Check version correction
 
 ## To-Do list (15/15)
 - [:heavy_check_mark:] Create main UI form
