@@ -189,5 +189,10 @@ namespace CoronaTracker
             if (!ProgramVariables.FormCache["REPORT"].Visible)
                 ProgramVariables.FormCache["REPORT"].Show();
         }
+
+        private void UI_Load(object sender, EventArgs e)
+        {
+            this.TopMost = true;
+        }
     }
 }

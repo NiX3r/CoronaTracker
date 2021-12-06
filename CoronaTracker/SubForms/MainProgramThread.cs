@@ -5,6 +5,7 @@ using CoronaTracker.Timers;
 using CoronaTracker.Utils;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Threading;
 using System.Windows.Forms;
@@ -19,6 +20,7 @@ namespace CoronaTracker.SubForms
         private LoginForm loginForm;
         private UI mainUI;
         private LoadingForm loadingForm;
+        private Thread loadingThread;
 
         public MainProgramThread(string[] args)
         {
@@ -27,8 +29,14 @@ namespace CoronaTracker.SubForms
             this.loginForm = new LoginForm();
             this.mainUI = new UI();
             this.loadingForm = new LoadingForm();
-            this.ShowLoadingUI();
-            
+            //this.ShowLoadingUI();
+
+            loadingThread = new Thread(() =>
+            {
+                Application.Run(new LoadingForm());
+            });
+            loadingThread.Start();
+
             InitializeProgram(args);
         }
 
@@ -105,7 +113,7 @@ namespace CoronaTracker.SubForms
             LogClass.Log("Program variables initialized");
             int id = DatabaseMethods.HasAutoLogin();
 
-            this.HideLoadingUI();
+            this.loadingThread.Abort();
             if (isDev)
             {
                 ProgramVariables.ID = 38;

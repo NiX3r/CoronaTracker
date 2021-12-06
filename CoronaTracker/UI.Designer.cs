@@ -358,6 +358,7 @@ namespace CoronaTracker
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "UI";
             this.Text = "CoronaTracker";
+            this.Load += new System.EventHandler(this.UI_Load);
             this.VisibleChanged += new System.EventHandler(this.UI_VisibleChanged);
             this.UpperPanel.ResumeLayout(false);
             this.UpperPanel.PerformLayout();

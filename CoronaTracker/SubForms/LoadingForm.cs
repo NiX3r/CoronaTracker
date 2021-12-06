@@ -17,6 +17,8 @@ namespace CoronaTracker.SubForms
         public LoadingForm()
         {
             InitializeComponent();
+            IntPtr handle = CreateRoundRectRgn(0, 0, this.Width, this.Height, 30, 30);
+            this.Region = Region.FromHrgn(handle);
         }
 
         [DllImport("user32.DLL", EntryPoint = "ReleaseCapture")]
@@ -30,6 +32,17 @@ namespace CoronaTracker.SubForms
             SendMessage(this.Handle, 0x112, 0xf012, 0);
             LogClass.Log($"pictureBox1 mouse down event handler end");
         }
+
+        [DllImport("Gdi32.dll", EntryPoint = "CreateRoundRectRgn")]
+        private static extern IntPtr CreateRoundRectRgn
+        (
+            int nLeftRect, // x-coordinate of upper-left corner
+            int nTopRect, // y-coordinate of upper-left corner
+            int nRightRect, // x-coordinate of lower-right corner
+            int nBottomRect, // y-coordinate of lower-right corner
+            int nWidthEllipse, // height of ellipse
+            int nHeightEllipse // width of ellipse
+        );
 
     }
 }
