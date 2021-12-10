@@ -2,7 +2,7 @@
 Seminar school project.
 
 ## Introduce CoronaTracker
-This program was created for seminar school project as recession to Corona virus. Program is develop for non-exists hospital. It saved patients and their data about covid data. In databa I store Employees data such as fullname, email, phone, pose, etc. Then Vaccinate, Finds, Vaccine types. And lastable program data such as version and download link to lastest release.
+CoronaTracker is an application focused on the medical sector, and its primary purpose is to monitor patients, especially their's Covid-19 illnesses and their's vaccination. The application also collects statistics about Covid-19 worldwide from external data sources via API gateways. CoronaTracker is attached to an internal relational database server where it stores all sorts of information, such as patients, patient vaccination, types of vaccinations, employees data and much more. CoronaTracker has many exciting features, which are summarized in this document.
 
 **Data in database are fully generated!**
 

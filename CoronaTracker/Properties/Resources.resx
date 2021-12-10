@@ -124,11 +124,11 @@
   <data name="img_299586" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\img_299586.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="loading" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\loading.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="danger" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\danger1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="stink-bug" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\stink-bug.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="coronavirus" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\coronavirus.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -145,6 +145,9 @@
   <data name="minus" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\minus.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="customer" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\customer.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="plus" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\plus.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -157,10 +160,10 @@
   <data name="vaccine" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\vaccine.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="customer" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\customer.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="stink-bug" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\stink-bug.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="loading" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\loading.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="LoadingBackground" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\LoadingBackground.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

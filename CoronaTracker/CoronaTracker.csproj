@@ -349,6 +349,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="coronavirus.ico" />
+    <None Include="Resources\LoadingBackground.gif" />
     <None Include="Resources\loading.gif" />
     <None Include="Resources\stink-bug.png" />
     <None Include="Resources\caution-sign.png" />
