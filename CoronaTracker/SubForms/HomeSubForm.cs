@@ -1,9 +1,13 @@
-﻿using CoronaTracker.Instances;
+﻿using CoronaTracker.Database;
+using CoronaTracker.Enums;
+using CoronaTracker.Instances;
 using CoronaTracker.Timers;
 using CoronaTracker.Utils;
 using System;
+using System.Collections.Generic;
 using System.Timers;
 using System.Windows.Forms;
+using static CoronaTracker.Enums.EmployeePoseEnum;
 
 namespace CoronaTracker.SubForms
 {
@@ -54,6 +58,19 @@ namespace CoronaTracker.SubForms
                               "\nConfirmed: " + czech.confirmed.ToString() +
                               "\nCritical: " + czech.critical.ToString() +
                               "\nDeaths: " + czech.deaths.ToString();
+                }
+
+                if(ProgramVariables.Pose.Equals(EmployeePose.Leader) || ProgramVariables.Pose.Equals(EmployeePose.Developer))
+                {
+                    List<string> employees = DatabaseMethods.GetActiveEmployees();
+                    employees.ForEach(em => {
+                        if (!listBox1.Items.Contains(em))
+                            listBox1.Items.Add(em);
+                    });
+                }
+                else
+                {
+                    panel1.Hide();
                 }
 
             }

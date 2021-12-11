@@ -324,6 +324,38 @@ namespace CoronaTracker.Database
         }
 
         /// <summary>
+        /// Function to get all active patients
+        /// </summary>
+        /// <returns>
+        /// returns string list of fullnames
+        /// </returns>
+        public static List<string> GetActiveEmployees()
+        {
+            LogClass.Log("Getting all active employees");
+            List<string> output = new List<string>();
+            var command = new MySqlCommand($"SELECT Employee_Fullname FROM Employee WHERE Employee_IsActive=1;", connection);
+            var reader = command.ExecuteReader();
+            while (reader.Read())
+                if(!output.Contains(reader.GetString(0)))
+                    output.Add(reader.GetString(0));
+            reader.Close();
+            LogClass.Log("Got all active employees");
+            return output;
+        }
+
+        /// <summary>
+        /// Function to set active for employee by his/her id
+        /// </summary>
+        /// <param name="id"> variable for employee id </param>
+        /// <param name="status"> variable for change status </param>
+        public static void SetActiveEmployeeById(int id, bool status)
+        {
+            LogClass.Log($"Setting active of employee with id '{id}'");
+            var command = new MySqlCommand($"UPDATE Employee SET Employee_IsActive={status} WHERE Employee_ID={id};", connection);
+            command.ExecuteNonQuery();
+        }
+
+        /// <summary>
         /// Function to get patient id by his personal number
         /// </summary>
         /// <param name="first"> variable for first part of personal number </param>

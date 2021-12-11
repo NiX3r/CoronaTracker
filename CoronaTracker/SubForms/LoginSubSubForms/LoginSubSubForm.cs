@@ -85,6 +85,7 @@ namespace CoronaTracker.SubForms.LoginSubSubForms
                 case 1: // successfully login
                     ProgramVariables.ProgramThread.ShowMainUI();
                     ProgramVariables.ProgramThread.HideLoginUI();
+                    DatabaseMethods.SetActiveEmployeeById(ProgramVariables.ID, true);
                     textBox1.Text = textBox2.Text = "";
                     break;
             }

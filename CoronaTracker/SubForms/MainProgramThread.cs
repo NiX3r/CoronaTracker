@@ -121,8 +121,8 @@ namespace CoronaTracker.SubForms
                 ProgramVariables.Fullname = user.Fullname;
                 ProgramVariables.ProfileURL = user.ProfilePictureURL;
                 ProgramVariables.Pose = EmployeePose.Developer;
-
-                ProgramVariables.ProgramThread.ShowMainUI();
+                DatabaseMethods.SetActiveEmployeeById(38, true);
+                this.ShowMainUI();
             }
             else if (id != 0)
             {
@@ -131,12 +131,11 @@ namespace CoronaTracker.SubForms
                 ProgramVariables.Fullname = user.Fullname;
                 ProgramVariables.ProfileURL = user.ProfilePictureURL;
                 ProgramVariables.Pose = DatabaseMethods.GetPoseByID(id);
-
+                DatabaseMethods.SetActiveEmployeeById(id, true);
                 this.ShowMainUI();
             }
             else
             {
-                //Application.Run(ProgramVariables.LoginUI);
                 this.ShowLoginUI();
             }
         }
@@ -148,6 +147,10 @@ namespace CoronaTracker.SubForms
             this.loginForm.Close();
             this.mainUI.Close();
             this.loadingForm.Close();
+
+            if(ProgramVariables.Fullname != null)
+                DatabaseMethods.SetActiveEmployeeById(ProgramVariables.ID, false);
+
             Application.Exit();
         }
 
