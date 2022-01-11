@@ -46,9 +46,16 @@ namespace CoronaTracker.Timers
         {
             try
             {
-                ((HomeSubForm)ProgramVariables.ProgramThread.GetMainUI().GetCurrentForm()).Invoke(((HomeSubForm)ProgramVariables.ProgramThread.GetMainUI().GetCurrentForm()).timerDel);
+                try
+                {
+                    ((HomeSubForm)ProgramVariables.ProgramThread.GetMainUI().GetCurrentForm()).Invoke(((HomeSubForm)ProgramVariables.ProgramThread.GetMainUI().GetCurrentForm()).timerDel);
+                }
+                catch
+                {
+
+                }
             }
-            catch
+            catch(Exception ex)
             {
 
             }

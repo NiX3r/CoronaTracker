@@ -43,8 +43,9 @@
             this.panel1.Controls.Add(this.button1);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
+            this.panel1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(786, 55);
+            this.panel1.Size = new System.Drawing.Size(1048, 68);
             this.panel1.TabIndex = 0;
             // 
             // button3
@@ -54,9 +55,10 @@
             this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button3.Font = new System.Drawing.Font("Nirmala UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.button3.Location = new System.Drawing.Point(522, 0);
+            this.button3.Location = new System.Drawing.Point(696, 0);
+            this.button3.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(261, 55);
+            this.button3.Size = new System.Drawing.Size(348, 68);
             this.button3.TabIndex = 2;
             this.button3.Text = "Vaccinacions";
             this.button3.UseVisualStyleBackColor = true;
@@ -69,9 +71,10 @@
             this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button2.Font = new System.Drawing.Font("Nirmala UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.button2.Location = new System.Drawing.Point(261, 0);
+            this.button2.Location = new System.Drawing.Point(348, 0);
+            this.button2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(261, 55);
+            this.button2.Size = new System.Drawing.Size(348, 68);
             this.button2.TabIndex = 1;
             this.button2.Text = "Finds";
             this.button2.UseVisualStyleBackColor = true;
@@ -85,8 +88,9 @@
             this.button1.Font = new System.Drawing.Font("Nirmala UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
             this.button1.Location = new System.Drawing.Point(0, 0);
+            this.button1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(261, 55);
+            this.button1.Size = new System.Drawing.Size(348, 68);
             this.button1.TabIndex = 0;
             this.button1.Text = "List";
             this.button1.UseVisualStyleBackColor = true;
@@ -96,20 +100,21 @@
             // 
             this.SubFormPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(55)))), ((int)(((byte)(55)))));
             this.SubFormPanel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.SubFormPanel.Location = new System.Drawing.Point(0, 55);
+            this.SubFormPanel.Location = new System.Drawing.Point(0, 68);
+            this.SubFormPanel.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.SubFormPanel.Name = "SubFormPanel";
-            this.SubFormPanel.Size = new System.Drawing.Size(786, 492);
+            this.SubFormPanel.Size = new System.Drawing.Size(1048, 605);
             this.SubFormPanel.TabIndex = 1;
             // 
             // PatientSubForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(44)))), ((int)(((byte)(44)))));
-            this.ClientSize = new System.Drawing.Size(786, 547);
+            this.ClientSize = new System.Drawing.Size(1048, 673);
             this.Controls.Add(this.SubFormPanel);
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "PatientSubForm";
             this.Text = "PatientSubForm";
             this.Load += new System.EventHandler(this.PatientSubForm_Load);

@@ -30,12 +30,16 @@ namespace CoronaTracker.SubForms
             this.mainUI = new UI();
             this.loadingForm = new LoadingForm();
             //this.ShowLoadingUI();
-
-            loadingThread = new Thread(() =>
+            loadingThread = new Thread(t =>
             {
-                Application.Run(new LoadingForm());
+                if (loadingThread.IsAlive)
+                    Application.Run(new LoadingForm());
             });
-            loadingThread.Start();
+            try
+            {
+                loadingThread.Start();
+            }
+            catch (Exception ex) { }
 
             InitializeProgram(args);
         }
@@ -206,5 +210,9 @@ namespace CoronaTracker.SubForms
             return this.loadingForm;
         }
 
+        private void MainProgramThread_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

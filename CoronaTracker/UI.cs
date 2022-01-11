@@ -28,7 +28,6 @@ namespace CoronaTracker
             LogClass.Log($"Start initialize sub sub form");
             InitializeComponent();
 
-            logLabel.Hide();
             label2.Text = "version: " + ProgramVariables.Version;
 
             System.Drawing.Drawing2D.GraphicsPath path = new System.Drawing.Drawing2D.GraphicsPath();
@@ -55,6 +54,11 @@ namespace CoronaTracker
         public void UpdateProfilePicture()
         {
             pictureBox2.ImageLocation = ProgramVariables.ProfileURL;
+        }
+
+        public void UpdateVersion()
+        {
+            label2.Text = "version: " + ProgramVariables.Version;
         }
 
         public void OpenChildForm(Form childForm, Button button)
@@ -132,19 +136,6 @@ namespace CoronaTracker
         private void button6_Click(object sender, EventArgs e)
         {
             LogClass.Log($"button6 click event handler start");
-
-            /*if (((Button)sender).Text.Equals("Home"))
-                OpenChildForm(new HomeSubForm(), (Button)sender);
-            else if (((Button)sender).Text.Equals("Countries"))
-                OpenChildForm(new CountriesSubForm(), (Button)sender);
-            else if (((Button)sender).Text.Equals("Vaccine") && HasAccess())
-                OpenChildForm(new VaccineTypeSubForm(), (Button)sender);
-            else if (((Button)sender).Text.Equals("Patient") && HasAccess())
-                OpenChildForm(new PatientSubForm(), (Button)sender);
-            else if (((Button)sender).Text.Equals("Dashboard"))
-                OpenChildForm(new DashboardSubForm(), (Button)sender);
-            else if (((Button)sender).Text.Equals("Settings") && HasAccess())
-                OpenChildForm(new SettingsSubForm(), (Button)sender);*/
 
             if (((Button)sender).Text.Equals(currentButton.Text))
             {
