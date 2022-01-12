@@ -1,4 +1,5 @@
-﻿using CoronaTracker.Instances;
+﻿using CoronaTracker.Enums;
+using CoronaTracker.Instances;
 using Discord;
 using Discord.Webhook;
 using System;
