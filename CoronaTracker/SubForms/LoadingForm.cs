@@ -44,5 +44,9 @@ namespace CoronaTracker.SubForms
             int nHeightEllipse // width of ellipse
         );
 
+        private void LoadingForm_ResizeEnd(object sender, EventArgs e)
+        {
+
+        }
     }
 }

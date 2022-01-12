@@ -32,12 +32,13 @@
             // 
             // MainProgramThread
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(183, 87);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
+            this.ClientSize = new System.Drawing.Size(244, 107);
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "MainProgramThread";
             this.Opacity = 0D;
             this.Text = "MainProgramThread";
+            this.Load += new System.EventHandler(this.MainProgramThread_Load);
             this.ResumeLayout(false);
 
         }
