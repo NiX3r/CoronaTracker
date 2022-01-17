@@ -39,7 +39,7 @@ namespace CoronaTracker.SubForms
             {
                 loadingThread.Start();
             }
-            catch (Exception ex) { }
+            catch { }
 
             InitializeProgram(args);
         }

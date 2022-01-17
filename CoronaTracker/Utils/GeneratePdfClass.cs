@@ -16,12 +16,15 @@ namespace CoronaTracker.Instances
     {
 
         /// <summary>
-        /// Function to 
+        /// Function to generate underwent PDF file
         /// </summary>
-        /// <param name="finds"></param>
-        /// <param name="patient"></param>
-        /// <param name="patientID"></param>
-        /// <returns></returns>
+        /// <param name="finds"> variable for finds list </param>
+        /// <param name="patient"> variable for patient instance </param>
+        /// <param name="patientID"> variable for patient ID </param>
+        /// <returns>
+        /// true : generate was success
+        /// false : generate was unsuccess
+        /// </returns>
         public static bool GenerateUnderwentPdf(List<FindsInstance> finds, PatientInstance patient, int patientID)
         {
 
@@ -73,6 +76,16 @@ namespace CoronaTracker.Instances
 
         }
 
+        /// <summary>
+        /// Function to generate vaccinate PDF file
+        /// </summary>
+        /// <param name="vaccine"> variable for vaccine instance </param>
+        /// <param name="patient"> variable for patient instance </param>
+        /// <param name="patientID"> variable for patient ID </param>
+        /// <returns>
+        /// true : generate was success
+        /// false : generate was unsuccess
+        /// </returns>
         public static bool GenerateVaccinatePdf(PatientVaccineAction vaccine, PatientInstance patient, int patientID)
         {
             try

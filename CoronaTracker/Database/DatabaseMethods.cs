@@ -41,6 +41,9 @@ namespace CoronaTracker.Database
             }
         }
 
+        /// <summary>
+        /// Function to refresh database connection
+        /// </summary>
         public static void RefreshDatabaseConnection()
         {
             LogClass.Log("Trying to refresh connection");
@@ -103,6 +106,15 @@ namespace CoronaTracker.Database
             LogClass.Log("Reset password logged");
         }
 
+        /// <summary>
+        /// Function to add bug report into database
+        /// </summary>
+        /// <param name="topic"> variable for topic </param>
+        /// <param name="type"> variable for type </param>
+        /// <param name="priority"> variable for priority </param>
+        /// <param name="create"> variable for create date </param>
+        /// <param name="system"> variable for OS </param>
+        /// <param name="description"> variable for description </param>
         public static void AddBugReport(string topic, string type, int priority, DateTime create, string system, string description)
         {
 
@@ -239,6 +251,11 @@ namespace CoronaTracker.Database
             LogClass.Log($"Password reset status changed for {id} to {status}");
         }
 
+        /// <summary>
+        /// Function to update password by ID
+        /// </summary>
+        /// <param name="id"> variable for ID </param>
+        /// <param name="password"> variable for password </param>
         public static void UpdatePassword(int id, string password)
         {
             LogClass.Log($"Updating password for {id} to {password}");
@@ -539,6 +556,14 @@ namespace CoronaTracker.Database
             return output;
         }
 
+        /// <summary>
+        /// Function to get employee ID by email
+        /// </summary>
+        /// <param name="email"> variable for email </param>
+        /// <returns>
+        /// -1 : user with that email doesn't exists
+        /// else : user's ID
+        /// </returns>
         public static int GetEmployeeIdByEmail(string email)
         {
             LogClass.Log($"Getting employee ID by email {email}");
@@ -1322,8 +1347,7 @@ namespace CoronaTracker.Database
             var reader = command.ExecuteReader();
 
             if (reader.Read())
-            {;
-                // SELECT COUNT(LoginAttempts_ID) FROM LoginAttempts WHERE LoginAttempts_DateTime>DATE_SUB(NOW(), INTERVAL 1 HOUR) AND LoginAttempts_IsSuccess=false;
+            {
                 int first, second;
                 first = second = -1;
                 int ID = reader.GetInt32(0);
