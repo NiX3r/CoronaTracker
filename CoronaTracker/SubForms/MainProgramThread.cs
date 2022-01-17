@@ -93,7 +93,7 @@ namespace CoronaTracker.SubForms
             }
             else if (!versionCheck.Equals(""))
             {
-                System.Diagnostics.Process.Start(versionCheck);
+                Process.Start(versionCheck);
                 MessageBox.Show("You're running on older version! Please download newest version.");
                 Application.Exit();
             }
@@ -116,6 +116,8 @@ namespace CoronaTracker.SubForms
             ProgramVariables.RefreshConnection.ChangeStatus(true);
             LogClass.Log("Program variables initialized");
             int id = DatabaseMethods.HasAutoLogin();
+
+            this.mainUI.UpdateVersion();
 
             this.loadingThread.Abort();
             if (isDev)
