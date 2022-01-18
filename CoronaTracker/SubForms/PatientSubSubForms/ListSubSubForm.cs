@@ -19,6 +19,16 @@ using ZXing;
 
 namespace CoronaTracker.SubForms.PatientSubSubForms
 {
+
+    /// <summary>
+    /// 
+    /// List Sub Sub Form
+    /// 
+    /// GUI child of Patient Sub Form
+    /// Shows UI for manipulate with patients personal information
+    /// 
+    /// </summary>
+
     public partial class ListSubSubForm : Form
     {
 
@@ -280,6 +290,12 @@ namespace CoronaTracker.SubForms.PatientSubSubForms
                     exitcamera();
         }
 
+        /// <summary>
+        /// Function to handle QR code picture box click event
+        /// Async write QR code via email to selected patient
+        /// </summary>
+        /// <param name="sender"> variable for sender </param>
+        /// <param name="e"> variable for event arguments </param>
         private void pictureBox4_Click(object sender, EventArgs e)
         {
             EmailWriter.AsyncWrite(DatabaseMethods.GetPatientIDByPersonalNumber(textBox2.Text, textBox3.Text), Convert.ToInt32(textBox2.Text), Convert.ToInt32(textBox3.Text), textBox5.Text);

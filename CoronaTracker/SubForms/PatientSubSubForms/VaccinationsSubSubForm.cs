@@ -19,6 +19,16 @@ using ZXing;
 
 namespace CoronaTracker.SubForms.PatientSubSubForms
 {
+
+    /// <summary>
+    /// 
+    /// Vaccinations Sub Sub Form
+    /// 
+    /// GUI child of Patient Sub Form
+    /// Shows UI for manipulate with patient's vaccination
+    /// 
+    /// </summary>
+
     public partial class VaccinationsSubSubForm : Form
     {
 

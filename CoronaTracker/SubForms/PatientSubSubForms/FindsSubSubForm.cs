@@ -19,6 +19,16 @@ using ZXing;
 
 namespace CoronaTracker.SubForms.PatientSubSubForms
 {
+
+    /// <summary>
+    /// 
+    /// Finds Sub Sub Form
+    /// 
+    /// GUI child of Patient Sub Form
+    /// Shows UI for manipulate with patients finds
+    /// 
+    /// </summary>
+
     public partial class FindsSubSubForm : Form
     {
 
