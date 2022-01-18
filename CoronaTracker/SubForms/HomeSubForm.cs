@@ -9,6 +9,16 @@ using static CoronaTracker.Enums.EmployeePoseEnum;
 
 namespace CoronaTracker.SubForms
 {
+
+    /// <summary>
+    /// 
+    /// Home Sub Form
+    /// 
+    /// GUI child of UI
+    /// Shows UI for basic application data
+    /// 
+    /// </summary>
+
     public partial class HomeSubForm : Form
     {
 
@@ -31,6 +41,9 @@ namespace CoronaTracker.SubForms
 
         public delegate void timerDelDelegate();
         public timerDelDelegate timerDel;
+        /// <summary>
+        /// Delegate function to load current time into UI
+        /// </summary>
         void timerDelMethod() { label13.Text = $"{DateTime.Now.ToString("dd/MM/yyyy")}\n{DateTime.Now.ToString("HH:mm:ss")}";}
 
         /// <summary>
@@ -135,6 +148,12 @@ namespace CoronaTracker.SubForms
             System.Diagnostics.Process.Start("https://www.mockaroo.com");
         }
 
+        /// <summary>
+        /// Function to handle form closing event
+        /// Stop time timer
+        /// </summary>
+        /// <param name="sender"> variable for sender </param>
+        /// <param name="e"> variable for event arguments </param>
         private void HomeSubForm_FormClosing(object sender, FormClosingEventArgs e)
         {
             timer.ChangeStatus(false);

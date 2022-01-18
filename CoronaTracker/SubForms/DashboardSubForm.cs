@@ -15,6 +15,16 @@ using System.Windows.Forms;
 
 namespace CoronaTracker.SubForms
 {
+
+    /// <summary>
+    /// 
+    /// Dashboard Sub Form
+    /// 
+    /// GUI child of UI
+    /// Shows UI with application important data
+    /// 
+    /// </summary>
+
     public partial class DashboardSubForm : Form
     {
 

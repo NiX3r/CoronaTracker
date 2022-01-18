@@ -15,6 +15,16 @@ using System.Windows.Forms;
 
 namespace CoronaTracker.SubForms
 {
+
+    /// <summary>
+    /// 
+    /// Countries Sub Form
+    /// 
+    /// GUI child of UI
+    /// Shows UI for get actual data from targeting country
+    /// 
+    /// </summary>
+
     public partial class CountriesSubForm : Form
     {
 
@@ -35,6 +45,9 @@ namespace CoronaTracker.SubForms
             LogClass.Log($"Sub sub form successfully initialized");
         }
 
+        /// <summary>
+        /// Function to load default countries buttons
+        /// </summary>
         private void LoadCountriesDefault()
         {
             foreach(RegionInfo info in CultureInfo.GetCultures(CultureTypes.SpecificCultures).Select(x => new RegionInfo(x.LCID)))
@@ -95,6 +108,12 @@ namespace CoronaTracker.SubForms
             LogClass.Log($"textBox1 enter event handler end");
         }
 
+        /// <summary>
+        /// Function to return Button with it defaults
+        /// </summary>
+        /// <returns>
+        /// Default Button
+        /// </returns>
         private Button CopyDefault()
         {
             Button button = new Button();
@@ -110,6 +129,10 @@ namespace CoronaTracker.SubForms
             return button;
         }
 
+        /// <summary>
+        /// Function to refresh list of countries by specific parameters
+        /// </summary>
+        /// <param name="regex"> variable for parametres </param>
         public void LoadList(string regex = "")
         {
             LogClass.Log("Loading countries list" + (regex.Equals("") ? "" : " with parameters '" + regex + "'"));
@@ -129,11 +152,23 @@ namespace CoronaTracker.SubForms
             LogClass.Log("Successfully loaded");
         }
 
+        /// <summary>
+        /// Function to handle form load event
+        /// Load list with no parameters
+        /// </summary>
+        /// <param name="sender"> variable for sender </param>
+        /// <param name="e"> variable for event arguments </param>
         private void CountriesSubForm_Load(object sender, EventArgs e)
         {
             LoadList();
         }
 
+        /// <summary>
+        /// Function to handle country click event
+        /// Load country data in UI
+        /// </summary>
+        /// <param name="sender"> variable for sender </param>
+        /// <param name="e"> variable for event arguments </param>
         private void onClick(object sender, EventArgs e)
         {
             if (!ProgramVariables.CovidCache.ContainsKey(((Button)sender).Text))
@@ -156,7 +191,12 @@ namespace CoronaTracker.SubForms
             }
         }
 
-
+        /// <summary>
+        /// Function to handle parameters text box text change event
+        /// Refresh countries list with specific parameters
+        /// </summary>
+        /// <param name="sender"> variable for sender </param>
+        /// <param name="e"> variable for event arguments </param>
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
             if (!textBox1.Text.Equals(""))

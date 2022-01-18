@@ -14,6 +14,16 @@ using System.Windows.Forms;
 
 namespace CoronaTracker.SubForms
 {
+
+    /// <summary>
+    /// 
+    /// Settings Sub Form
+    /// 
+    /// GUI child of UI
+    /// Shows UI for user's settings or to edit other user's poses
+    /// 
+    /// </summary>
+
     public partial class SettingsSubForm : Form
     {
 
@@ -197,6 +207,13 @@ namespace CoronaTracker.SubForms
             LogClass.Log($"button5 click event handler end");
         }
 
+        /// <summary>
+        /// Function to handle form load event
+        /// Shows logged in user's data
+        /// Enable / Disable editing others users poses by logged in 
+        /// </summary>
+        /// <param name="sender"> variable for sender </param>
+        /// <param name="e"> variable for event arguments </param>
         private void SettingsSubForm_Load(object sender, EventArgs e)
         {
             EmployeeInstance employee = DatabaseMethods.GetEmployeeByID(ProgramVariables.ID);

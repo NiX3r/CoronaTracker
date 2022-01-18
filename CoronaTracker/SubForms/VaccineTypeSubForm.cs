@@ -13,6 +13,16 @@ using System.Windows.Forms;
 
 namespace CoronaTracker.SubForms
 {
+
+    /// <summary>
+    /// 
+    /// Vaccine Type Sub Form
+    /// 
+    /// GUI child of UI
+    /// Shows UI for manipulate with vaccine types
+    /// 
+    /// </summary>
+
     public partial class VaccineTypeSubForm : Form
     {
 
@@ -244,6 +254,12 @@ namespace CoronaTracker.SubForms
             LogClass.Log($"textBox1 text changed event handler start");
         }
 
+        /// <summary>
+        /// Function to handle form load event
+        /// Load vaccines buttons
+        /// </summary>
+        /// <param name="sender"> variable for sender </param>
+        /// <param name="e"> variable for event arguments </param>
         private void VaccineTypeSubForm_Load(object sender, EventArgs e)
         {
             vaccineTypes = DatabaseMethods.GetVaccineTypes();

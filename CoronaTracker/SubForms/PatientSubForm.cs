@@ -13,6 +13,15 @@ using System.Windows.Forms;
 namespace CoronaTracker.SubForms
 {
 
+    /// <summary>
+    /// 
+    /// Patient Sub Form
+    /// 
+    /// GUI child of UI
+    /// Shows UI for manipulate with patient's data
+    /// 
+    /// </summary>
+
     public partial class PatientSubForm : Form
     {
 
@@ -101,6 +110,12 @@ namespace CoronaTracker.SubForms
             LogClass.Log($"button1 click event handler end");
         }
 
+        /// <summary>
+        /// Function to handle form load event
+        /// Open default child form - List Sub Sub Form
+        /// </summary>
+        /// <param name="sender"> variable for sender </param>
+        /// <param name="e"> variable for event arguments </param>
         private void PatientSubForm_Load(object sender, EventArgs e)
         {
             OpenChildForm(new ListSubSubForm(), button1);
