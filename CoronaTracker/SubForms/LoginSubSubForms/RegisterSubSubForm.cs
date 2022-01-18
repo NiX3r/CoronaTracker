@@ -17,7 +17,7 @@ namespace CoronaTracker.SubForms.LoginSubSubForms
     /// 
     /// Register Sub Sub Form
     /// 
-    /// GUI child of Login Form
+    /// GUI child of Login Sub Form
     /// Shows UI for register into application
     /// 
     /// </summary>

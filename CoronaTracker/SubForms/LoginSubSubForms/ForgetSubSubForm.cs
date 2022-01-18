@@ -20,7 +20,7 @@ namespace CoronaTracker.SubForms.LoginSubSubForms
     /// 
     /// Forget Sub Sub Form
     /// 
-    /// GUI child of Login Form
+    /// GUI child of Login Sub Form
     /// Shows UI for reseting password via email code confirmation
     /// 
     /// </summary>
