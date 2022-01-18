@@ -13,6 +13,15 @@ using System.Windows.Forms;
 
 namespace CoronaTracker.SubForms.LoginSubSubForms
 {
+
+    /// <summary>
+    /// Login Sub Sub Form
+    /// 
+    /// GUI child of Login Form
+    /// Shows UI for login into application
+    /// 
+    /// </summary>
+
     public partial class LoginSubSubForm : Form
     {
         public LoginSubSubForm()
@@ -49,6 +58,11 @@ namespace CoronaTracker.SubForms.LoginSubSubForms
             return hashString;
         }
 
+        /// <summary>
+        /// Function to handle login button click event
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void button1_Click(object sender, EventArgs e)
         {
             LogClass.Log($"button1 click event handler start");
@@ -63,11 +77,21 @@ namespace CoronaTracker.SubForms.LoginSubSubForms
             LogClass.Log($"button1 click event handler end");
         }
 
+        /// <summary>
+        /// Function to login via input credentials
+        /// 
+        /// Database Methods Log In returned int :
+        /// -2 : User's account is temporary banned
+        /// -1 : Email or password is incorrect
+        /// 0 : Email is inccorect
+        /// 1 : Successfully logged in
+        /// 
+        /// </summary>
         private void login()
         {
             switch (DatabaseMethods.LogIn(textBox1.Text, PasswordEncryption(textBox2.Text)))
             {
-                case -2:
+                case -2: // temporary ban
                     MessageBox.Show("Your account is temporary ban!");
                     LogClass.Log("User's account is temporary banned");
                     textBox1.Text = textBox2.Text = "";
@@ -91,6 +115,12 @@ namespace CoronaTracker.SubForms.LoginSubSubForms
             }
         }
 
+        /// <summary>
+        /// Function to handle password text box key press event
+        /// Try to login after press enter
+        /// </summary>
+        /// <param name="sender"> variable for sender </param>
+        /// <param name="e"> variable for key press event arguments </param>
         private void textBox2_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (e.KeyChar == 13)

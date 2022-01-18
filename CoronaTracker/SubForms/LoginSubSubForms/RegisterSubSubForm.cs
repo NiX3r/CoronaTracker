@@ -12,6 +12,16 @@ using System.Windows.Forms;
 
 namespace CoronaTracker.SubForms.LoginSubSubForms
 {
+
+    /// <summary>
+    /// 
+    /// Register Sub Sub Form
+    /// 
+    /// GUI child of Login Form
+    /// Shows UI for register into application
+    /// 
+    /// </summary>
+
     public partial class RegisterSubSubForm : Form
     {
         public RegisterSubSubForm()
@@ -48,6 +58,11 @@ namespace CoronaTracker.SubForms.LoginSubSubForms
             return hashString;
         }
 
+        /// <summary>
+        /// Function to handle register button click event
+        /// </summary>
+        /// <param name="sender"> variable for sender </param>
+        /// <param name="e"> variable for event arguments </param>
         private void button1_Click(object sender, EventArgs e)
         {
             LogClass.Log($"button1 click event handler start");
@@ -62,6 +77,12 @@ namespace CoronaTracker.SubForms.LoginSubSubForms
             LogClass.Log($"button1 click event handler end");
         }
 
+        /// <summary>
+        /// Function to handle phone text box key press event
+        /// Allows only digits inputs
+        /// </summary>
+        /// <param name="sender"> variable for sender </param>
+        /// <param name="e"> variable for key press event arguments </param>
         private void textBox3_KeyPress(object sender, KeyPressEventArgs e)
         {
             LogClass.Log($"textBox3 key press event handler start");
@@ -74,6 +95,13 @@ namespace CoronaTracker.SubForms.LoginSubSubForms
             LogClass.Log($"textBox3 key press event handler end");
         }
 
+        /// <summary>
+        /// Function to add user into database
+        /// 
+        /// Database Methods Add User return bool :
+        /// true : user successfully created
+        /// false : user unsuccessfully created
+        /// </summary>
         private void addUser()
         {
             if (DatabaseMethods.AddUser(textBox4.Text, textBox1.Text, Convert.ToInt32(textBox3.Text), PasswordEncryption(textBox2.Text)))
@@ -86,6 +114,12 @@ namespace CoronaTracker.SubForms.LoginSubSubForms
                 MessageBox.Show("Account cannot be create!");
         }
 
+        /// <summary>
+        /// Function to handle retype password text box key press event
+        /// Try to add user after press enter
+        /// </summary>
+        /// <param name="sender"> variable for sender </param>
+        /// <param name="e"> variable for key press event arguments </param>
         private void textBox5_KeyPress(object sender, KeyPressEventArgs e)
         {
             if(e.KeyChar == 13)

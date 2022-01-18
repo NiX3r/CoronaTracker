@@ -15,6 +15,16 @@ using System.Windows.Forms;
 
 namespace CoronaTracker.SubForms.LoginSubSubForms
 {
+
+    /// <summary>
+    /// 
+    /// Forget Sub Sub Form
+    /// 
+    /// GUI child of Login Form
+    /// Shows UI for reseting password via email code confirmation
+    /// 
+    /// </summary>
+
     public partial class ForgetSubSubForm : Form
     {
 
@@ -38,6 +48,13 @@ namespace CoronaTracker.SubForms.LoginSubSubForms
             LogClass.Log($"Sub sub form successfully initialized");
         }
 
+        /// <summary>
+        /// Function to get current device MAC address
+        /// </summary>
+        /// <returns>
+        /// empty string : can't find any network device
+        /// else : mac address 
+        /// </returns>
         private string MacAddress()
         {
             LogClass.Log($"Getting mac accress");
@@ -56,6 +73,14 @@ namespace CoronaTracker.SubForms.LoginSubSubForms
             return macadress;
         }
 
+        /// <summary>
+        /// Function to encrypt password
+        /// Use 2 salt & SHA256 encryption
+        /// </summary>
+        /// <param name="password"> variable for password to encrypt </param>
+        /// <returns>
+        /// Return encrypted password
+        /// </returns>
         private string PasswordEncryption(string password)
         {
             string salt1 = "6&eL#YwFJFqD";
@@ -76,6 +101,16 @@ namespace CoronaTracker.SubForms.LoginSubSubForms
             return hashString;
         }
 
+        /// <summary>
+        /// Function to handle action button click event
+        /// 
+        /// Send Mail : Send mail to targeting email with specific code & get user ID
+        /// Send Code : Check input code with cache code and database code
+        /// Send Pass : Send new password into database
+        /// 
+        /// </summary>
+        /// <param name="sender"> variable for sender </param>
+        /// <param name="e"> variable for event arguments </param>
         private void button1_Click(object sender, EventArgs e)
         {
             LogClass.Log($"button1 click event handler start");
