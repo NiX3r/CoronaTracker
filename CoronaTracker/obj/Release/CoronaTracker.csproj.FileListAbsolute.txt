@@ -184,3 +184,5 @@ P:\CSharp\CoronaTracker\CoronaTracker\bin\Release\Microsoft.Bcl.AsyncInterfaces.
 P:\CSharp\CoronaTracker\CoronaTracker\bin\Release\System.Collections.Immutable.xml
 P:\CSharp\CoronaTracker\CoronaTracker\bin\Release\System.Interactive.Async.xml
 P:\CSharp\CoronaTracker\CoronaTracker\bin\Release\System.Linq.Async.xml
+P:\CSharp\CoronaTracker\CoronaTracker\obj\Release\CoronaTracker.SubForms.LoadingForm.resources
+P:\CSharp\CoronaTracker\CoronaTracker\obj\Release\CoronaTracker.SubForms.MainProgramThread.resources

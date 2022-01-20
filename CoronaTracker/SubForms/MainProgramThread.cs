@@ -46,7 +46,7 @@ namespace CoronaTracker.SubForms
 
         private void InitializeProgram(string[] args)
         {
-            ProgramVariables.Version = "2.2.0";
+            ProgramVariables.Version = "3.1.0";
             LogClass.Log("Program started. Version: " + ProgramVariables.Version);
 
             LogClass.Log("Creating discord webhook instance");
