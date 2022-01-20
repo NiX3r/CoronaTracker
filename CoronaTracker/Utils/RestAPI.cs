@@ -12,6 +12,11 @@ using System.Windows.Forms;
 
 namespace CoronaTracker.Utils
 {
+
+    /// <summary>
+    /// Utils class for gettting data via Rest API
+    /// </summary>
+
     class RestAPI
     {
 

@@ -13,8 +13,11 @@ namespace CoronaTracker
         static void Main(string[] args)
         {
 
+            // Initialize log class
             LogClass.LogClassInitialize();
+            // Start initializing program
             ProgramVariables.ProgramThread = new MainProgramThread(args);
+            // Run a program
             Application.Run();
 
         }

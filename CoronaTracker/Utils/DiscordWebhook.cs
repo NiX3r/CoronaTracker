@@ -15,6 +15,13 @@ using System.Windows;
 
 namespace CoronaTracker.Utils
 {
+
+    /// <summary>
+    /// 
+    /// Utils class for sending messages via Discord webhook
+    /// 
+    /// </summary>
+
     class DiscordWebhook
     {
 
@@ -25,6 +32,15 @@ namespace CoronaTracker.Utils
             DCW = new DiscordWebhookClient(SecretClass.GetWebhookLink());
         }
 
+        /// <summary>
+        /// Function to async send discord webhook message
+        /// </summary>
+        /// <param name="topic"> variable for topic </param>
+        /// <param name="type"> variable for type </param>
+        /// <param name="priority"> variable for priority </param>
+        /// <param name="create"> variable for create date </param>
+        /// <param name="os"> variable for OS </param>
+        /// <param name="description"> variable for description </param>
         public async void SendMessage(string topic, string type, int priority, DateTime create, string os, string description)
         {
 

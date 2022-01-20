@@ -37,6 +37,7 @@ namespace CoronaTracker.Utils
         public static DiscordWebhook Webhook { get; set; }
         // Instance for cache
         public static Dictionary<string, Form> FormCache { get; set; }
+        // Instance for Covid data cache
         public static Dictionary<string, CovidInfo> CovidCache { get; set; }
     }
 }

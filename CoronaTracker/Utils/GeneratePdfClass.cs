@@ -12,6 +12,11 @@ using System.Windows;
 
 namespace CoronaTracker.Instances
 {
+
+    /// <summary>
+    /// Utils class for generating PDF files
+    /// </summary>
+
     class GeneratePdfClass
     {
 

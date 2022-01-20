@@ -365,7 +365,6 @@ namespace CoronaTracker
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "UI";
             this.Text = "CoronaTracker";
-            this.Load += new System.EventHandler(this.UI_Load);
             this.VisibleChanged += new System.EventHandler(this.UI_VisibleChanged);
             this.UpperPanel.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();

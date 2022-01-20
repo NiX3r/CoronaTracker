@@ -17,10 +17,21 @@ using static CoronaTracker.Enums.EmployeePoseEnum;
 
 namespace CoronaTracker
 {
+
+    /// <summary>
+    /// 
+    /// UI
+    /// 
+    /// GUI for showing main UI
+    /// 
+    /// </summary>
+
     public partial class UI : Form
     {
 
+        // Instance for current child form
         private Form currentChildForm = null;
+        // Instance for current pushed button
         private Button currentButton = null;
 
         public UI()
@@ -39,6 +50,9 @@ namespace CoronaTracker
 
         }
         
+        /// <summary>
+        /// Functions to allow move application by clicking Upper Panel
+        /// </summary>
         [DllImport("user32.DLL", EntryPoint = "ReleaseCapture")]
         private extern static void ReleaseCapture();
         [DllImport("user32.DLL", EntryPoint = "SendMessage")]
@@ -51,16 +65,27 @@ namespace CoronaTracker
             LogClass.Log($"UpperPanel mouse down event handler end");
         }
 
+        /// <summary>
+        /// Function to update profile picture
+        /// </summary>
         public void UpdateProfilePicture()
         {
             pictureBox2.ImageLocation = ProgramVariables.ProfileURL;
         }
 
+        /// <summary>
+        /// Function to update application version
+        /// </summary>
         public void UpdateVersion()
         {
             label2.Text = "version: " + ProgramVariables.Version;
         }
 
+        /// <summary>
+        /// Function to open child form
+        /// </summary>
+        /// <param name="childForm"> variable for child form </param>
+        /// <param name="button"> variable for button </param>
         public void OpenChildForm(Form childForm, Button button)
         {
             LogClass.Log($"Start open child form");
@@ -91,6 +116,12 @@ namespace CoronaTracker
             LogClass.Log($"Successfully opened child form");
         }
 
+        /// <summary>
+        /// Function to handle button 7 click event
+        /// Try to delete all temp files and kill the app
+        /// </summary>
+        /// <param name="sender"> variable for sender </param>
+        /// <param name="e"> variable for event arguments </param>
         private void button7_Click(object sender, EventArgs e)
         {
             LogClass.Log($"button7 click event handler start");
@@ -106,11 +137,23 @@ namespace CoronaTracker
             ProgramVariables.ProgramThread.KillTheApp();
         }
 
+        /// <summary>
+        /// Function to handle button 8 click event
+        /// Change form window state to minimized
+        /// </summary>
+        /// <param name="sender"> variable for sender </param>
+        /// <param name="e"> variable for event arguments </param>
         private void button8_Click(object sender, EventArgs e)
         {
             WindowState = FormWindowState.Minimized;
         }
 
+        /// <summary>
+        /// Function to handle form visible changed event
+        /// Load fullname and profile picture
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void UI_VisibleChanged(object sender, EventArgs e)
         {
             LogClass.Log($"UI visible changed event handler start");
@@ -122,6 +165,12 @@ namespace CoronaTracker
             LogClass.Log($"UI visible changed event handler end");
         }
 
+        /// <summary>
+        /// Function to handle label 3 click event
+        /// Log out current user
+        /// </summary>
+        /// <param name="sender"> variable for sender </param>
+        /// <param name="e"> variable for event arguments </param>
         private void label3_Click(object sender, EventArgs e)
         {
             LogClass.Log($"label3 click event handler start");
@@ -133,6 +182,12 @@ namespace CoronaTracker
             LogClass.Log($"label3 click event handler end");
         }
 
+        /// <summary>
+        /// Function to handle button 6 click event
+        /// Open child form
+        /// </summary>
+        /// <param name="sender"> variable for sender </param>
+        /// <param name="e"> variable for event arguments </param>
         private void button6_Click(object sender, EventArgs e)
         {
             LogClass.Log($"button6 click event handler start");
@@ -162,6 +217,13 @@ namespace CoronaTracker
             LogClass.Log($"button6 click event handler end");
         }
 
+        /// <summary>
+        /// Function to check if current user has access
+        /// </summary>
+        /// <returns>
+        /// true : user has access
+        /// false : user has not access
+        /// </returns>
         private bool HasAccess()
         {
             if (ProgramVariables.Pose == EmployeePose.User)
@@ -170,20 +232,28 @@ namespace CoronaTracker
                 return true;
         }
 
+        /// <summary>
+        /// Function to get current child form
+        /// </summary>
+        /// <returns>
+        /// current child form
+        /// </returns>
         public Form GetCurrentForm()
         {
             return currentChildForm;
         }
 
+        /// <summary>
+        /// Function to handle picture box 3 click event
+        /// Open report form
+        /// </summary>
+        /// <param name="sender"> variable for sender </param>
+        /// <param name="e"> variable for event arguments </param>
         private void pictureBox3_Click(object sender, EventArgs e)
         {
             if (!ProgramVariables.FormCache["REPORT"].Visible)
                 ProgramVariables.FormCache["REPORT"].Show();
         }
 
-        private void UI_Load(object sender, EventArgs e)
-        {
-            this.TopMost = true;
-        }
     }
 }

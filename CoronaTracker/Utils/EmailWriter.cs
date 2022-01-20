@@ -9,12 +9,26 @@ using System.Windows;
 
 namespace CoronaTracker.Utils
 {
+
+    /// <summary>
+    /// 
+    /// Utils class for sending emails
+    /// 
+    /// </summary>
+
     class EmailWriter
     {
 
         private static int ID, firstPersonalNumber, secondPersonalNumber;
         private static string mailTo;
 
+        /// <summary>
+        /// Function to write an email async
+        /// </summary>
+        /// <param name="aID"> variable for user's ID </param>
+        /// <param name="afirstPersonalNumber"> variable for first personal number </param>
+        /// <param name="asecondPersonalNumber"> variable for second personal number </param>
+        /// <param name="amailTo"> variable for email write to </param>
         public static void AsyncWrite(int aID, int afirstPersonalNumber, int asecondPersonalNumber, string amailTo)
         {
 
@@ -27,6 +41,9 @@ namespace CoronaTracker.Utils
             mailer.Start();
         }
 
+        /// <summary>
+        /// Function to write an email
+        /// </summary>
         static void Write()
         {
 
@@ -74,6 +91,12 @@ namespace CoronaTracker.Utils
 
         }
 
+        /// <summary>
+        /// Function to write an forget code email async
+        /// </summary>
+        /// <param name="email"> variable for email write to </param>
+        /// <param name="code"> variable for forget code </param>
+        /// <returns></returns>
         public static bool WriteCodeEmail(string email, string code)
         {
 
