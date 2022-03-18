@@ -243,6 +243,8 @@ namespace CoronaTracker.SubForms.PatientSubSubForms
                 Bitmap bitmap = new Bitmap(pictureBox5.Image);
                 BarcodeReader reader = new BarcodeReader { AutoRotate = true };
                 Result result = reader.Decode(bitmap);
+                if (result == null)
+                    return;
                 string decoded = result.ToString().Trim();
                 //capture a snapshot if there is a match
                 if (FinalFrame.IsRunning == true)
@@ -270,7 +272,7 @@ namespace CoronaTracker.SubForms.PatientSubSubForms
         /// <summary>
         /// Function to stop recording camera
         /// </summary>
-        private void exitcamera()
+        public void exitcamera()
         {
             FinalFrame.SignalToStop();
             // FinalVideo.WaitForStop();  << marking out that one solved it

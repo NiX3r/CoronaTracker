@@ -293,6 +293,8 @@ namespace CoronaTracker.SubForms.PatientSubSubForms
                 Bitmap bitmap = new Bitmap((Bitmap)eventArgs.Frame.Clone());
                 BarcodeReader reader = new BarcodeReader { AutoRotate = true };
                 Result result = reader.Decode(bitmap);
+                if (result == null)
+                    return;
                 string decoded = result.ToString().Trim();
 
                 Debug.WriteLine(decoded);

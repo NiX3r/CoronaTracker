@@ -547,12 +547,12 @@ namespace CoronaTracker.Database
         {
             LogClass.Log($"Getting employee by id {ID}");
             EmployeeInstance output = null;
-            var command = new MySqlCommand($"SELECT Employee_Fullname,Employee_ProfileURL,Employee_Phone FROM Employee WHERE Employee.Employee_ID={ID};", connection);
+            var command = new MySqlCommand($"SELECT Employee_Fullname,Employee_ProfileURL,Employee_Phone FROM Employee WHERE Employee_ID={ID};", connection);
             var reader = command.ExecuteReader();
             if (reader.Read())
                 output = new EmployeeInstance(reader.GetString(0), reader.IsDBNull(1) ? "" : reader.GetString(1), reader.GetInt32(2));
             reader.Close();
-            LogClass.Log($"Got employee. Output: {output.ToString()}");
+            LogClass.Log($"Got employee. Output: {(output == null ? "ERROR#404" : output.ToString())}");
             return output;
         }
 

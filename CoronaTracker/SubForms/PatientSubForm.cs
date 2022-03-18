@@ -110,6 +110,11 @@ namespace CoronaTracker.SubForms
             LogClass.Log($"button1 click event handler end");
         }
 
+        public void killTheCam()
+        {
+
+        }
+
         /// <summary>
         /// Function to handle form load event
         /// Open default child form - List Sub Sub Form

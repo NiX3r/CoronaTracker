@@ -9,14 +9,18 @@ Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "Setup", "Setup\Setup.vdproj
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		AutoLogin|Any CPU = AutoLogin|Any CPU
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A108192D-100C-47F8-89E6-6D79DF113356}.AutoLogin|Any CPU.ActiveCfg = AutoLogin|Any CPU
+		{A108192D-100C-47F8-89E6-6D79DF113356}.AutoLogin|Any CPU.Build.0 = AutoLogin|Any CPU
 		{A108192D-100C-47F8-89E6-6D79DF113356}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{A108192D-100C-47F8-89E6-6D79DF113356}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A108192D-100C-47F8-89E6-6D79DF113356}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A108192D-100C-47F8-89E6-6D79DF113356}.Release|Any CPU.Build.0 = Release|Any CPU
+		{00A007F5-1297-4823-A997-7A865F63C9BC}.AutoLogin|Any CPU.ActiveCfg = Release
 		{00A007F5-1297-4823-A997-7A865F63C9BC}.Debug|Any CPU.ActiveCfg = Debug
 		{00A007F5-1297-4823-A997-7A865F63C9BC}.Release|Any CPU.ActiveCfg = Release
 	EndGlobalSection

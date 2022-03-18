@@ -123,7 +123,7 @@ namespace CoronaTracker.SubForms
             if (isDev)
             {
                 ProgramVariables.ID = 38;
-                EmployeeInstance user = DatabaseMethods.GetEmployeeByID(id);
+                EmployeeInstance user = DatabaseMethods.GetEmployeeByID(38);
                 ProgramVariables.Fullname = user.Fullname;
                 ProgramVariables.ProfileURL = user.ProfilePictureURL;
                 ProgramVariables.Pose = EmployeePose.Developer;
