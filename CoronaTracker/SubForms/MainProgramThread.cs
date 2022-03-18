@@ -150,6 +150,7 @@ namespace CoronaTracker.SubForms
         {
             LogClass.Log($"Ending program");
             LogClass.Save();
+            ((PatientSubForm)ProgramVariables.FormCache["Patient"]).killTheCam();
             this.loginForm.Close();
             this.mainUI.Close();
             this.loadingForm.Close();

@@ -326,7 +326,7 @@ namespace CoronaTracker.SubForms.PatientSubSubForms
         /// <summary>
         /// Function to stop recording camera
         /// </summary>
-        private void exitcamera()
+        public void exitcamera()
         {
             FinalFrame.SignalToStop();
             // FinalVideo.WaitForStop();  << marking out that one solved it

@@ -112,7 +112,13 @@ namespace CoronaTracker.SubForms
 
         public void killTheCam()
         {
-
+            try
+            {
+                ((ListSubSubForm)currentChildForm).exitcamera();
+                ((FindsSubSubForm)currentChildForm).exitcamera();
+                ((VaccinationsSubSubForm)currentChildForm).exitcamera();
+            }
+            catch (Exception ex) { }
         }
 
         /// <summary>
