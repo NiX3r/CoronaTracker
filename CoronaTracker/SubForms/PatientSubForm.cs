@@ -84,7 +84,7 @@ namespace CoronaTracker.SubForms
             currentButton.TextAlign = ContentAlignment.BottomCenter;
             currentButton.BackColor = Color.FromArgb(55,55,55);
             currentButton.TextAlign = ContentAlignment.BottomCenter;
-            LogClass.Log($"Oepn child form end");
+            LogClass.Log($"Open child form end");
         }
 
         /// <summary>
