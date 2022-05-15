@@ -304,6 +304,9 @@ namespace CoronaTracker.SubForms.PatientSubSubForms
                     exitcamera();
                 }
                 string[] content = decoded.Split('_');
+
+                
+
                 if (content[0].Equals("CoronaTracker-by-nCodes.eu") && DatabaseMethods.IsPatientExist(Convert.ToInt32(content[1]), Convert.ToInt32(content[2]), Convert.ToInt32(content[3])))
                 {
                     patient = DatabaseMethods.GetPatient(Convert.ToInt32(content[1]));
